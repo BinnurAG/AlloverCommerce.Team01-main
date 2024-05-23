@@ -2,6 +2,9 @@ package team01_AlloverCommerceTestNG.pages;
 
 public class P1_HomePage {
 
+    public static void main(String[] args) {
+        //Conflict olmali
+    }
 /* Uyguladigimiz adimlar :
 A) Intellijeyde yaptigimiz degisiklikleri Github projemize eklemek icin
 1. git init (ilk defa olustururken)
@@ -27,9 +30,11 @@ remote: Create a pull request for 'ayse' on GitHub by visiting:
 remote:      https://github.com/BinnurAG/AlloverCommerce.Team01-main/pull/new/ayse
 Bu linke gidince orda
  ayse had recent pushes yazisinin yaninda Compare&pull request kismini gorecegiz oraya tiklayalim
+ Eger gozukmediyse yukaridaki pull request kismindan yada
+ asagi indigimizde ismimizin yanindaki 3 nokta isaretinden girerek yapabiliriz.
  egerki comment yazmak istiyorsak yazalim
  asagida create pull requeste tiklayalim
- BUNDAN SONRAKI ADIMI GITHUB SORUMLULARINA BIRAKALIM...
+ BUNDAN SONRAKI ADIMI GITHUB SORUMLULARINA BIRAKALIM.(merge pull request kismindaki confirm merge kismina tiklamiyoruz)
 
 B) Githubtaki degisiklikleri localimize cekmek icin ise
 1. git checkout main  (main branche gecelim)
