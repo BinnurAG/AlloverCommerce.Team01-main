@@ -1,10 +1,6 @@
 package team01_AlloverCommerceTestNG.pages;
 
 public class P1_HomePage {
-
-    public static void main(String[] args) {
-        //Conflict olmali
-    }
 /* Uyguladigimiz adimlar :
 A) Intellijeyde yaptigimiz degisiklikleri Github projemize eklemek icin
 1. git init (ilk defa olustururken)
