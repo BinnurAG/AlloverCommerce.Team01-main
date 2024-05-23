@@ -25,12 +25,15 @@ Gelen mesaj:
 Bu sekilde bize adres verir uzerine tiklayalim ve githuba ana branch'e merge istegi icin gidelim
 remote: Create a pull request for 'ayse' on GitHub by visiting:
 remote:      https://github.com/BinnurAG/AlloverCommerce.Team01-main/pull/new/ayse
-
-Bu linke gidince orda request isteginde bulunmaliyiz fakat kendimiz confirm etmeyelim sorumlular kabul edecek
+Bu linke gidince orda
+ ayse had recent pushes yazisinin yaninda Compare&pull request kismini gorecegiz oraya tiklayalim
+ egerki comment yazmak istiyorsak yazalim
+ asagida create pull requeste tiklayalim
+ BUNDAN SONRAKI ADIMI GITHUB SORUMLULARINA BIRAKALIM...
 
 B) Githubtaki degisiklikleri localimize cekmek icin ise
 1. git checkout main  (main branche gecelim)
-2.git branch  (hangi branchde oldugumuzu seklinde kontrol edebiliriz)
+2. git branch  (hangi branchde oldugumuzu seklinde kontrol edebiliriz)
 gelen mesaj:
 ayse
 *main   (* main branchinde oldugunu gosteriyor)
