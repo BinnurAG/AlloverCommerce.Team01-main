@@ -2,5 +2,5 @@ package team01_AlloverCommerceTestNG.pages;
 
 public class P2_RegisterPage {
 
-    //my work space
+    //my work space yeni
 }
