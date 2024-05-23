@@ -1,6 +1,6 @@
 package team01_AlloverCommerceTestNG.pages;
 
 public class P1_HomePage {
+int a = 4;
 
-    // aysebetuleksi
 }
