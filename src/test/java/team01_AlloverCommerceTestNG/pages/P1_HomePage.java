@@ -45,4 +45,4 @@ ayse
 ---baska not: VendorSignIn, ayni yerden giris yapiliyor diye eklenmemis, UserVendorLogInPage
  */
 
-}
+
