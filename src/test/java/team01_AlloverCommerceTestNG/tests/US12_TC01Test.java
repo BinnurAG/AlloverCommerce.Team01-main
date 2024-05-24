@@ -1,13 +1,10 @@
 package team01_AlloverCommerceTestNG.tests;
 
-public class US08_Register_WishList {
 
+class US12_TC01Test {
 
     public static void main(String[] args) {
-
-
-        System.out.println("");
-
-
+        System.out.println();
     }
+
 }
