@@ -1,7 +1,10 @@
-package team01_AlloverCommerceTestNG.pages;
+package team01_AlloverCommerceTestNG.tests;
 
-public class P5_AddressesPage {
+
+class US12_TC01Test {
+
     public static void main(String[] args) {
         System.out.println();
     }
+
 }
