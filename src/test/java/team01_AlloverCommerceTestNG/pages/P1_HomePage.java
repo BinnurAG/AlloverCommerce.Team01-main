@@ -1,8 +1,13 @@
 package team01_AlloverCommerceTestNG.pages;
 
+import org.openqa.selenium.support.PageFactory;
+import team01_AlloverCommerceTestNG.utilities.Driver;
+
 public class P1_HomePage {
+    public P1_HomePage() {
 
-
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
 
 /* Uyguladigimiz adimlar :
 A) Intellijeyde yaptigimiz degisiklikleri Github projemize eklemek icin
