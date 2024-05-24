@@ -3,7 +3,8 @@ package team01_AlloverCommerceTestNG.pages;
 public class P1_HomePage {
 
     public static void main(String[] args) {
-        //Conflict olmali
+
+        //Bu conflicti nasil cozebiliriz?
     }
 /* Uyguladigimiz adimlar :
 A) Intellijeyde yaptigimiz degisiklikleri Github projemize eklemek icin
@@ -43,7 +44,9 @@ gelen mesaj:
 ayse
 *main   (* main branchinde oldugunu gosteriyor)
 3. git pull (main branchteki tum yeni hali localimize ceker)
-4.
+4. git checkout ayse (kendi branchine gec)
+5. git merge main ( main branchdekini kendi branchine al)
+---baska not: VendorSignIn, ayni yerden giris yapiliyor diye eklenmemis, UserVendorLogInPage
  */
 
 }
