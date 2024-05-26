@@ -6,10 +6,11 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    public static String getProperty(String key){
-        Properties properties=new Properties();
+    public static String getProperty(String key) {
+        Properties properties = new Properties();
 
-        try {  FileInputStream fis=new FileInputStream("configuration.properties");
+        try {
+            FileInputStream fis = new FileInputStream("configuration.properties");
             properties.load(fis);
         } catch (IOException e) {
             throw new RuntimeException(e);
