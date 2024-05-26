@@ -38,4 +38,12 @@ public class P2_RegisterPage {
     @FindBy(linkText = "Become a Vendor")
     public WebElement becomeAVendorLink;
 
+    @FindBy(xpath = "//p[.='An account is already registered with that username. Please choose another.']")
+    public WebElement alreadyRegUserName;
+
+    @FindBy(xpath = "//p[@class='submit-status']")
+    public WebElement alreadyRegEmail;
+
+
+
 }
