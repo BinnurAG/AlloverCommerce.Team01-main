@@ -7,16 +7,4 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 
 public class P5_AddressesPage {
 
-    public P5_AddressesPage() {
-
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
-
-    @FindBy(id = "username")
-    public WebElement username;
-
-    @FindBy(id = "password")
-    public WebElement password;
-
-
 }

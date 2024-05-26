@@ -3,7 +3,9 @@ package team01_AlloverCommerceTestNG.utilities;
 import org.testng.annotations.DataProvider;
 
 public class DataProviderUtils {
+/*
 
+Bu datalar ornek icin birakilmistir
     @DataProvider(name = "positiveTestData")
     public static Object[][] provideBoundaryValueTestData() {
         return new Object[][] {
@@ -29,4 +31,7 @@ public class DataProviderUtils {
                 { "-5" }
         };
     }
+
+
+ */
 }
