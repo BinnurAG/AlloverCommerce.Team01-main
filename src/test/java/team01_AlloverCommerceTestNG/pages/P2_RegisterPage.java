@@ -35,4 +35,7 @@ public class P2_RegisterPage {
     @FindBy(xpath = "//*[.='Please enter a valid account username.']")
     public WebElement resultMessage;
 
+    @FindBy(linkText = "Become a Vendor")
+    public WebElement becomeAVendorLink;
+
 }
