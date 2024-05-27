@@ -11,7 +11,13 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 import static team01_AlloverCommerceTestNG.pages.P20_VendorCouponsPage.*;
+<<<<<<< HEAD
 import static team01_AlloverCommerceTestNG.pages.P6_AccountDetails.*;
+=======
+import static team01_AlloverCommerceTestNG.pages.P20_VendorCouponsPage.codeBox;
+import static team01_AlloverCommerceTestNG.pages.P6_AccountDetails.*;
+import static team01_AlloverCommerceTestNG.pages.P6_AccountDetails.signOut;
+>>>>>>> 7049fd31175ad4311accb19107f01bf490969150
 
 public class TC01 extends ReusableMethods {
 
