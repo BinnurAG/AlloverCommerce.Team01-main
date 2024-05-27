@@ -79,7 +79,6 @@ public class US16 {
         ReusableMethods.scroll(allPages.vendorProductManagerPage().priceBox);
         allPages.vendorProductManagerPage().priceBox.sendKeys("45");
 
-
         //Sale Price bilgisini gir
         allPages.vendorProductManagerPage().salePriceBox.sendKeys("37");
 
