@@ -15,7 +15,7 @@ public class US01_Register_SignUp {
     Faker faker = new Faker();
 
     @Test
-    public void testTC01() {
+    public void testCase01() {
 //  Siteye müşteri olarak geçerli verilerle kayıt olunabilmeli(Register)
 //        1	Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -25,8 +25,8 @@ public class US01_Register_SignUp {
 //        4	Your Email address alanına bir veri gir
         p2_registerPage.userName.sendKeys(faker.name().username(), Keys.TAB,
                 faker.internet().emailAddress(),Keys.TAB);
-//        5	Password alanına bir veri gir(12345678)
-        p2_registerPage.password.sendKeys("08*24Luc");
+//        5	Password alanına bir veri gir
+        p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
         //       6	I agree to the privacy policy kontrol kutusunu seç
         p2_registerPage.privacyPolicy.click();
 //        7	SIGN UP butonuna tıkla
@@ -36,23 +36,24 @@ public class US01_Register_SignUp {
         //Driver.closeDriver();
     }
     @Test
-    public void testTC02() { //FAIL EKRAN GORUNTUSU ALMALISIN
+    public void testCase02() { //FAIL EKRAN GORUNTUSU ALMALISIN
 //  Siteye müşteri olarak kayıt olurken
 //  username alanına küçük harf,büyük harf,rakam ve özel karakterler girilebilmeli
 //        1	Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 //        2	Register linkine tıkla
         p2_registerPage.register.click();
-//        3	Username alanına bir veri gir(TimotHi*08)
-        p2_registerPage.userName.sendKeys("TimotHi*08");
+//        3	Username alanına bir veri gir
+        p2_registerPage.userName.sendKeys(ConfigReader.getProperty("privateUserName"));
 //        4	Your Email address alanına bir veri gir
         p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
-//        5	Password alanına bir veri gir(08*24Luc)
-        p2_registerPage.password.sendKeys("08*24Luc");
+//        5	Password alanına bir veri gir
+        p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
 //        6	I agree to the privacy policy kontrol kutusunu seç
         p2_registerPage.privacyPolicy.click();
 //        7	SIGN UP butonuna tıkla
         p2_registerPage.submitButton.click();
+//      ReusableMethods.screenShot("SignOut");
 //        8	Anasayfanın açıldığını ve Sign Out linkinin göründüğünü doğrula
         Assert.assertFalse(p2_registerPage.resultMessage.getText().contains("Sign Out"));
         //Driver.closeDriver();
