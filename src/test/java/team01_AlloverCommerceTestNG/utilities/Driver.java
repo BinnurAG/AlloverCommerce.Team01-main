@@ -50,13 +50,6 @@ public class Driver {
         return driverPool.get();
     }
 
-<<<<<<< HEAD
-=======
-    public Driver() {
-        // Singleton pattern
-    }
-
->>>>>>> 7049fd31175ad4311accb19107f01bf490969150
     public static void closeDriver() {
         // Açık olan WebDriver örneğini kapatıyoruz.
         if (driverPool.get() != null) {
