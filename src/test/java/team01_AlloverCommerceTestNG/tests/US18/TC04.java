@@ -11,13 +11,10 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-<<<<<<< HEAD
-import static team01_AlloverCommerceTestNG.pages.P6_AccountDetails.*;
-=======
+
 import static team01_AlloverCommerceTestNG.pages.P20_VendorCouponsPage.*;
 import static team01_AlloverCommerceTestNG.pages.P6_AccountDetails.*;
 import static team01_AlloverCommerceTestNG.pages.P6_AccountDetails.signOut;
->>>>>>> 7049fd31175ad4311accb19107f01bf490969150
 
 public class TC04 extends ReusableMethods {
     private final String testName = "US18 / TC04-Discount Type Section";
