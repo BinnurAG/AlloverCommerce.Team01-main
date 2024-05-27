@@ -11,11 +11,25 @@ public class P5_AddressesPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+    @FindBy(className = "login inline-type")
+    public WebElement signIn1;
+
     @FindBy(id = "username")
-    public WebElement username;
+    public WebElement usernameSignIn;
 
     @FindBy(id = "password")
-    public WebElement password;
+    public WebElement passwordSignIn;
+
+    @FindBy(css = "button[name='login']")
+    public WebElement signIn2;
+
+    @FindBy(xpath = "//a[span='Sign Out']")
+    public WebElement signOut;
+
+    @FindBy(xpath = "//header[h3='Billing address']")
+    public WebElement billingAddress;
+
+
 
     //Billing Address Sayfası
     @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/edit-address/billing/']")
