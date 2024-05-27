@@ -31,7 +31,7 @@ public class ReusableMethods {
     protected ExtentHtmlReporter extentHtmlReporter;
     protected ExtentTest extentTest;
 
-<<<<<<< HEAD
+
     //HARD WAIT METHOD
     public static void waitForSecond(int saniye) {
         try {
@@ -230,11 +230,7 @@ public class ReusableMethods {
     }
 
     public void createExtentReport(String testName, String qaName, String name) {
-=======
-
-
-    public void createExtentReport(String testName, String qaName, String name){
->>>>>>> 7049fd31175ad4311accb19107f01bf490969150
+        
         //Bu objecti raporlari olusturmak ve yönetmek icin kullanacağız
         extentReports = new ExtentReports();
 
@@ -347,10 +343,6 @@ public class ReusableMethods {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-<<<<<<< HEAD
-
-
-=======
     //WebTable
     public static void printData(int satir, int sutun) {
         WebElement satirSutun = Driver.getDriver().findElement(By.xpath("(//tbody)[1]//tr[" + satir + "]//td[" + sutun + "]"));
@@ -400,5 +392,5 @@ public class ReusableMethods {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
->>>>>>> 7049fd31175ad4311accb19107f01bf490969150
+
 }
