@@ -12,15 +12,25 @@ public class P14_VendorRegisterPage {
 
     @FindBy(id = "user_email")
     public WebElement emailBox;
+
     @FindBy(css = "input[placeholder='Verification Code']")
     public WebElement verificationCodeBox;
+
     @FindBy(id = "passoword")
     public WebElement passwordBox;
+
     @FindBy(id = "confirm_pwd")
     public WebElement confirmPasswordBox;
+
     @FindBy(id = "wcfm_membership_register_button")
     public WebElement registerButton;
 
     @FindBy(id = "password_strength")
     public WebElement passwordWrongMessage;
+
+    @FindBy(xpath = "(//h1)[2]")
+    public WebElement welcomeToAllevorCommerce;
+
+    @FindBy(css= ".wcfm-message.wcfm-error")
+    public WebElement emailWrongText;
 }

@@ -16,4 +16,8 @@ public class P16_VendorStoreManagerPage {
     @FindBy(xpath = "//h2[.='Store Manager']")
     public WebElement storeManagerTitle;
 
+
 }
+
+
+
