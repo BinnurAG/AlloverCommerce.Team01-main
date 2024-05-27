@@ -127,9 +127,41 @@ public class ReusableMethods {
 
     //WebElement ScreenShot
 //webelement screenshot
-    public static void screenShotOfWebElement(WebElement webElement) {
+
+    public static void   screenShotOfWebElement(WebElement webElement){
+        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format( LocalDateTime.now() );
+        String dosyaYolu = System.getProperty("user.dir") + "src/test/java/team01_AlloverCommerceTestNG/testOutPuts/WebElementScreenShots" +  date + ".png";
+        try {
+            Files.write(  Paths.get(dosyaYolu) , webElement.getScreenshotAs(OutputType.BYTES) );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+     //extent rapora ekran goruntusu ekleme
+    //Tüm sayfa screenshoti rapora ekleme
+    public void addScreenShotToReport() {
+
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String dosyaYolu = System.getProperty("user.dir") + "src/test/java/team01_AlloverCommerceTestNG/testOutPuts/WebElementScreenShots" + date + ".png";
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
+        //Burada Mac ve windows kullanicilari farkli path kullanmali
+        String path2 = "src\\test\\java\\screenshots\\NEW" + date + ".png";
+        TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+        try {
+            Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
+            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //webelement screenshot rapora ekleme
+    public void addScreenShotOfWebElementToReport(WebElement webElement) {
+
+        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
+        //Burada Mac ve windows kullanicilari farkli path kullanmali
+        String path2 = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
+   
         try {
             Files.write(Paths.get(dosyaYolu), webElement.getScreenshotAs(OutputType.BYTES));
         } catch (IOException e) {
@@ -297,11 +329,42 @@ public class ReusableMethods {
         visibleWait(signOut, 5);
     }
 
+    public static void vendorRegisterEmail(){
+        Driver.getDriver().switchTo().newWindow(WindowType.TAB);
+        Driver.getDriver().get("https://www.fakemail.net/");
+        String email=Driver.getDriver().findElement(By.id("email")).getText();
+        ReusableMethods.switchToWindow(0);
+        allPages.vendorRegisterPage().emailBox.sendKeys(email);
+    }
+    public static void vendorRegisterCode(){
+        ReusableMethods.switchToWindow(1);
+        Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
+        Driver.getDriver().switchTo().frame("iframeMail");
+        String code=Driver.getDriver().findElement(By.tagName("b")).getText();
+        ReusableMethods.switchToWindow(0);
+        allPages.vendorRegisterPage().verificationCodeBox.sendKeys(code);
+    }
+    public static String emailAndCodeMessage(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) Driver.getDriver();
+        String dynamicText = (String) jsExecutor.executeScript(
+                "return document.querySelector('.wcfm-message.email_verification_message').textContent;"
+        );
+        return dynamicText;
+    }
+
+    public static String passwordWrongMessage(){
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) Driver.getDriver();
+        String dynamicText = (String) jsExecutor.executeScript(
+                "return document.querySelector('.wcfm-message.wcfm-error').textContent;");
+        return dynamicText;
+    }
+
     public void increaseQuantity(WebElement quantityPlusButton, int times) {
         for (int i = 0; i < times; i++) {
             click(quantityPlusButton);
         }
     }
+
 
 
 }
