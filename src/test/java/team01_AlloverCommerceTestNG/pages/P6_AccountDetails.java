@@ -87,6 +87,10 @@ public class P6_AccountDetails {
     @FindBy(xpath = "//p[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
     public static WebElement orderReceived;
 
+    @FindBy(xpath = "//input[@name='rememberme']")
+    public static WebElement rememberMe;
+
+
 
 
 
