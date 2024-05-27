@@ -12,23 +12,24 @@ public class ExcelReader {
     Workbook workbook;
     Sheet sheet;
 
-    public ExcelReader(String dosyaYolu, String sayfaIsmi){
+    public ExcelReader(String dosyaYolu, String sayfaIsmi) {
 
-        try { FileInputStream fis=new FileInputStream(dosyaYolu);
-            workbook= WorkbookFactory.create(fis);
-            sheet=workbook.getSheet(sayfaIsmi);
+        try {
+            FileInputStream fis = new FileInputStream(dosyaYolu);
+            workbook = WorkbookFactory.create(fis);
+            sheet = workbook.getSheet(sayfaIsmi);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
 
-    public String getCellData(int satir, int sutun){
-        Cell cell =  sheet.getRow(satir).getCell(sutun);
+    public String getCellData(int satir, int sutun) {
+        Cell cell = sheet.getRow(satir).getCell(sutun);
         return cell.toString();
     }
 
-    public int rowCount(){
+    public int rowCount() {
         return sheet.getLastRowNum();
     }
 }
