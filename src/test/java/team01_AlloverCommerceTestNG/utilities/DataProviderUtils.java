@@ -1,7 +1,5 @@
 package team01_AlloverCommerceTestNG.utilities;
 
-import org.testng.annotations.DataProvider;
-
 public class DataProviderUtils {
 /*
 
