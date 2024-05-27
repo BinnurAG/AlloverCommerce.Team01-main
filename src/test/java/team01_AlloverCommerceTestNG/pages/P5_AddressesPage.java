@@ -8,8 +8,6 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 public class P5_AddressesPage {
 
     public P5_AddressesPage() {
-<<<<<<< Updated upstream
-
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -18,12 +16,6 @@ public class P5_AddressesPage {
 
     @FindBy(id = "password")
     public WebElement password;
-
-=======
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
-
-
 
     //Billing Address Sayfası
     @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/edit-address/billing/']")
@@ -68,9 +60,6 @@ public class P5_AddressesPage {
     @FindBy(name = "save_address")
     public WebElement savebutonB;
 
-
-
-
     //Shipping Address Sayfası
 
     @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/edit-address/shipping/']")
@@ -114,6 +103,5 @@ public class P5_AddressesPage {
 
     @FindBy(name = "save_address")
     public WebElement savebutonS;
->>>>>>> Stashed changes
 
 }
