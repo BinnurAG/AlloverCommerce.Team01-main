@@ -48,12 +48,4 @@ public class P20_VendorCouponsPage {
 
     @FindBy (xpath = "(//*[@class='wcfm_dashboard_item_title'])[1]")
     public static WebElement couponCode;
-
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 7049fd31175ad4311accb19107f01bf490969150
-
 }
