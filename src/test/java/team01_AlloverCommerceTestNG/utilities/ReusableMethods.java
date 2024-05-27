@@ -25,6 +25,8 @@ public class ReusableMethods {
     protected ExtentHtmlReporter extentHtmlReporter;
     protected ExtentTest extentTest;
 
+
+
     public void createExtentReport(String testName, String qaName, String name){
         //Bu objecti raporlari olusturmak ve yönetmek icin kullanacağız
         extentReports = new ExtentReports();
@@ -214,5 +216,9 @@ public class ReusableMethods {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String attribute_Value = (String) js.executeScript("return document.getElementById('" + id + "')." + attributeName);
         System.out.println("Attribute Value: = " + attribute_Value);
+    }
+    public static WebElement waitForClickablility(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 }

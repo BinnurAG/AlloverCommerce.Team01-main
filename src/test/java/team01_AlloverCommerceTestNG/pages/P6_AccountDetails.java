@@ -23,6 +23,9 @@ public class P6_AccountDetails {
     @FindBy(xpath = "(//input[@type='password'])[1]")
     public static WebElement passwordArea;
 
+    @FindBy(xpath = "//input[@name='rememberme']")
+    public static WebElement rememberMe;
+
     @FindBy(xpath = "(//button[@type='submit'])[1]")
     public static WebElement signInButton;
 
