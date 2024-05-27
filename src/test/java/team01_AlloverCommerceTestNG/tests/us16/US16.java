@@ -31,7 +31,7 @@ public class US16 {
 
         // Kayitli vendor bilgileriyle giris yap
         allPages.homePage().signInButton.click();
-        ReusableMethods.userVendorlogin("bert.emit@floodouts.com", "wrgyx9K?");
+        ReusableMethods.userVendorlogin("britton.jamesson@floodouts.com", "yvtve8V$");
 
         // Sign out a tiklayarak My account sayfasina gir
         allPages.homePage().signOutButton.click();
@@ -77,11 +77,11 @@ public class US16 {
     public void test03() {
         //Price bilgisini gir
         ReusableMethods.scroll(allPages.vendorProductManagerPage().priceBox);
-        allPages.vendorProductManagerPage().priceBox.sendKeys("100");
+        allPages.vendorProductManagerPage().priceBox.sendKeys("45");
 
 
         //Sale Price bilgisini gir
-        allPages.vendorProductManagerPage().salePriceBox.sendKeys("80");
+        allPages.vendorProductManagerPage().salePriceBox.sendKeys("37");
 
         allPages.vendorProductManagerPage().salePriceBox.clear();
         //Price ve Sale Price bilgilerini girebildigini onayla
@@ -89,20 +89,20 @@ public class US16 {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String script = "return arguments[0].value;";
         String actualPriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().priceBox);
-        Assert.assertEquals(actualPriceValue, "100");
+        Assert.assertEquals(actualPriceValue, "45");
         String actualSalePriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().salePriceBox);
-        Assert.assertEquals(actualSalePriceValue, "80");
+        Assert.assertEquals(actualSalePriceValue, "37");
 
     }
     @Test
     public void test04() {
         //Product Title kisminda urun basliginin yazilabildigini dogrula
-        allPages.vendorProductManagerPage().productTitleBox.sendKeys("Techpro QA Education");
+        allPages.vendorProductManagerPage().productTitleBox.sendKeys("Your Soul is a river");
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String script = "return arguments[0].value;";
         String actualProductTitle = (String) js.executeScript(script, allPages.vendorProductManagerPage().productTitleBox);
         System.out.println(actualProductTitle);
-        Assert.assertEquals(actualProductTitle,"Techpro QA Education" );
+        Assert.assertEquals(actualProductTitle,"Your soul is a river" );
 
     }
     @Test
@@ -128,10 +128,10 @@ public class US16 {
         allPages.vendorProductManagerPage().downloadableCheckBox.click();
 
         //Product Title gir
-        allPages.vendorProductManagerPage().productTitleBox.sendKeys("Techpro QA Education");
+        allPages.vendorProductManagerPage().productTitleBox.sendKeys("Your soul is a river");
         //Price ve Sale Price bilgilerini gir
-        allPages.vendorProductManagerPage().priceBox.sendKeys("4000");
-        allPages.vendorProductManagerPage().salePriceBox.sendKeys("3000");
+        allPages.vendorProductManagerPage().priceBox.sendKeys("35");
+        allPages.vendorProductManagerPage().salePriceBox.sendKeys("27");
 
         //Kategori sec
         Actions actions = new Actions(Driver.getDriver());
@@ -172,10 +172,10 @@ public class US16 {
     public void test08() {
         // Price bilgisini gir
         WebElement pricebox = allPages.vendorProductManagerPage().priceBox;
-        pricebox.sendKeys("100");
+        pricebox.sendKeys("50");
         //Sale Price bilgisini gir
         WebElement salePriceBox = allPages.vendorProductManagerPage().salePriceBox;
-        salePriceBox.sendKeys("200");
+        salePriceBox.sendKeys("100");
         //Price in Sale Price tan daha kucuk olamayacagini dogrula
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String script = "return arguments[0].value;";
@@ -188,8 +188,8 @@ public class US16 {
     @DataProvider(name = "negativeDataForUS16")
     private static Object[][] provideInvalidTestData() {
         return new Object[][] {
-                { "abc" },
-                { "#@%"},
+                { "xqz" },
+                { "$@%"},
                 {" "}
         };
     }
