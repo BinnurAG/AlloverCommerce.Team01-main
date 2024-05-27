@@ -1,6 +1,5 @@
 package team01_AlloverCommerceTestNG.pages;
 
-<<<<<<< HEAD
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -110,13 +109,4 @@ public class P18_VendorProductManagerPage {
 
 
 }
-=======
-import org.openqa.selenium.support.PageFactory;
-import team01_AlloverCommerceTestNG.utilities.Driver;
 
-public class P18_VendorProductManagerPage {
-
-
-    }
-
->>>>>>> 7049fd31175ad4311accb19107f01bf490969150
