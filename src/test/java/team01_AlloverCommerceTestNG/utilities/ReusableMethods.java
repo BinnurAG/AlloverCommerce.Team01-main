@@ -142,9 +142,9 @@ public class ReusableMethods {
     public void addScreenShotToReport() {
 
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
+       // String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
-        String path2 = "src\\test\\java\\screenshots\\NEW" + date + ".png";
+        String path = "src\\test\\java\\screenshots\\NEW" + date + ".png";
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
@@ -158,12 +158,12 @@ public class ReusableMethods {
     public void addScreenShotOfWebElementToReport(WebElement webElement) {
 
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
+        //String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
-        String path2 = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
+        String path = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
    
         try {
-            Files.write(Paths.get(dosyaYolu), webElement.getScreenshotAs(OutputType.BYTES));
+            Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -253,34 +253,6 @@ public class ReusableMethods {
 
         //AmazonTest adinda yeni bir test olusturur ve Test Steps aciklamasini ekler
         extentTest = extentReports.createTest(testName, "Test Steps");
-    }
-
-    //extent rapora ekran goruntusu ekleme
-    //Tüm sayfa screenshoti rapora ekleme
-    public void addScreenShotToReport() {
-
-        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
-        TakesScreenshot ts = (TakesScreenshot) getDriver();
-        try {
-            Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
-            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    //webelement screenshot rapora ekleme
-    public void addScreenShotOfWebElementToReport(WebElement webElement) {
-
-        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
-        try {
-            Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
-            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     //File Upload Robot Class
