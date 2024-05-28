@@ -66,8 +66,9 @@ public class US02_Register_SignUp {
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
         String actualMessage = p2_registerPage.plsLogInMsg.getText();
-        Assert.assertFalse(actualMessage.contains("Sign Out"));
-        System.out.println(actualMessage);
+        Assert.assertEquals
+                (actualMessage,"An account is already registered with your email address. Please log in.");
+
 //      Driver.closeDriver();
 
     }
@@ -87,8 +88,8 @@ public class US02_Register_SignUp {
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
         String actualMessage2 = p2_registerPage.plsChooseAnotherMsg.getText();
-        Assert.assertFalse(actualMessage2.contains("Sign Out"));
-        System.out.println(actualMessage2);
+        Assert.assertEquals
+                (actualMessage2,"An account is already registered with that username. Please choose another.");
 //      Driver.closeDriver();
 
     }
