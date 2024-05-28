@@ -1,4 +1,5 @@
 package team01_AlloverCommerceTestNG.tests.us16;
+
 import jdk.jfr.Description;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -27,23 +28,25 @@ public class US16 {
     public void setUp() {
         // Web sitesine git
         WebDriver driver = Driver.getDriver();
-        driver.get(ConfigReader.getProperty("alloverCommerceUrl"));;
+        driver.get(ConfigReader.getProperty("alloverCommerceUrl"));
 
         // Kayitli vendor bilgileriyle giris yap
         allPages.homePage().signInButton.click();
         ReusableMethods.userVendorlogin("britton.jamesson@floodouts.com", "yvtve8V$");
 
-        // Sign out a tiklayarak My account sayfasina gir
+        // Sign out'a tiklayarak My account sayfasina git
         allPages.homePage().signOutButton.click();
-        //Sol taraftaki listeden Store Manager i tikla
+
+        //Sol taraftaki listeden Store Manager'i tikla
         allPages.myAccountPage().storeManagerButton.click();
-        // My Store kisminda Products i tikla
+
+        // My Store kisminin altindaki Products'i tikla
         ReusableMethods.scroll(allPages.vendorStoreManagerPage().productsMenu);
         ReusableMethods.waitForSecond(2);
         allPages.vendorStoreManagerPage().productsMenu.click();
+
         // Gelen sayfanin sag tarafindaki Add New butonunu tikla
         allPages.vendorProductDashboardPage().addNewButton.click();
-
     }
 
     @Test
@@ -52,22 +55,22 @@ public class US16 {
         Select select = new Select(allPages.vendorProductManagerPage().dropdownSimpleProduct);
         String actualDefaultOption = select.getFirstSelectedOption().getText();
         Assert.assertEquals(actualDefaultOption, "Simple Product");
-
     }
 
     @Test
     public void test02() {
-        //Virtual ve Downloadable checkbox larini sec
-        WebElement virtualCheckBox  = allPages.vendorProductManagerPage().virtualCheckBox;
+        //Virtual ve Downloadable checkbox'larini sec
+        WebElement virtualCheckBox = allPages.vendorProductManagerPage().virtualCheckBox;
         ReusableMethods.scroll(virtualCheckBox);
-        if(!virtualCheckBox.isSelected()){
+        if (!virtualCheckBox.isSelected()) {
             virtualCheckBox.click();
         }
 
         WebElement downloadableCheckBox = allPages.vendorProductManagerPage().downloadableCheckBox;
-        if(!downloadableCheckBox.isSelected()){
+        if (!downloadableCheckBox.isSelected()) {
             downloadableCheckBox.click();
         }
+
         // Virtual ve Downloadable checkbox larinin secilebildigini dogrula
         Assert.assertTrue(virtualCheckBox.isSelected());
         Assert.assertTrue(downloadableCheckBox.isSelected());
@@ -82,89 +85,111 @@ public class US16 {
         //Sale Price bilgisini gir
         allPages.vendorProductManagerPage().salePriceBox.sendKeys("37");
 
-        allPages.vendorProductManagerPage().salePriceBox.clear();
-        //Price ve Sale Price bilgilerini girebildigini onayla
-        String actualPrice= allPages.vendorProductManagerPage().priceBox.getText();// bos geliyo
+        //Price ve Sale Price bilgilerini girebildigini dogrula
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String script = "return arguments[0].value;";
-        String actualPriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().priceBox);
-        Assert.assertEquals(actualPriceValue, "45");
-        String actualSalePriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().salePriceBox);
-        Assert.assertEquals(actualSalePriceValue, "37");
 
+        String actualPriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().priceBox);
+        Assert.assertEquals(actualPriceValue, "120.8");
+
+        String actualSalePriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().salePriceBox);
+        Assert.assertEquals(actualSalePriceValue, "95.4");
     }
+
     @Test
     public void test04() {
         //Product Title kisminda urun basliginin yazilabildigini dogrula
-        allPages.vendorProductManagerPage().productTitleBox.sendKeys("Your Soul is a river");
+        allPages.vendorProductManagerPage().productTitleBox.sendKeys("Techpro Automation Testing");
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String script = "return arguments[0].value;";
         String actualProductTitle = (String) js.executeScript(script, allPages.vendorProductManagerPage().productTitleBox);
-        System.out.println(actualProductTitle);
-        Assert.assertEquals(actualProductTitle,"Your soul is a river" );
-
+        Assert.assertEquals(actualProductTitle, "Techpro Automation Testing");
     }
+
     @Test
     public void test05() {
-        //Categories kismindan istedigin bir secenegi sec
-        //Categories kismindan secim yapilabildigini dogrula
+        //Categories kismindan ekleyecegin urune ait bir kategori sec
         Actions actions = new Actions(Driver.getDriver());
-        actions.scrollToElement(allPages.vendorProductManagerPage().categoryEducation).perform();
+        actions.scrollToElement(allPages.vendorProductManagerPage().categoryBooks_Music_Film).perform();
 
-        WebElement categoryEducation = allPages.vendorProductManagerPage().categoryEducation;
-        categoryEducation.click();
-        Assert.assertTrue(categoryEducation.isSelected());
+        WebElement categoryBooks_Music_Film = allPages.vendorProductManagerPage().categoryBooks_Music_Film;
+        categoryBooks_Music_Film.click();
+
+        //Categories kismindan secim yapilabildigini dogrula
+        Assert.assertTrue(categoryBooks_Music_Film.isSelected());
     }
 
     @Test
     public void test06() {
-        // Dropdown dan Simple Product sec
+        // Dropdown'dan Simple Product sec
         ReusableMethods.ddmVisibleText(allPages.vendorProductManagerPage().dropdownSimpleProduct, "Simple Product");
-        // Virtual ve Downloadabe sec
+
+        // Virtual ve Downloadable checkboxlarini sec
         ReusableMethods.waitForSecond(2);
         ReusableMethods.scroll(allPages.vendorProductManagerPage().downloadableCheckBox);
+
         allPages.vendorProductManagerPage().virtualCheckBox.click();
         allPages.vendorProductManagerPage().downloadableCheckBox.click();
 
         //Product Title gir
         allPages.vendorProductManagerPage().productTitleBox.sendKeys("Your soul is a river");
+
         //Price ve Sale Price bilgilerini gir
         allPages.vendorProductManagerPage().priceBox.sendKeys("35");
         allPages.vendorProductManagerPage().salePriceBox.sendKeys("27");
 
-        //Kategori sec
+        //Kategori seceneklerinden bir kategori sec
         Actions actions = new Actions(Driver.getDriver());
-        actions.scrollToElement(allPages.vendorProductManagerPage().categoryEducation).perform();
-        allPages.vendorProductManagerPage().categoryEducation.click();
-        //Resim ekle
-        allPages.vendorProductManagerPage().uploadPhoto.click();
+        actions.scrollToElement(allPages.vendorProductManagerPage().categoryBooks_Music_Film).perform();
+        allPages.vendorProductManagerPage().categoryBooks_Music_Film.click();
 
+        //Resim(featured image) kismini uzerine (sag ust kose) tikla
+        allPages.vendorProductManagerPage().uploadPhoto.click();
+        allPages.vendorProductManagerPage().selectFiles.click();
+        // Acilan Choose Image bolumunden Upload files kutusunun uzerine tikla
+
+        //SELECT FILES kutusu tikla
+
+       // Acilan sekmede resmin bulundugu yerden urune ait bir resim dosyasi sec
+
+      // Sag alt kosedeki SELECT kutusuna tikla
+
+      //  Resim kisminin altinda bulunan kucuk resim kisminin uzerine tikla (galery image)
+
+        //Acilan Add to Galery bolumunden Upload files kutusunun uzerine tikla
+
+        ///---------------
+        //bilg path verip ekleme
         // Galeri image ekle
+        //allPages.vendorProductManagerPage().
+
         // Downloadable menusunde name kismini gir
         //Downloadable menusunde file kismina dokumani upload et
         //Submit butonuna bas
         // Soldaki menulerden Product i tikla
         //  Product kisminda urunun adini gorerek eklendigini onayla
+        //Ayni urun birden fazla kez ayni ozelliklerde eklenebilir mi?
     }
 
-
-    @Test (dataProvider = "negativeDataForUS16")
-    public void test07(String negativeDataForUS16){
+    @Test(dataProvider = "negativeTestDataForUs16",dataProviderClass = DataProviderUtils.class)
+    public void test07(String negativeDataForUS16) {
         // Price bilgisini gir
         WebElement pricebox = allPages.vendorProductManagerPage().priceBox;
         pricebox.sendKeys(negativeDataForUS16);
+
         // Sale Price bilgisini gir
         WebElement salePriceBox = allPages.vendorProductManagerPage().salePriceBox;
         salePriceBox.sendKeys(negativeDataForUS16);
-        //  Price kismina invalid bilgiler girilemedigini dogrula	abc, #@$,  space,
+
+        //  Price kismina invalid bilgiler girilemedigini dogrula	0, xqz, %#$,  space,
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String script = "return arguments[0].value;";
         String actualPriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().priceBox);
         Assert.assertTrue(actualPriceValue.isEmpty());
-        // Sale Price kismina invalid bilgiler girilemedigini dogrula	abc, #@$,  space,
+
+        // Sale Price kismina invalid bilgiler girilemedigini dogrula	xqz, %#$,  space,
         String actualSalePriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().salePriceBox);
         Assert.assertTrue(actualSalePriceValue.isEmpty());
-
     }
 
     @Test
@@ -172,29 +197,28 @@ public class US16 {
         // Price bilgisini gir
         WebElement pricebox = allPages.vendorProductManagerPage().priceBox;
         pricebox.sendKeys("50");
+
         //Sale Price bilgisini gir
         WebElement salePriceBox = allPages.vendorProductManagerPage().salePriceBox;
         salePriceBox.sendKeys("100");
+
         //Price in Sale Price tan daha kucuk olamayacagini dogrula
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String script = "return arguments[0].value;";
         String actualPriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().priceBox);
         String actualSalePriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().salePriceBox);
-        Assert.assertTrue(Integer.parseInt(actualPriceValue)>Integer.parseInt(actualSalePriceValue));
+        Assert.assertTrue(Integer.parseInt(actualPriceValue) > Integer.parseInt(actualSalePriceValue));
 
     }
 
-    @DataProvider(name = "negativeDataForUS16")
-    private static Object[][] provideInvalidTestData() {
-        return new Object[][] {
-                { "xqz" },
-                { "$@%"},
-                {" "}
-        };
-    }
+
     @AfterMethod
     public void tearDown() {
         //    Driver.getDriver().close();
     }
+
+
+
+
 }
 

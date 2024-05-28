@@ -30,8 +30,8 @@ public class P18_VendorProductManagerPage {
     @FindBy(id = "pro_title")
     public WebElement productTitleBox;
 
-    @FindBy(xpath = "//*[@value='510']")
-    public WebElement categoryEducation;
+    @FindBy(xpath = "//*[@value='232']")
+    public WebElement categoryBooks_Music_Film;
 
     @FindBy(id = "featured_img_display")
     public WebElement uploadPhoto;
