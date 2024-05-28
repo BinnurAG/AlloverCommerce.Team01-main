@@ -3,10 +3,12 @@ package team01_AlloverCommerceTestNG.utilities;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import team01_AlloverCommerceTestNG.pages.Pages;
 
 import java.awt.*;
@@ -379,5 +381,25 @@ public class ReusableMethods {
 
 
 
+    public static void signInUS0304(){
+
+        Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
+
+        ReusableMethods.waitForSecond(2);
+        allPages.addressesPage().signIn1.click();
+        allPages.addressesPage().usernameSignIn.sendKeys(ConfigReader.getProperty("usernameUS03"));
+        allPages.addressesPage().passwordSignIn.sendKeys(ConfigReader.getProperty("passwordUS03"));
+
+        allPages.addressesPage().signIn2.click();
+
+        ReusableMethods.waitForSecond(1);
+        allPages.addressesPage().signOut.click();
+
+        allPages.addressesPage().addressesButton.click();
+        //Assert.assertTrue(addressesPage.billingAddress.isDisplayed());
+        Assert.assertTrue(allPages.addressesPage().billingAddress.isDisplayed());
+
+        allPages.addressesPage().addButonuB.click();
+    }
 
 }
