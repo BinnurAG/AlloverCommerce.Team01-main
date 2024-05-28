@@ -75,7 +75,7 @@ public class P14_VendorRegisterPage {
     @FindBy(xpath = "//*[.='Registration Successfully Completed.']")
     public WebElement registrationSuccessMessage;
     @FindBy(xpath = "//div[.='Password and Confirm-password are not same.']")
-    public WebElement PasswordAndConfirmPasswordAreNotMessage;}
+    public WebElement PasswordAndConfirmPasswordAreNotMessage;
     @FindBy(id = "password_strength")
     public WebElement passwordWrongMessage;
 
