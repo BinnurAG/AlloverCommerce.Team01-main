@@ -343,4 +343,9 @@ public class ReusableMethods {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    public static void logOut(){
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewCoupon);
+        allPages.vendorProductManagerPage().addNewCoupon.submit();
+    }
+
 }
