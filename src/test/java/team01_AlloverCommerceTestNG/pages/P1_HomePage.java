@@ -9,10 +9,12 @@ public class P1_HomePage {
 
     public P1_HomePage() {
 
+
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    @FindBy(xpath = "//*[.='Sign In']")
+    //--------------for US_09, US_10, ------------------------------------
+    @FindBy(partialLinkText = "Sign In")
     public WebElement signInButton;
 
     @FindBy(xpath = "//a[@href='signup']")
@@ -26,6 +28,7 @@ public class P1_HomePage {
 
     @FindBy(xpath = "//span[.='Register']")
     public WebElement registerButton;
+
 
     @FindBy(xpath = "//a[.='Become a Vendor']")
     public WebElement becomeAVendorButton;
