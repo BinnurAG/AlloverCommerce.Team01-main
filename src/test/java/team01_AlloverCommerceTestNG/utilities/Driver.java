@@ -1,6 +1,8 @@
 package team01_AlloverCommerceTestNG.utilities;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,7 +16,11 @@ public class Driver {
     WebDriver tipinde bir Threadlocale objecti olusturduk, bu sayede PARALEL TEST her treadin kendi webdriver
     objectine sahip olmasını sağladık, böylece paralel olarak çalışan farklı threadlerin birbirini etkilemesini önledik
      */
-    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+
+    private Driver() {
+        // Singleton pattern
+    }
 
     public static WebDriver getDriver() {
         if (driverPool.get() == null) {
@@ -44,10 +50,6 @@ public class Driver {
         return driverPool.get();
     }
 
-    private Driver() {
-        // Singleton pattern
-    }
-
     public static void closeDriver() {
         // Açık olan WebDriver örneğini kapatıyoruz.
         if (driverPool.get() != null) {
@@ -55,4 +57,6 @@ public class Driver {
             driverPool.remove(); // ThreadLocal'daki referansı temizliyoruz.
         }
     }
+
+
 }

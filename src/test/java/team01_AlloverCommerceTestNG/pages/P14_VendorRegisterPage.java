@@ -7,8 +7,8 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 
 public class P14_VendorRegisterPage {
     public P14_VendorRegisterPage() {
-        PageFactory.initElements(Driver.getDriver(), this);
-    }
+
+        PageFactory.initElements(Driver.getDriver(), this); }
 
     //----------Vendor Registration with Sign Up------------------------------------------------------------------
     @FindBy(id = "user_email")
@@ -47,10 +47,21 @@ public class P14_VendorRegisterPage {
     @FindBy(xpath = "//div[contains(text(), 'Password strength should be atleast')]")
     public WebElement passwordRules;
 
+    @FindBy(id = "user_email")
+    public WebElement emailBox;
+
+    @FindBy(css = "input[placeholder='Verification Code']")
+    public WebElement verificationCodeBox;
+
+    @FindBy(id = "passoword")
+    public WebElement passwordBox;
+
+    @FindBy(id = "confirm_pwd")
+    public WebElement confirmPasswordBox;
+
 
     @FindBy(id = "wcfm_membership_register_button")
     public WebElement registerButton;
-
 
     @FindBy(xpath = "//h1[.='Welcome to Allover Commerce!']")
     public WebElement welcomeMessage;
@@ -64,7 +75,12 @@ public class P14_VendorRegisterPage {
     @FindBy(xpath = "//*[.='Registration Successfully Completed.']")
     public WebElement registrationSuccessMessage;
     @FindBy(xpath = "//div[.='Password and Confirm-password are not same.']")
-    public WebElement PasswordAndConfirmPasswordAreNotMessage;
+    public WebElement PasswordAndConfirmPasswordAreNotMessage;}
+    @FindBy(id = "password_strength")
+    public WebElement passwordWrongMessage;
 
+    @FindBy(xpath = "(//h1)[2]")
+    public WebElement welcomeToAllevorCommerce;
 
-}
+    @FindBy(css= ".wcfm-message.wcfm-error")
+    public WebElement emailWrongText;}
