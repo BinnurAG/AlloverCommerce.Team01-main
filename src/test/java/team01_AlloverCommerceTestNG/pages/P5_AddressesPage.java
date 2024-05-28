@@ -7,7 +7,7 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 
 public class P5_AddressesPage {
 
-    public P5_AddressesPage() {
+    public P5_AddressesPage(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
@@ -29,6 +29,8 @@ public class P5_AddressesPage {
     @FindBy(xpath = "//header[h3='Billing address']")
     public WebElement billingAddress;
 
+    @FindBy(linkText = "Addresses")
+    public WebElement addressesButton;
 
 
     //Billing Address Sayfası

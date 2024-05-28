@@ -1,11 +1,11 @@
-package team01_AlloverCommerceTestNG.tests;
+package team01_AlloverCommerceTestNG.tests.us04;
 
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.P1_HomePage;
 import team01_AlloverCommerceTestNG.pages.P4_MyAccountPage;
 import team01_AlloverCommerceTestNG.pages.P5_AddressesPage;
 
-public class US04_Shipping_Adress {
+public class US04_TC06 {
 
     P1_HomePage homePage = new P1_HomePage();
     P4_MyAccountPage myAccountPage = new P4_MyAccountPage();

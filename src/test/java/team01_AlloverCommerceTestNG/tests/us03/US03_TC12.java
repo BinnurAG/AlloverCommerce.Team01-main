@@ -1,12 +1,9 @@
-package team01_AlloverCommerceTestNG.tests;
+package team01_AlloverCommerceTestNG.tests.us03;
 
-import org.checkerframework.checker.units.qual.C;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
 import team01_AlloverCommerceTestNG.pages.P1_HomePage;
 import team01_AlloverCommerceTestNG.pages.P4_MyAccountPage;
 import team01_AlloverCommerceTestNG.pages.P5_AddressesPage;
@@ -14,7 +11,7 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class US03_Billing_Adress {
+public class US03_TC12 {
 
     P1_HomePage homePage = new P1_HomePage();
     P4_MyAccountPage myAccountPage = new P4_MyAccountPage();

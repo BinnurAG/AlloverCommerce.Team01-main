@@ -21,6 +21,29 @@ public class P14_VendorRegisterPage {
     @FindBy(id = "wcfm_membership_register_button")
     public WebElement registerButton;
 
+
     @FindBy(id = "password_strength")
     public WebElement passwordWrongMessage;
+
+
+    @FindBy(xpath = "//h1[.='Welcome to Allover Commerce!']")
+    public WebElement welcomeMessage;
+
+    @FindBy(xpath = "//*[.='Email verification code invalid.']")
+    public WebElement codeInvalidMessage;
+
+    @FindBy(xpath = "//*[.='This Email already exists. Please login to the site and apply as vendor.']")
+    public WebElement alreadyExistMessage;
+
+    @FindBy(xpath = "//*[.='Registration Successfully Completed.']")
+    public WebElement registrationSuccessMessage;
+    @FindBy(xpath = "//div[.='Password and Confirm-password are not same.']")
+    public WebElement PasswordAndConfirmPasswordAreNotMessage;
+
+    @FindBy(xpath = "(//h1)[2]")
+    public WebElement welcomeToAllevorCommerce;
+
+    @FindBy(css= ".wcfm-message.wcfm-error")
+    public WebElement emailWrongText;
 }
+
