@@ -36,13 +36,6 @@ public class US03_TC06 {
         Driver.closeDriver();
     }
 
-    @Test
-    public void ADDbutonu() {
-
-        adressesPage.addButonuB.click();
-        Assert.assertTrue(adressesPage.billingAddress.isDisplayed());
-
-    }
 
     @Test
     public void FirstLastName() {

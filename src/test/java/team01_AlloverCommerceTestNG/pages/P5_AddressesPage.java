@@ -8,10 +8,11 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 public class P5_AddressesPage {
 
     public P5_AddressesPage(){
+
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(className = "login inline-type")
+    @FindBy(partialLinkText = "Sign In")
     public WebElement signIn1;
 
     @FindBy(id = "username")
@@ -49,8 +50,11 @@ public class P5_AddressesPage {
     @FindBy(id = "billing_company")
     public WebElement companyB;
 
-    @FindBy(id = "billing_country")
+    @FindBy(id = "select2-billing_country-container")
     public WebElement countryB;
+
+    @FindBy(css = "input.select2-search__field")
+    public WebElement countryChoose;
 
     @FindBy(id = "billing_address_1")
     public WebElement adress1B;
@@ -58,11 +62,14 @@ public class P5_AddressesPage {
     @FindBy(id = "billing_address_2")
     public WebElement adress2B;
 
-    @FindBy(id = "billing_town")
+    @FindBy(id = "billing_city")
     public WebElement townB;
 
-    @FindBy(id = "billing_state")
+    @FindBy(id = "select2-billing_state-container")
     public WebElement stateB;
+
+    @FindBy(css = "input.select2-search__field")
+    public WebElement stateChoose;
 
     @FindBy(id = "billing_postcode")
     public WebElement postcodeB;
@@ -79,7 +86,7 @@ public class P5_AddressesPage {
     //Shipping Address Sayfası
 
     @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/edit-address/shipping/']")
-    public WebElement addButonu;
+    public WebElement addButonuS;
 
     @FindBy(className = "woocommerce-address-fields")
     public WebElement addressPageS;
