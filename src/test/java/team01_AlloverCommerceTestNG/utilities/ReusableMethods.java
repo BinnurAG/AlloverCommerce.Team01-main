@@ -368,19 +368,15 @@ public class ReusableMethods {
         }
     }
 
-    public void deleteProduct(int repeatCount) {
-        for (int i = 0; i < repeatCount; i++) {
-            click(productDeleteIcon);
-            waitForSecond(2);
-        }
+
+    public static void logOut(){
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewCoupon);
+        allPages.vendorProductManagerPage().addNewCoupon.submit();
     }
 
-    public void deleteProductFromCompareScreen(int repeatCount) {
-        for (int i = 0; i < repeatCount; i++) {
-            click(productDeleteIconInCompareScreen);
-            waitForClickablility(productDeleteIconInCompareScreen, 15);
-        }
-    }
+
+
+
 
 
 
