@@ -21,6 +21,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static team01_AlloverCommerceTestNG.pages.P12_ComparePage.*;
+import static team01_AlloverCommerceTestNG.pages.P12_ComparePage.passwordArea;
+import static team01_AlloverCommerceTestNG.pages.P12_ComparePage.signIn;
+import static team01_AlloverCommerceTestNG.pages.P12_ComparePage.signInButton;
+import static team01_AlloverCommerceTestNG.pages.P12_ComparePage.signOut;
+import static team01_AlloverCommerceTestNG.pages.P12_ComparePage.userNameArea;
 import static team01_AlloverCommerceTestNG.pages.P6_AccountDetails.*;
 import static team01_AlloverCommerceTestNG.utilities.Driver.getDriver;
 
@@ -146,7 +152,7 @@ public class ReusableMethods {
        // String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
         String path = "src\\test\\java\\screenshots\\NEW" + date + ".png";
-        TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+        TakesScreenshot ts = (TakesScreenshot) getDriver();
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
@@ -290,7 +296,8 @@ public class ReusableMethods {
         getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
         // 2. Sign In butonuna tıkla
-        click(signIn);
+        click(
+                signIn);
 
         // 3. Username or email address kutusuna geçerli bir email adresi gir
         userNameArea.sendKeys(ConfigReader.getProperty("myEmail"));
@@ -304,22 +311,22 @@ public class ReusableMethods {
     }
 
     public static void vendorRegisterEmail(){
-        Driver.getDriver().switchTo().newWindow(WindowType.TAB);
-        Driver.getDriver().get("https://www.fakemail.net/");
-        String email=Driver.getDriver().findElement(By.id("email")).getText();
+        getDriver().switchTo().newWindow(WindowType.TAB);
+        getDriver().get("https://www.fakemail.net/");
+        String email= getDriver().findElement(By.id("email")).getText();
         ReusableMethods.switchToWindow(0);
         allPages.vendorRegisterPage().emailBox.sendKeys(email);
     }
     public static void vendorRegisterCode(){
         ReusableMethods.switchToWindow(1);
-        Driver.getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
-        Driver.getDriver().switchTo().frame("iframeMail");
-        String code=Driver.getDriver().findElement(By.tagName("b")).getText();
+        getDriver().findElement(By.xpath("(//tr[@data-href='2'])[1]")).click();
+        getDriver().switchTo().frame("iframeMail");
+        String code= getDriver().findElement(By.tagName("b")).getText();
         ReusableMethods.switchToWindow(0);
         allPages.vendorRegisterPage().verificationCodeBox.sendKeys(code);
     }
     public static String emailAndCodeMessage(){
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) Driver.getDriver();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
         String dynamicText = (String) jsExecutor.executeScript(
                 "return document.querySelector('.wcfm-message.email_verification_message').textContent;"
         );
@@ -327,7 +334,7 @@ public class ReusableMethods {
     }
 
     public static String passwordWrongMessage(){
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) Driver.getDriver();
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
         String dynamicText = (String) jsExecutor.executeScript(
                 "return document.querySelector('.wcfm-message.wcfm-error').textContent;");
         return dynamicText;
@@ -339,13 +346,38 @@ public class ReusableMethods {
         }
     }
     public static WebElement waitForClickablility(WebElement element, int timeout) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(element));
+
     }
+
+    protected void searchProductAndShowAsList(String searchTerm) {
+        searchBox.sendKeys(searchTerm, Keys.ENTER);
+        visibleWait(searchResults, 5);
+        click(showResultsAsListIcon);
+        visibleWait(compareIcon, 10);
+        click(compareIcon);
+    }
+
+    public void AddNewProduct(int repeatCount) {
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        for (int i = 0; i < repeatCount; i++) {
+            js.executeScript("arguments[0].remove();", comparePopup);
+            visibleWait(compareIcon, 5);
+            click(compareIcon);
+        }
+    }
+
 
     public static void logOut(){
         ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewCoupon);
         allPages.vendorProductManagerPage().addNewCoupon.submit();
     }
+
+
+
+
+
+
 
 }
