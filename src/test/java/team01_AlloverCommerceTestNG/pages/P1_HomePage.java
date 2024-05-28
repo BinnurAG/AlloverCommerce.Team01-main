@@ -28,7 +28,7 @@ public class P1_HomePage {
 
     @FindBy(xpath = "//span[.='Register']")
     public WebElement registerButton;
-}
+
 
     @FindBy(xpath = "//a[.='Become a Vendor']")
     public WebElement becomeAVendorButton;
