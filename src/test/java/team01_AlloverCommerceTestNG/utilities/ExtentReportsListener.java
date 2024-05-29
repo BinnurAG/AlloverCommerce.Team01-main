@@ -14,7 +14,7 @@ public class ExtentReportsListener implements ITestListener {
      */
     @Override
     public void onStart(ITestContext context) {
-        ExtentReportUtils.setUpExtentReport(context.getCurrentXmlTest().getName());
+        ExtentReportUtils.setUpExtentReport(context.getCurrentXmlTest().getName(), context.getCurrentXmlTest().getName());
     }
 
     /**
