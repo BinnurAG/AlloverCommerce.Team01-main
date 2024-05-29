@@ -40,10 +40,14 @@ public class TestCase05 {
         allpages.addressesPage().adress2B.sendKeys(faker.address().city());
         allpages.addressesPage().postcodeB.sendKeys(faker.address().zipCode());
         allpages.addressesPage().townB.sendKeys(faker.address().city());
-        allpages.addressesPage().phoneB.sendKeys(faker.phoneNumber().phoneNumber());
+        allpages.addressesPage().phoneB.sendKeys(faker.phoneNumber().cellPhone());
+
+        ReusableMethods.waitForSecond(2);
 
         Assert.assertTrue(allpages.addressesPage().savebutonB.isEnabled());
-        allpages.addressesPage().savebutonB.click();
+        allpages.addressesPage().savebutonB.submit();
+
+        ReusableMethods.waitForSecond(2);
 
 
     }
