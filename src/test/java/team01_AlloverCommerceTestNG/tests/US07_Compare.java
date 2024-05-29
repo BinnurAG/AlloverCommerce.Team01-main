@@ -71,9 +71,9 @@ public class US07_Compare {
         click(allPages.comparePage().compareIcon);
         AddNewProduct(3);
 
-        deleteProduct(3);
+        deleteProductFromCompareScreen(3);
         actions.clickAndHold(allPages.comparePage().scrollBarInComparePopup).moveByOffset(100, 0).perform();
-        deleteProduct(1);
+        deleteProductFromCompareScreen(1);
 
         AddNewProduct(2);
 
@@ -91,7 +91,7 @@ public class US07_Compare {
         click(allPages.comparePage().compareIcon);
         AddNewProduct(3);
 
-        deleteProduct(1);
+        deleteProductFromCompareScreen(1);
 
         js.executeScript("arguments[0].remove();", allPages.comparePage().comparePopup);
         click(allPages.comparePage().compareIcon);
