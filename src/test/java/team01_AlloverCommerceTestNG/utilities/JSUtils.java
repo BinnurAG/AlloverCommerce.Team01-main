@@ -39,6 +39,10 @@ public class JSUtils {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
 
+    public static void JSblockDsiplay(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].style.transition = 'none'; arguments[0].style.display = 'block';", element);
+    }
     /**
      * Belirtilen ID'ye sahip elementi locate eder ve döner.
      * @param idOfElement Locate edilecek elementin ID'si.

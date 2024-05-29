@@ -8,6 +8,8 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
+
+
 public class TestCase01 {
 
     Pages allPages = new Pages();
@@ -35,7 +37,6 @@ public class TestCase01 {
         allPages.addressesPage().addButonuB.click();
         Assert.assertTrue(allPages.addressesPage().addressPageB.isDisplayed());
 
-        ReusableMethods.screenShot("ADD butonu");
 
 
     }

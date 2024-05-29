@@ -42,7 +42,7 @@ public class TestCase03 {
         allpages.addressesPage().townB.sendKeys(faker.address().city());
         allpages.addressesPage().phoneB.sendKeys(faker.phoneNumber().phoneNumber());
 
-        ExtentReportUtils.addScreenShotToReport();
+
 
     }
 
