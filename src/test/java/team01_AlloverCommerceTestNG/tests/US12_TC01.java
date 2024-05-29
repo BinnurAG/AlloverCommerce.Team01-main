@@ -12,29 +12,42 @@ public class US12_TC01 {
     public void test01() {
 
 
-            //Web sitesine git
+            //1-Web sitesine git
             Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
             P15_VendorAddressesPage p15VendorAddressesPage= new P15_VendorAddressesPage();
-            //Sign In linkine tikla
-            p15VendorAddressesPage.signIn.click();
-            //Vendor hesabiyla giris yap
 
-            //vendor olarak email girisi
+
+            //2-Sign In linkine tikla
+            p15VendorAddressesPage.signIn.click();
+
+
+            //3-Vendor hesabiyla giris yap
+            //email girisi
             p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmail"));
-            //vendor olarak password girisi
+            //password girisi
             p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPassword"));
             //submit butonuna tiklanir
             p15VendorAddressesPage.submit.click();
 
-            //My Account sayfasina git
+
+
+            //4-My Account sayfasina git
             p15VendorAddressesPage.signOut.click();
+
+
+            //5- Adresesses sekmesine tikla
             p15VendorAddressesPage.billingAdress.click();
             ReusableMethods.scroll(p15VendorAddressesPage.billingAdress);
-            ReusableMethods.waitForSecond(7);
-            p15VendorAddressesPage.billingAddressEdit.click();
-            ReusableMethods.ddmVisibleText(p15VendorAddressesPage.ddmBillingAddressCountry,"Select a country / region…");
+            ReusableMethods.waitForSecond(7); //pop up hata verdigi icin bekletiyoruz
 
-            Assert.assertEquals( p15VendorAddressesPage.billingEmailAdresBox.getAttribute("value"),"eshawn.kolden@floodouts.com");
+            //6-Billing Adress kismindaki Add sekmesini tikla
+            p15VendorAddressesPage.billingAdressAdd.click();
+           // ReusableMethods.scroll(p15VendorAddressesPage.billingEmailAdresBox);
+
+
+
+            //7-Mail adresini otomatik geldigini dogrula
+            Assert.assertEquals( p15VendorAddressesPage.billingEmailAdresBox.getAttribute("value"),"colston.lukus@floodouts.com");
         }
     }
 

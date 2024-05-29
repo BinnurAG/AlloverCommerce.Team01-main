@@ -97,8 +97,13 @@ public class P15_VendorAddressesPage {
     @FindBy(xpath = "//input[@id='billing_postcode']")
     public WebElement billingZipCodeBox;
 
-    @FindBy(xpath = "//input[@id='billing_phone_field']")
+    @FindBy(xpath = "//input[@id='billing_phone']")
     public WebElement billingPhoneNumberBox;
+
+    @FindBy(xpath = "//button[@name='save_address']")
+    public WebElement billingSaveAddress;
+
+
 
 
 

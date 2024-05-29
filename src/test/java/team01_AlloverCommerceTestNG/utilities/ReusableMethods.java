@@ -156,8 +156,8 @@ public class ReusableMethods {
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
        // String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
-        String path = "src\\test\\java\\screenshots\\NEW" + date + ".png";
-        TakesScreenshot ts = (TakesScreenshot) getDriver();
+        String path1 = "src\\test\\java\\screenshots\\NEW" + date + ".png";
+        TakesScreenshot ts1 = (TakesScreenshot) getDriver();
 
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
@@ -176,7 +176,7 @@ public class ReusableMethods {
 
         //String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
-        String path = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
+        String path3 = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
    
 
         try {
