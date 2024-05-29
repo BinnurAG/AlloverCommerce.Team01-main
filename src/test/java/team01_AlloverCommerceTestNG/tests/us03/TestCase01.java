@@ -35,6 +35,7 @@ public class TestCase01 {
         allPages.addressesPage().addButonuB.click();
         Assert.assertTrue(allPages.addressesPage().addressPageB.isDisplayed());
 
+        ReusableMethods.screenShot("ADD butonu");
 
 
     }
