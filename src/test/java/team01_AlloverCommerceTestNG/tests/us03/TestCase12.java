@@ -11,7 +11,7 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class US03_TC08 {
+public class TestCase12 {
 
     P1_HomePage homePage = new P1_HomePage();
     P4_MyAccountPage myAccountPage = new P4_MyAccountPage();
@@ -35,6 +35,7 @@ public class US03_TC08 {
     public void closeWindow(){
         Driver.closeDriver();
     }
+
 
 
     @Test

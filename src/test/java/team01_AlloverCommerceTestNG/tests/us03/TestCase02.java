@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
-import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class TestCase02 {
@@ -25,7 +24,7 @@ public class TestCase02 {
         allpages.addressesPage().firstNameB.sendKeys(ConfigReader.getProperty("firstNameUs03"));
         allpages.addressesPage().lastNameB.sendKeys(ConfigReader.getProperty("lastNameUS03"));
 
-        ExtentReportUtils.addScreenShotToReport();
+        
 
     }
 
