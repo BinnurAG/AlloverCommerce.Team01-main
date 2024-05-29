@@ -11,23 +11,31 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class US03_TC04 {
+public class TestCase10 {
 
     P1_HomePage homePage = new P1_HomePage();
     P4_MyAccountPage myAccountPage = new P4_MyAccountPage();
     P5_AddressesPage adressesPage = new P5_AddressesPage();
-     ReusableMethods reusableMethods = new ReusableMethods();
-
 
     @BeforeTest
     public void signIn(){
+        Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
+        adressesPage.signIn1.click();
+        adressesPage.usernameSignIn.sendKeys(ConfigReader.getProperty("usernameUS03"));
+        adressesPage.passwordSignIn.sendKeys(ConfigReader.getProperty("passwordUS03"));
+        adressesPage.signIn2.click();
+        ReusableMethods.waitForSecond(1);
+        adressesPage.signOut.click();
 
+        myAccountPage.addressesButton.click();
+        //Assert.assertTrue(adressesPage.billingAddress.isDisplayed());
     }
 
     @AfterTest
     public void closeWindow(){
         Driver.closeDriver();
     }
+
 
 
     @Test

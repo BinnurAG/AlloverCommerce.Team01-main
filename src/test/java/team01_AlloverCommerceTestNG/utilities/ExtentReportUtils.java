@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.utilities;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -6,7 +7,6 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
-import team01_AlloverCommerceTestNG.utilities.Driver;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -27,7 +27,7 @@ public class ExtentReportUtils {
      *
      * @param reportName Oluşturulacak raporun adı
      */
-    public static void setUpExtentReport(String reportName) {
+    public static void setUpExtentReport(String reportName ) {
         if (extentReports == null) { // ExtentReports nesnesi oluşturulmamış ise
             // Bu objecti raporları oluşturmak ve yönetmek için kullanacağız
             extentReports = new ExtentReports();
@@ -49,7 +49,7 @@ public class ExtentReportUtils {
             // Bu HTML raporunda görmek isteyebileceğimiz diğer bilgileri aşağıdaki şekilde ekleyebiliriz
             extentReports.setSystemInfo("Environment", "QA");
             extentReports.setSystemInfo("Browser", "Chrome");
-            extentReports.setSystemInfo("Test Automation Engineer", "Ali Can");
+            extentReports.setSystemInfo("Test Automation Engineer"," ");
         }
     }
 
@@ -101,11 +101,11 @@ public class ExtentReportUtils {
      */
     public static void addScreenShotToReport() {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
+        String path = "src/test/java/team03_AlloverCommerceTestNG/testOutputs/screenShots" + date + ".png";
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
-            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "/" + path);
+            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -118,7 +118,7 @@ public class ExtentReportUtils {
      */
     public static void addScreenShotOfWebElementToReport(WebElement webElement) {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
+        String path = "src/test/java/team03_AlloverCommerceTestNG/testOutputs/webElementScreenshots" + date + ".png";
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);

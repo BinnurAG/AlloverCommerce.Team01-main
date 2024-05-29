@@ -3,7 +3,6 @@ package team01_AlloverCommerceTestNG.tests.us03;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import team01_AlloverCommerceTestNG.pages.P5_AddressesPage;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
@@ -35,6 +34,8 @@ public class TestCase01 {
 
         allPages.addressesPage().addButonuB.click();
         Assert.assertTrue(allPages.addressesPage().addressPageB.isDisplayed());
+
+
 
     }
 
