@@ -1,27 +1,22 @@
 package team01_AlloverCommerceTestNG.tests.us03;
 
-
+import com.github.javafaker.Faker;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import team01_AlloverCommerceTestNG.pages.P1_HomePage;
 import team01_AlloverCommerceTestNG.pages.P4_MyAccountPage;
 import team01_AlloverCommerceTestNG.pages.P5_AddressesPage;
-
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TestCase02 {
+public class TestCase04 {
 
-        Pages allpages = new Pages();
+
+    Pages allpages = new Pages();
+    Faker faker = new Faker();
 
     @BeforeMethod
     public void beforeMethod(){
@@ -29,19 +24,20 @@ public class TestCase02 {
     }
 
 
+
+
     @Test
-    public void firstLastName() {
+    public void emailIsDisplayed() {
 
-        allpages.addressesPage().firstNameB.sendKeys(ConfigReader.getProperty("firstNameUs03"));
-        allpages.addressesPage().lastNameB.sendKeys(ConfigReader.getProperty("lastNameUS03"));
+        String value = allpages.addressesPage().emailB.getAttribute("value");
+        Assert.assertNotEquals(value, null);
 
-        
+
 
     }
 
     @AfterMethod
-    public void afterMethod(){
+    public void closeWindow(){
         Driver.closeDriver();
     }
-
 }

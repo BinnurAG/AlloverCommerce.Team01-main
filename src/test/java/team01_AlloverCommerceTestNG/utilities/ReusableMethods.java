@@ -152,11 +152,12 @@ public class ReusableMethods {
 
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
 
-        // String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
 
-        //Burada Mac ve windows kullanicilari farkli path kullanmali
-        String path = "src\\test\\java\\screenshots\\NEW" + date + ".png";
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
+
         TakesScreenshot ts = (TakesScreenshot) getDriver();
+
+
 
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
@@ -172,14 +173,14 @@ public class ReusableMethods {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
 
         String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
+        
 
         //String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
-        String path = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
-
-
+        //String path = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
+            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -395,7 +396,6 @@ public class ReusableMethods {
         allPages.addressesPage().signOut.click();
 
         allPages.addressesPage().addressesButton.click();
-        //Assert.assertTrue(addressesPage.billingAddress.isDisplayed());
         Assert.assertTrue(allPages.addressesPage().billingAddress.isDisplayed());
 
         allPages.addressesPage().addButonuB.click();
