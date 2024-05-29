@@ -147,7 +147,7 @@ public class ReusableMethods {
     public void addScreenShotToReport() {
 
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src\\test\\java\\screenshots\\screenShot" + date + ".png";
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
@@ -161,7 +161,7 @@ public class ReusableMethods {
     public void addScreenShotOfWebElementToReport(WebElement webElement) {
 
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
