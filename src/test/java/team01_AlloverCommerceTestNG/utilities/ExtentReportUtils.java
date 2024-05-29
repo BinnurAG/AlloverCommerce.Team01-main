@@ -1,4 +1,4 @@
-package team01_AlloverCommerceTestNG.reports.screenShotsReport;
+package team01_AlloverCommerceTestNG.utilities;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
