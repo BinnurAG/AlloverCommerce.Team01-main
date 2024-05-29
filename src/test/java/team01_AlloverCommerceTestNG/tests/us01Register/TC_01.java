@@ -14,7 +14,7 @@ public class TC_01 {
     Faker faker = new Faker();
 
     @Test(description = "US01 - TC01 The user should be able to register with valid data")
-    public void registrationTest() {
+    public void positiveRegistrationTest() {
 //        1	Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 //        2	Register linkine tıkla
@@ -31,7 +31,7 @@ public class TC_01 {
         p2_registerPage.submitButton.click();
 //        8	Anasayfanın açıldığını ve Sign Out linkinin göründüğünü doğrula
         Assert.assertTrue(p2_registerPage.signOut.isDisplayed());
-        //Driver.closeDriver();
+        Driver.closeDriver();
     }
 
 }
