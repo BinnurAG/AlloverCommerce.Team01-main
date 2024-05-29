@@ -59,7 +59,6 @@ public class P14_VendorRegisterPage {
     @FindBy(id = "confirm_pwd")
     public WebElement confirmPasswordBox;
 
-
     @FindBy(id = "wcfm_membership_register_button")
     public WebElement registerButton;
 
@@ -74,8 +73,10 @@ public class P14_VendorRegisterPage {
 
     @FindBy(xpath = "//*[.='Registration Successfully Completed.']")
     public WebElement registrationSuccessMessage;
+  
     @FindBy(xpath = "//div[.='Password and Confirm-password are not same.']")
     public WebElement PasswordAndConfirmPasswordAreNotMessage;
+  
     @FindBy(id = "password_strength")
     public WebElement passwordWrongMessage;
 
@@ -84,3 +85,4 @@ public class P14_VendorRegisterPage {
 
     @FindBy(css= ".wcfm-message.wcfm-error")
     public WebElement emailWrongText;}
+

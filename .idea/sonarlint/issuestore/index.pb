@@ -9,8 +9,6 @@ v
 Fsrc/test/java/team01_AlloverCommerceTestNG/utilities/ConfigReader.java,0/f/0f843b165d9a129d9840c3ca448e99719abddc19
 o
 ?src/test/java/team01_AlloverCommerceTestNG/tests/US12_TC01.java,d/1/d1006898195391766441fe90211b2dc13bb50716
-s
-Csrc/test/java/team01_AlloverCommerceTestNG/tests/US12_TC01Test.java,8/4/84690abf0304a39bd4d619a3afd35fd94f5a956f
 }
 Msrc/test/java/team01_AlloverCommerceTestNG/pages/P15_VendorAddressesPage.java,4/9/49b5a802fd8c4ea980c7bdf75d9f4650f359cab3
 €
@@ -24,3 +22,7 @@ H
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+o
+?src/test/java/team01_AlloverCommerceTestNG/tests/US12_TC02.java,6/f/6f56f4441246c213fcc723a6fed860f2f78bd6dc
+y
+Isrc/test/java/team01_AlloverCommerceTestNG/utilities/ReusableMethods.java,7/1/717d904a4f2ad2a3b895e7f9286be8a9045691bd

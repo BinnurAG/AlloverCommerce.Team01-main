@@ -3,10 +3,12 @@ package team01_AlloverCommerceTestNG.utilities;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import team01_AlloverCommerceTestNG.pages.Pages;
 
 import java.awt.*;
@@ -149,10 +151,14 @@ public class ReusableMethods {
     public void addScreenShotToReport() {
 
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
+
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
+        TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
        // String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
-        String path = "src\\test\\java\\screenshots\\NEW" + date + ".png";
-        TakesScreenshot ts = (TakesScreenshot) getDriver();
+        String path1 = "src\\test\\java\\screenshots\\NEW" + date + ".png";
+        TakesScreenshot ts1 = (TakesScreenshot) getDriver();
+
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
@@ -165,10 +171,14 @@ public class ReusableMethods {
     public void addScreenShotOfWebElementToReport(WebElement webElement) {
 
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
+
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
+
         //String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
-        String path = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
+        String path3 = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
    
+
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
         } catch (IOException e) {
@@ -366,6 +376,33 @@ public class ReusableMethods {
             visibleWait(compareIcon, 5);
             click(compareIcon);
         }
+    }
+
+
+    public static void logOut(){
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewCoupon);
+        allPages.vendorProductManagerPage().addNewCoupon.submit();
+    }
+
+    public static void signInUS0304(){
+
+        Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
+
+        ReusableMethods.waitForSecond(2);
+        allPages.addressesPage().signIn1.click();
+        allPages.addressesPage().usernameSignIn.sendKeys(ConfigReader.getProperty("usernameUS03"));
+        allPages.addressesPage().passwordSignIn.sendKeys(ConfigReader.getProperty("passwordUS03"));
+
+        allPages.addressesPage().signIn2.click();
+
+        ReusableMethods.waitForSecond(1);
+        allPages.addressesPage().signOut.click();
+
+        allPages.addressesPage().addressesButton.click();
+        //Assert.assertTrue(addressesPage.billingAddress.isDisplayed());
+        Assert.assertTrue(allPages.addressesPage().billingAddress.isDisplayed());
+
+        allPages.addressesPage().addButonuB.click();
     }
 
     public void deleteProduct(int repeatCount) {

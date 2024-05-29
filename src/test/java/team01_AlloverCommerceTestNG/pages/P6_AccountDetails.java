@@ -7,7 +7,6 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 
 public class P6_AccountDetails {
 
-
     public P6_AccountDetails() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -90,17 +89,6 @@ public class P6_AccountDetails {
     @FindBy(xpath = "//p[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
     public static WebElement orderReceived;
 
-    
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -118,3 +106,9 @@ public class P6_AccountDetails {
 
 
 }
+
+
+
+
+
+
