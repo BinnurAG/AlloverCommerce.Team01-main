@@ -396,9 +396,6 @@ public class ReusableMethods {
 
         allPages.addressesPage().addButonuB.click();
     }
-<<<<<<< Updated upstream
-=======
-
 
     public void deleteProduct(int repeatCount) {
         for (int i = 0; i < repeatCount; i++) {
@@ -414,6 +411,6 @@ public class ReusableMethods {
         }
     }
 
->>>>>>> Stashed changes
+
 
 }
