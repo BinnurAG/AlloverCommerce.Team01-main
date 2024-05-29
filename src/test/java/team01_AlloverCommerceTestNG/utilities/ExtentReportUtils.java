@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.utilities;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -119,7 +120,7 @@ public class ExtentReportUtils {
      */
     public static void addScreenShotOfWebElementToReport(WebElement webElement) {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src/test/java/team01_AlloverCommerceTestNG/testOutputs/webElementScreenshots" + date + ".png";
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
