@@ -150,6 +150,7 @@ public class ReusableMethods {
     //extent rapora ekran goruntusu ekleme
     //Tüm sayfa screenshoti rapora ekleme
 
+
      public static void addScreenShotToReport() {
          String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
          String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
@@ -174,7 +175,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-
     //WebTable
     public static void printData(int satir, int sutun) {
         WebElement satirSutun = getDriver().findElement(By.xpath("(//tbody)[1]//tr[" + satir + "]//td[" + sutun + "]"));
