@@ -3,7 +3,6 @@ package team01_AlloverCommerceTestNG.utilities;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -32,12 +31,14 @@ import static team01_AlloverCommerceTestNG.pages.P12_ComparePage.userNameArea;
 import static team01_AlloverCommerceTestNG.pages.P6_AccountDetails.*;
 import static team01_AlloverCommerceTestNG.utilities.Driver.getDriver;
 
+import static team01_AlloverCommerceTestNG.utilities.Driver.getDriver;
+
 public class ReusableMethods {
     static Pages allPages = new Pages();
 
     protected ExtentReports extentReports;
     protected ExtentHtmlReporter extentHtmlReporter;
-    protected ExtentTest extentTest;
+    protected static ExtentTest extentTest;
 
 
     //HARD WAIT METHOD
@@ -139,7 +140,7 @@ public class ReusableMethods {
 
     public static void   screenShotOfWebElement(WebElement webElement){
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format( LocalDateTime.now() );
-        String dosyaYolu = System.getProperty("user.dir") + "src/test/java/team01_AlloverCommerceTestNG/resources/WEbElementScreenshots" +  date + ".png";
+        String dosyaYolu = System.getProperty("user.dir") + "src/test/java/team01_AlloverCommerceTestNG/testOutPuts/WebElementScreenShots" +  date + ".png";
         try {
             Files.write(  Paths.get(dosyaYolu) , webElement.getScreenshotAs(OutputType.BYTES) );
         } catch (IOException e) {
@@ -148,36 +149,25 @@ public class ReusableMethods {
     }
     //extent rapora ekran goruntusu ekleme
     //Tüm sayfa screenshoti rapora ekleme
-    public void addScreenShotToReport() {
-
-        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
 
 
-        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
+     public static void addScreenShotToReport() {
+         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
+         String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
+         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+         try {
+             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
+             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
+     }
 
-        TakesScreenshot ts = (TakesScreenshot) getDriver();
-
-
-
-        try {
-            Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
-            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     //webelement screenshot rapora ekleme
-    public void addScreenShotOfWebElementToReport(WebElement webElement) {
-
+    public static void addScreenShotOfWebElementToReport(WebElement webElement) {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-
         String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
-        
-
-        //String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
-        //Burada Mac ve windows kullanicilari farkli path kullanmali
-        //String path = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
@@ -185,7 +175,6 @@ public class ReusableMethods {
             throw new RuntimeException(e);
         }
     }
-
     //WebTable
     public static void printData(int satir, int sutun) {
         WebElement satirSutun = getDriver().findElement(By.xpath("(//tbody)[1]//tr[" + satir + "]//td[" + sutun + "]"));
