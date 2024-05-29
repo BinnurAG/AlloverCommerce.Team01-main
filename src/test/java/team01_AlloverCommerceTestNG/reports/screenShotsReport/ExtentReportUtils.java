@@ -1,4 +1,4 @@
-package team01_AlloverCommerceTestNG.utilities;
+package team01_AlloverCommerceTestNG.reports.screenShotsReport;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -6,6 +6,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import team01_AlloverCommerceTestNG.utilities.Driver;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -117,7 +118,7 @@ public class ExtentReportUtils {
      */
     public static void addScreenShotOfWebElementToReport(WebElement webElement) {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src\\test\\java\\techproed\\testOutputs\\webElementScreenshots" + date + ".png";
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);

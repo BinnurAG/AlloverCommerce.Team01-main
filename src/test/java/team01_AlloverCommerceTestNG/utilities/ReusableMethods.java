@@ -376,11 +376,6 @@ public class ReusableMethods {
         allPages.vendorProductManagerPage().addNewCoupon.submit();
     }
 
-
-
-
-
-
     public static void signInUS0304(){
 
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -401,5 +396,24 @@ public class ReusableMethods {
 
         allPages.addressesPage().addButonuB.click();
     }
+<<<<<<< Updated upstream
+=======
+
+
+    public void deleteProduct(int repeatCount) {
+        for (int i = 0; i < repeatCount; i++) {
+            click(productDeleteIcon);
+            waitForSecond(2);
+        }
+    }
+
+    public void deleteProductFromCompareScreen(int repeatCount) {
+        for (int i = 0; i < repeatCount; i++) {
+            click(productDeleteIconInCompareScreen);
+            waitForClickablility(productDeleteIconInCompareScreen, 15);
+        }
+    }
+
+>>>>>>> Stashed changes
 
 }
