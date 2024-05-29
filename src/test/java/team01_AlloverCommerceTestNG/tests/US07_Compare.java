@@ -7,60 +7,59 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.P12_ComparePage;
-import team01_AlloverCommerceTestNG.pages.P6_AccountDetails;
+import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-import static team01_AlloverCommerceTestNG.pages.P12_ComparePage.*;
+import static org.testng.Assert.*;
 import static team01_AlloverCommerceTestNG.utilities.Driver.getDriver;
+import static team01_AlloverCommerceTestNG.utilities.ReusableMethods.*;
 
-public class US07_Compare extends ReusableMethods {
+public class US07_Compare {
 
-    //Pages allPages = new Pages();
-
-    P12_ComparePage p12_comparePage = new P12_ComparePage();
-    P6_AccountDetails p6_accountDetails = new P6_AccountDetails();
+    static Pages allPages = new Pages();
     Actions actions = new Actions(getDriver());
     JavascriptExecutor js = (JavascriptExecutor) getDriver();
 
     @BeforeClass
     public void beforeClass() {
-        loginToSite();
+        ReusableMethods.loginToSite();
     }
 
     @AfterMethod
     public void tearDown() {
-        click(P6_AccountDetails.signOut);
+        click(allPages.addressesPage().signOut);
     }
 
     @Test
     public void test01_AddTwoProductsToCompareList() {
         searchProductAndShowAsList("Bilgisayar");
+        visibleWait(allPages.comparePage().compareIcon, 10);
+        click(allPages.comparePage().compareIcon);
         AddNewProduct(1);
 
-        // Sol taraftaki yazan ürün sayısı;
-        int count = Integer.parseInt(comparingProductCount.getText().replaceAll("\\D+", ""));
+        // Compare list should have 2 products;
+        int count = Integer.parseInt(allPages.comparePage().comparingProductCount.getText().replaceAll("\\D+", ""));
         assertEquals(count, 2, "Products count is not 2.");
 
-        js.executeScript("arguments[0].remove();", comparePopup);
+        js.executeScript("arguments[0].remove();", allPages.comparePage().comparePopup);
     }
 
     @Test
     public void test02_MaxFourProductsShouldBeAddedToCompareList() {
 
-        searchProductAndShowAsList("Bilgisayar");
-
+        searchProductAndShowAsList("phone");
+        click(allPages.comparePage().compareIcon);
         AddNewProduct(3);
 
-        js.executeScript("arguments[0].remove();", comparePopup);
-        searchProductAndShowAsList("phone");
+        js.executeScript("arguments[0].remove();", allPages.comparePage().comparePopup);
+        searchProductAndShowAsList("bilgisayar");
+        click(allPages.comparePage().compareIcon);
 
-        int count = Integer.parseInt(comparingProductCount.getText().replaceAll("\\D+", ""));
+        int count = Integer.parseInt(allPages.comparePage().comparingProductCount.getText().replaceAll("\\D+", ""));
         assertEquals(count, 4, "Products count is not 4.");
-        click(cleanAllButton);
+        click(allPages.comparePage().cleanAllButton);
 
-        js.executeScript("arguments[0].remove();", comparePopup);
+        js.executeScript("arguments[0].remove();", allPages.comparePage().comparePopup);
 
     }
 
@@ -69,75 +68,71 @@ public class US07_Compare extends ReusableMethods {
     public void test03_AllProductsShouldBeDeletedFromTheComparisonListAndAddNewOnes() {
 
         searchProductAndShowAsList("Bilgisayar");
-
+        click(allPages.comparePage().compareIcon);
         AddNewProduct(3);
 
         deleteProduct(3);
-
-        Actions action = new Actions(getDriver());
-        actions.clickAndHold(scrollBarInComparePopup).moveByOffset(100, 0).perform();
-
+        actions.clickAndHold(allPages.comparePage().scrollBarInComparePopup).moveByOffset(100, 0).perform();
         deleteProduct(1);
 
         AddNewProduct(2);
 
-        int count = Integer.parseInt(comparingProductCount.getText().replaceAll("\\D+", ""));
+        int count = Integer.parseInt(allPages.comparePage().comparingProductCount.getText().replaceAll("\\D+", ""));
         assertEquals(count, 2, "Products count is not 2.");
-        click(cleanAllButton);
+        click(allPages.comparePage().cleanAllButton);
 
-        js.executeScript("arguments[0].remove();", comparePopup);
+        js.executeScript("arguments[0].remove();",  allPages.comparePage().comparePopup);
     }
 
     @Test
     public void test04_DeleteSomeOrAllProductsAndAddNewOnes() {
 
-        searchProductAndShowAsList("Bilgisayar");
-
+        searchProductAndShowAsList("phone");
+        click(allPages.comparePage().compareIcon);
         AddNewProduct(3);
 
         deleteProduct(1);
 
-        js.executeScript("arguments[0].remove();", comparePopup);
-        searchProductAndShowAsList("phone");
-        click(cleanAllButton);
+        js.executeScript("arguments[0].remove();", allPages.comparePage().comparePopup);
+        click(allPages.comparePage().compareIcon);
+        click(allPages.comparePage().cleanAllButton);
 
-        int count = Integer.parseInt(comparingProductCount.getText().replaceAll("\\D+", ""));
+        int count = Integer.parseInt(allPages.comparePage().comparingProductCount.getText().replaceAll("\\D+", ""));
         assertEquals(count, 0, "Products count is not 0.");
 
-        js.executeScript("arguments[0].remove();", comparePopup);
-        searchProductAndShowAsList("phone");
+        js.executeScript("arguments[0].remove();",  allPages.comparePage().comparePopup);
+        click(allPages.comparePage().compareIcon);
+        AddNewProduct(2);
 
-        assertTrue(startCompareButton.isDisplayed());
-        click(cleanAllButton);
+        assertTrue(allPages.comparePage().startCompareButton.isDisplayed());
 
-        js.executeScript("arguments[0].remove();", comparePopup);
     }
 
     @Test
     public void test05_TwoProductsShouldBeCompared() {
         searchProductAndShowAsList("Bilgisayar");
-
+        click(allPages.comparePage().compareIcon);
         AddNewProduct(1);
 
-        click(startCompareButton);
-        visibleWait(compareField, 5);
-        assertTrue(compareField.isDisplayed(), "Karşılastırma ekranı açılmadı.");
-        deleteProductFromCompareScreen(2);
+        click(allPages.comparePage().startCompareButton);
+        visibleWait(allPages.comparePage().compareField, 5);
+        assertTrue(allPages.comparePage().compareField.isDisplayed(), "Karşılastırma ekranı açılmadı.");
+
     }
 
     @Test
     public void test06_TheCompareScreen() {
 
-        searchProductAndShowAsList("Bilgisayar");
-
+        searchProductAndShowAsList("phone");
+        click(allPages.comparePage().compareIcon);
         AddNewProduct(3);
 
-        click(startCompareButton);
-        visibleWait(compareField, 5);
+        click(allPages.comparePage().startCompareButton);
+        visibleWait(allPages.comparePage().compareField, 5);
 
         deleteProductFromCompareScreen(4);
-        visibleWait(noProductsAddedToCompareList, 5);
-        assertTrue(noProductsAddedToCompareList.isDisplayed());
+        visibleWait(allPages.comparePage().noProductsAddedToCompareList, 5);
+        assertTrue(allPages.comparePage().noProductsAddedToCompareList.isDisplayed());
     }
 
     @AfterClass
