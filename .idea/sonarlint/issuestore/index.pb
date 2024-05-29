@@ -11,3 +11,16 @@ o
 ?src/test/java/team01_AlloverCommerceTestNG/tests/US12_TC01.java,d/1/d1006898195391766441fe90211b2dc13bb50716
 s
 Csrc/test/java/team01_AlloverCommerceTestNG/tests/US12_TC01Test.java,8/4/84690abf0304a39bd4d619a3afd35fd94f5a956f
+}
+Msrc/test/java/team01_AlloverCommerceTestNG/pages/P15_VendorAddressesPage.java,4/9/49b5a802fd8c4ea980c7bdf75d9f4650f359cab3
+€
+Psrc/test/java/team01_AlloverCommerceTestNG/pages/P16_VendorStoreManagerPage.java,6/7/67e999faf35f246cf08e99f5ebaaf34ee51f0a89
+|
+Lsrc/test/java/team01_AlloverCommerceTestNG/pages/P14_VendorRegisterPage.java,0/1/019e4a57223fe7977518f5f01d123809785216f1
+„
+Tsrc/test/java/team01_AlloverCommerceTestNG/pages/P17_VendorProductDashboardPage.java,0/3/032643a4d94138c6494c9d60ba3ee08aacabc032
+H
+configuration.properties,b/6/b6c5dfcde54b418dd721679edbc49a89558b78a0
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
