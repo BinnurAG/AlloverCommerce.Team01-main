@@ -401,5 +401,19 @@ public class ReusableMethods {
 
         allPages.addressesPage().addButonuB.click();
     }
+    public void deleteProduct(int repeatCount) {
+        for (int i = 0; i < repeatCount; i++) {
+            click(productDeleteIcon);
+            waitForSecond(2);
+        }
+    }
+
+    public void deleteProductFromCompareScreen(int repeatCount) {
+        for (int i = 0; i < repeatCount; i++) {
+            click(productDeleteIconInCompareScreen);
+            waitForClickablility(productDeleteIconInCompareScreen, 15);
+        }
+    }
+
 
 }
