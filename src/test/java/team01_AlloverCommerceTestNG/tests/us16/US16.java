@@ -20,6 +20,9 @@ import team01_AlloverCommerceTestNG.utilities.DataProviderUtils;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
+import java.util.List;
+import java.util.Random;
+
 public class US16 {
 
     Pages allPages = new Pages();
@@ -144,32 +147,44 @@ public class US16 {
         allPages.vendorProductManagerPage().categoryBooks_Music_Film.click();
 
         //Resim(featured image) kismini uzerine (sag ust kose) tikla
-        allPages.vendorProductManagerPage().uploadPhoto.click();
-        allPages.vendorProductManagerPage().selectFiles.click();
-        // Acilan Choose Image bolumunden Upload files kutusunun uzerine tikla
+      //  allPages.vendorProductManagerPage().uploadPhoto.click();
+      //  allPages.vendorProductManagerPage().selectFiles.click();
+        allPages.vendorProductManagerPage().addPhotoButton.click();
+        ReusableMethods.waitForSecond(2);
+        allPages.vendorProductManagerPage().menuLibraryButton.click();
+        ReusableMethods.waitForSecond(4);
+        ReusableMethods.click(allPages.vendorProductManagerPage().logoImage);
+        allPages.vendorProductManagerPage().selectButton.click();
 
-        //SELECT FILES kutusu tikla
-
-       // Acilan sekmede resmin bulundugu yerden urune ait bir resim dosyasi sec
-
-      // Sag alt kosedeki SELECT kutusuna tikla
-
-      //  Resim kisminin altinda bulunan kucuk resim kisminin uzerine tikla (galery image)
-
-        //Acilan Add to Galery bolumunden Upload files kutusunun uzerine tikla
-
-        ///---------------
-        //bilg path verip ekleme
         // Galeri image ekle
-        //allPages.vendorProductManagerPage().
+        allPages.vendorProductManagerPage().addGalleryPhotoButton.click();
+        ReusableMethods.waitForSecond(2);
+        allPages.vendorProductManagerPage().menuGalleryLibraryButton.click();
+        ReusableMethods.waitForSecond(4);
+        ReusableMethods.click(allPages.vendorProductManagerPage().logoGalleryImage.get(allPages.vendorProductManagerPage().logoGalleryImage.size()-1));
+        ReusableMethods.waitForSecond(2);
+        allPages.vendorProductManagerPage().addToGalleryPhotoButton.click();
 
-        // Downloadable menusunde name kismini gir
-        //Downloadable menusunde file kismina dokumani upload et
         //Submit butonuna bas
+        ReusableMethods.scroll( allPages.vendorProductManagerPage().submitButton);
+        ReusableMethods.waitForSecond(2);
+        allPages.vendorProductManagerPage().submitButton.click();
+
         // Soldaki menulerden Product i tikla
+        ReusableMethods.waitForSecond(4);
+        ReusableMethods.scroll( allPages.vendorProductManagerPage().menuProduct);
+        allPages.vendorProductManagerPage().menuProduct.click();
+
         //  Product kisminda urunun adini gorerek eklendigini onayla
-        //Ayni urun birden fazla kez ayni ozelliklerde eklenebilir mi?
+        List<WebElement> products = allPages.vendorProductManagerPage().addedProducts;
+        for (WebElement product: products) {
+       //     Assert.assertEquals("Techpro QA Education " + randomNumber, product.getText());
+
+        }
+
     }
+
+
 
     @Test(dataProvider = "negativeTestDataForUs16",dataProviderClass = DataProviderUtils.class)
     public void test07(String negativeDataForUS16) {
