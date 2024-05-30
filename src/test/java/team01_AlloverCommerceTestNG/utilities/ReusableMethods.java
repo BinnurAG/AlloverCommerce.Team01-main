@@ -263,7 +263,7 @@ public class ReusableMethods {
     }
 
     //File Upload Robot Class
-    public void uploadFilePath(String dosyaYolu) {
+    public static void uploadFilePath(String dosyaYolu) {
         try {
             waitForSecond(3); // 3 saniye bekletir. Bu, kodun başka işlemler için hazır olmasını sağlar.
             StringSelection stringSelection = new StringSelection(dosyaYolu);
