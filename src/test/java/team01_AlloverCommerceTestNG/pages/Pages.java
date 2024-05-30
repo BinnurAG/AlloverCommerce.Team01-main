@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.pages;
 
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
@@ -171,4 +172,3 @@ public class Pages {
     }
 
 }
-

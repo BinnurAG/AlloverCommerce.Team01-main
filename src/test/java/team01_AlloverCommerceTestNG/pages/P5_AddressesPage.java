@@ -8,7 +8,7 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 
 public class P5_AddressesPage {
 
-    public P5_AddressesPage(){
+    public P5_AddressesPage() {
 
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -33,6 +33,10 @@ public class P5_AddressesPage {
 
     @FindBy(linkText = "Addresses")
     public WebElement addressesButton;
+
+    @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/edit-address/billing/']")
+    public WebElement editButonB;
+
 
 
     //Billing Address Sayfası
@@ -83,6 +87,17 @@ public class P5_AddressesPage {
 
     @FindBy(name = "save_address")
     public WebElement savebutonB;
+
+    @FindBy(xpath = "//div[contains(@class, 'woocommerce-message') and contains(@class, 'alert-success')]")
+    public WebElement addressChanged;
+
+    @FindBy(xpath = "//li[contains(@class, 'alert') and contains(@class, 'alert-danger')]")
+    public WebElement postCodeFailB;
+
+    @FindBy(xpath = "//li[contains(@class, 'alert') and contains(@class, 'alert-danger')]")
+    public WebElement phoneFailB;
+
+
 
     //Shipping Address Sayfası
 

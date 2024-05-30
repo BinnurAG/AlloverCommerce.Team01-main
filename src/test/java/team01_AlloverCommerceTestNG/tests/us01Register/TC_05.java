@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.tests.us01Register;
 
 import com.github.javafaker.Faker;
@@ -12,13 +13,15 @@ public class TC_05 {
     P2_RegisterPage p2_registerPage = new P2_RegisterPage();
     Faker faker = new Faker();
 
-    @Test(description = "US01 - TC05 The user should be able to register in digits only")
-    public void digitTest() {
-// Siteye müşteri olarak kayıt olurken username alanına sadece rakam girilebilmeli
+    @Test(description = "US01 - TC05 New registration should not be possible with the registered username")
+    public void registeredUsernameTest() {
+// Siteye müşteri olarak kayıt olurken daha önce kayıtlı bir username ile kayıt işlemi gerçekleşmemeli
+//        Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
+//        Register linkine tıkla
         p2_registerPage.register.click();
-//        Username alanına sadece rakam gir
-        p2_registerPage.userName.sendKeys("2408");
+//        Username alanına kayıtlı bir veri gir
+        p2_registerPage.userName.sendKeys(ConfigReader.getProperty("registeredUserName"));
 //        Your Email address alanına bir veri gir
         p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
 //        Password alanına 8 karakterli bir veri gir
@@ -27,7 +30,14 @@ public class TC_05 {
         p2_registerPage.privacyPolicy.click();
 //        SIGN UP butonuna tıkla
         p2_registerPage.submitButton.click();
-//        Anasayfanın açıldığını ve Sign Out linkinin göründüğünü doğrula
-        Assert.assertTrue(p2_registerPage.signOut.isEnabled());
+//        Kayıt işleminin gerçekleşmediğini doğrula
+
+//       ExtentReportUtils.extentTestPass("Test basarılı oldu");
+//       ExtentReportUtils.addScreenShotToReport();
+        String actualMsg = p2_registerPage.plsChooseAnotherMsg.getText();
+        Assert.assertEquals
+                (actualMsg,"An account is already registered with that username. Please choose another.");
+        Driver.closeDriver();
     }
+
 }

@@ -32,8 +32,9 @@ public class TC_02 {
         p2_registerPage.submitButton.click();
 //      ReusableMethods.screenShot("SignOut");
 //        8	Anasayfanın açıldığını ve Sign Out linkinin göründüğünü doğrula
-        Assert.assertFalse(p2_registerPage.resultMessage.getText().contains("Sign Out"));
-        //Driver.closeDriver();
+        Assert.assertTrue(p2_registerPage.signOut.isEnabled());
+
+        Driver.closeDriver();
     }
 
 }

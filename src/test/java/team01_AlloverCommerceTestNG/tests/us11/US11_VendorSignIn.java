@@ -1,7 +1,9 @@
+
 package team01_AlloverCommerceTestNG.tests.us11;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
@@ -10,70 +12,82 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class US11_VendorSignIn {
 
+    // @Listeners(team01_AlloverCommerceTestNG.utilities.Listeners.class)
+
     Pages allPages = new Pages();
     @BeforeMethod
     public void setUp() {
-        // Siteye ulaşılmalı
+        // Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
 
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
+        // Sing in butonuna tikla
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
+    }
 
+    @Test
+    public void tc01a() {
+
+        // Username or email address alanına gecerli (kayitli) bir email gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+
+        // Password alanına gecerli (kayitli) bir password gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+
+        // SIGN IN butonuna tikla
+        allPages.userVendorLoginPage().signInButton.click();
+
+        // Giris isleminin kayitli email ile  gerceklestigini dogrula
+        Assert.assertTrue(allPages.homePage().signOutButton.isDisplayed());
 
     }
 
     @Test
-    public void tc01() {
+    public void tc01b() {
 
-        // Kayıtlı bir email adresi girilmeli
-        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+        // Username or email address alanına gecerli (kayitli) bir username gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson");
 
-        // Kayıtlı password girilmeli
+        // Password alanına gecerli (kayitli) bir password gir
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
 
-        // Sign In butonu tıklanır olmalı
+        // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
 
-        // Sign Out görülmeli
+        // Giris isleminin kayitli email ile  gerceklestigini dogrula
         Assert.assertTrue(allPages.homePage().signOutButton.isDisplayed());
-
-
     }
 
     @Test
     public void tc02() {
 
-        // Email box boş bırakılmalı
+        // email adresi alanini bos birak
         allPages.userVendorLoginPage().emailBox.sendKeys("");
 
-        // Kayıtlı password girilmeli
+        // Kayitli bir Password  gir
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
 
-        // Sign In butonu tıklanır olmalı
+        // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
 
-        // Giriş işlemi gerçekleşmemeli
+        // Giris isleminin gerceklesmedigi dogrula
         String validationMessage = allPages.userVendorLoginPage().emailBox.getAttribute("validationMessage");
         Assert.assertEquals(validationMessage, "Please fill out this field.");
-
-
-
     }
 
     @Test
     public void tc03() {
 
-        // Email boxa geçersiz bir email gir
+        // email adresi alanina farkli bir email adresi gir
         allPages.userVendorLoginPage().emailBox.sendKeys("ranaloa@floodouts.com");
 
-        // Kayıtlı password girilmeli
+        // Kayitli bir Password  gir
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
 
-        // Sign In butonu tıklanır olmalı
+        // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
 
-        // Giriş işlemi gerçekleşmemeli
+        // Giris isleminin gerceklesmedigi dogrula
         Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
 
     }
@@ -81,8 +95,8 @@ public class US11_VendorSignIn {
     @Test
     public void tc04() {
 
-        // Email boxa geçersiz bir email gir
-        allPages.userVendorLoginPage().emailBox.sendKeys("ranaloa@floodouts.com");
+        //Kayitli email adresini eksik gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamessn@floodouts.com");
 
         // Kayıtlı password girilmeli
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
@@ -95,19 +109,20 @@ public class US11_VendorSignIn {
 
     }
 
+
     @Test
     public void tc05() {
 
-        // Email boxa kayıtlı bir email gir
+        // Kayitli bir email adresi gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
-        // Password boxa geçersiz password gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys("dyu76@u7");
+        // Password  alanini bos birak
+        allPages.userVendorLoginPage().passwordBox.sendKeys("");
 
-        // Sign In butonu tıklanır olmalı
+        // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
 
-        // Giriş işlemi gerçekleşmemeli
+        //Giris isleminin gerceklesmedigini dogrula
         Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
 
     }
@@ -115,7 +130,102 @@ public class US11_VendorSignIn {
     @Test
     public void tc06() {
 
-        // Email boxa kayıtlı email gir
+        // Kayitli bir email adresi gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+
+        // Password alanina farkli bir sifre gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys("dyu76@u7");
+
+        // SIGN IN butonuna tikla
+        allPages.userVendorLoginPage().signInButton.click();
+
+        //Giris isleminin gerceklesmedigini dogrula
+        Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
+
+    }
+
+
+    @Test
+    public void tc07a() {
+
+        // Kayitli bir email adresi gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+
+        // Basina space koyarak kayitli olan passwordu gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys(" dyu76@u7");
+
+        // SIGN IN butonuna tikla
+        allPages.userVendorLoginPage().signInButton.click();
+
+        //Giris isleminin gerceklesmedigini dogrula
+        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
+    }  //fail
+
+    @Test
+    public void tc07b() {
+
+        // Kayitli bir email adresi gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+
+        // Sonuna space koyarak kayitli olan passwordu gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys("dyu76@u7 ");
+
+        // SIGN IN butonuna tikla
+        allPages.userVendorLoginPage().signInButton.click();
+
+        //Giris isleminin gerceklesmedigini dogrula
+        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
+        // Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
+
+    }  //fail
+
+
+    @Test
+    public void tc08a() {
+
+        //Kayitli bir email adresi gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+
+        // Kayıtlı password gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+
+        //  SIGN IN butonuna tikla
+        allPages.userVendorLoginPage().signInButton.click();
+
+        //Sayfasinin en altinda bulunan My Account linkine tikla
+        ReusableMethods.click(allPages.homePage().myAccountButton);
+
+        //My Account sayfasinin goruntulendigini dogrula
+        Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
+
+    }
+
+
+    @Test
+    public void tc08b() {
+
+        //Kayitli bir email adresi gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+
+        // Kayıtlı password gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+
+        //  SIGN IN butonuna tikla
+        allPages.userVendorLoginPage().signInButton.click();
+
+        //Sayfasinin en altinda bulunan My Account linkine tikla
+        ReusableMethods.click(allPages.homePage().signOutButton);
+
+        //My Account sayfasinin goruntulendigini dogrula
+        Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
+
+    }
+
+
+    @Test
+    public void tc09() {
+
+        //Kayitli bir email adresi gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Kayıtlı password girilmeli
@@ -127,12 +237,15 @@ public class US11_VendorSignIn {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
+        //Burayi ekle
+
+
         //Dashboard altında  Store manager, orders, downloads, addresses , account details, wishlist, Support tickets, followings ve log out seçeneklerinin görüldüğünü doğrula
-//Burayi ekle
+
     }
 
     @Test
-    public void tc07() {
+    public void tc10() {
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -155,7 +268,7 @@ public class US11_VendorSignIn {
     }
 
     @Test
-    public void tc08() {
+    public void tc11() {
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -178,7 +291,7 @@ public class US11_VendorSignIn {
     }
 
     @Test
-    public void tc09() {
+    public void tc12() {
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -201,7 +314,7 @@ public class US11_VendorSignIn {
     }
 
     @Test
-    public void tc10() {
+    public void tc13() {
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -224,7 +337,7 @@ public class US11_VendorSignIn {
     }
 
     @Test
-    public void tc11() {
+    public void tc14() {
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -247,7 +360,7 @@ public class US11_VendorSignIn {
     }
 
     @Test
-    public void tc12() {
+    public void tc15() {
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -270,7 +383,7 @@ public class US11_VendorSignIn {
     }
 
     @Test
-    public void tc13() {
+    public void tc16() {
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -293,7 +406,7 @@ public class US11_VendorSignIn {
     }
 
     @Test
-    public void tc14() {
+    public void tc17() {
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -317,7 +430,7 @@ public class US11_VendorSignIn {
     }
 
     @Test
-    public void tc15() {
+    public void tc18() {
 
         // Kayıtlı bir email adresi girilmeli
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -339,7 +452,7 @@ public class US11_VendorSignIn {
 
     @AfterMethod
     public void tearDown() {
-//    Driver.getDriver().close();
+//   Driver.getDriver().close();
     }
 
 

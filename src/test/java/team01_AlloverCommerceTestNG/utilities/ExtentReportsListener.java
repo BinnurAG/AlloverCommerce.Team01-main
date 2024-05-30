@@ -4,6 +4,10 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
+
+
 
 public class ExtentReportsListener implements ITestListener {
 
@@ -14,7 +18,9 @@ public class ExtentReportsListener implements ITestListener {
      */
     @Override
     public void onStart(ITestContext context) {
-        ExtentReportUtils.setUpExtentReport(context.getCurrentXmlTest().getName());
+
+        ExtentReportUtils.setUpExtentReport(context.getCurrentXmlTest().getName(), context.getCurrentXmlTest().getName());
+
     }
 
     /**

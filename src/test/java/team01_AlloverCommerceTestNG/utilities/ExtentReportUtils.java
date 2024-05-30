@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.utilities;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -24,31 +25,33 @@ public class ExtentReportUtils {
     /**
      * ExtentReports nesnesini ve HTML raporlama nesnesini kurar.
      *
-     * @param reportName Oluşturulacak raporun adı
+     * @param "My Extend Report" Oluşturulacak raporun adı
      */
-    public static void setUpExtentReport(String reportName) {
+    public static void setUpExtentReport(String qaNAme, String testName) {
         if (extentReports == null) { // ExtentReports nesnesi oluşturulmamış ise
             // Bu objecti raporları oluşturmak ve yönetmek için kullanacağız
             extentReports = new ExtentReports();
 
             // Öncelikle oluşturmak istediğimiz HTML raporu projemizde nerede saklamak istiyorsak bir dosya yolu oluşturmalıyız
             String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-            String path = "target/extentReport/" + reportName + " " + date + " htmlReport.html";
+            String path = "target/extentReport/" + date + " htmlReport.html";
             extentHtmlReporter = new ExtentHtmlReporter(path);
 
             // ExtentsReports'a HTML raporlayıcı ekler, ve bu raporun HTML formatında oluşturulmasını sağlar
             extentReports.attachReporter(extentHtmlReporter);
 
             // HTML raporun belge başlığını ayarlar
-            extentHtmlReporter.config().setDocumentTitle("Batch 231");
+            extentHtmlReporter.config().setDocumentTitle("Allover Commerce Test Raporu");
 
             // Raporda gösterilecek olan genel başlığı ayarlar
-            extentHtmlReporter.config().setReportName(reportName);
+            extentHtmlReporter.config().setReportName("My Extend Report");
 
             // Bu HTML raporunda görmek isteyebileceğimiz diğer bilgileri aşağıdaki şekilde ekleyebiliriz
             extentReports.setSystemInfo("Environment", "QA");
             extentReports.setSystemInfo("Browser", "Chrome");
-            extentReports.setSystemInfo("Test Automation Engineer", "Ali Can");
+            extentReports.setSystemInfo("Test Automation Engineer",qaNAme);
+
+             extentTest = extentReports.createTest(testName,"Test Steps");
         }
     }
 
@@ -104,7 +107,7 @@ public class ExtentReportUtils {
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
-            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "/" + path);
+            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -117,7 +120,7 @@ public class ExtentReportUtils {
      */
     public static void addScreenShotOfWebElementToReport(WebElement webElement) {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-        String path = "src\\test\\java\\techproed\\testOutputs\\webElementScreenshots" + date + ".png";
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
