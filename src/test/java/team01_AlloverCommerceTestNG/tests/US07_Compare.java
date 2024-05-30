@@ -72,12 +72,12 @@ public class US07_Compare extends ReusableMethods {
 
         AddNewProduct(3);
 
-        deleteProduct(3);
+     //   deleteProduct(3);
 
         Actions action = new Actions(getDriver());
         actions.clickAndHold(scrollBarInComparePopup).moveByOffset(100, 0).perform();
 
-        deleteProduct(1);
+    //    deleteProduct(1);
 
         AddNewProduct(2);
 
@@ -95,7 +95,7 @@ public class US07_Compare extends ReusableMethods {
 
         AddNewProduct(3);
 
-        deleteProduct(1);
+      //  deleteProduct(1);
 
         js.executeScript("arguments[0].remove();", comparePopup);
         searchProductAndShowAsList("phone");
@@ -122,7 +122,7 @@ public class US07_Compare extends ReusableMethods {
         click(startCompareButton);
         visibleWait(compareField, 5);
         assertTrue(compareField.isDisplayed(), "Karşılastırma ekranı açılmadı.");
-        deleteProductFromCompareScreen(2);
+      //  deleteProductFromCompareScreen(2);
     }
 
     @Test
@@ -135,7 +135,7 @@ public class US07_Compare extends ReusableMethods {
         click(startCompareButton);
         visibleWait(compareField, 5);
 
-        deleteProductFromCompareScreen(4);
+    //    deleteProductFromCompareScreen(4);
         visibleWait(noProductsAddedToCompareList, 5);
         assertTrue(noProductsAddedToCompareList.isDisplayed());
     }

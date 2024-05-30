@@ -8,24 +8,20 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class TC_09 {
+public class TC_16 {
     Pages allPages = new Pages();
 
     @Test
-    public void tc09() {
+    public void tc16() {
 
-        // Web sitesine git
+        // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
-        //Sing in butonuna tikla
+        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-
-        //Kayitli bir email adresi gir
+        // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Kayıtlı password girilmeli
@@ -37,26 +33,13 @@ public class TC_09 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
+        //Support tickets butonuna tıkla
+        ReusableMethods.click(allPages.myAccountPage().supportTicketsButton);
 
-        //Dashboard altında  Store manager, orders, downloads, addresses , account details, wishlist, Support tickets, followings ve log out seçeneklerinin görüldüğünü doğrula
-        List<String> linkTexts = allPages.myAccountPage().getLinkTexts();
-        List<String> expectedTexts = Arrays.asList(
-                "Dashboard",
-                "Store Manager",
-                "Orders",
-                "Downloads",
-                "Addresses",
-                "Account details",
-                "Wishlist",
-                "Support Tickets",
-                "Followings",
-                "Logout"
-        );
-        Assert.assertEquals(linkTexts, expectedTexts);
+        //Ticket(s) başlığı görülmeli
+        Assert.assertTrue(allPages.myAccountPage().supportTicketsButtonTicketsText.isDisplayed());
         Driver.getDriver().close();
-
     }
-
 
 }
 

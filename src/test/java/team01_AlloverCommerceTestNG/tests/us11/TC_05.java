@@ -1,17 +1,18 @@
 package team01_AlloverCommerceTestNG.tests.us11;
+
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
-import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
+import team01_AlloverCommerceTestNG.pages.Pages;
 
 public class TC_05 {
+
     Pages allPages = new Pages();
 
     @Test
     public void tc05() {
-
         // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
@@ -19,17 +20,20 @@ public class TC_05 {
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-        // Email boxa kayıtlı bir email gir
+        // Kayitli bir email adresi gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
-        // Password boxa geçersiz password gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys("dyu76@u7");
+        // Password  alanini bos birak
+        allPages.userVendorLoginPage().passwordBox.sendKeys("");
 
-        // Sign In butonu tıklanır olmalı
+        // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
 
-        // Giriş işlemi gerçekleşmemeli
-        Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
+        //Giris isleminin gerceklesmedigini dogrula
+        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
+        Driver.getDriver().close();
 
     }
+
 }
+

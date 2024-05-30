@@ -1,5 +1,6 @@
 package team01_AlloverCommerceTestNG.tests.us11;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
@@ -19,8 +20,8 @@ public class TC_04 {
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-        // Email boxa geçersiz bir email gir
-        allPages.userVendorLoginPage().emailBox.sendKeys("ranaloa@floodouts.com");
+        //Kayitli email adresini eksik gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamessn@floodouts.com");
 
         // Kayıtlı password girilmeli
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
@@ -29,9 +30,9 @@ public class TC_04 {
         allPages.userVendorLoginPage().signInButton.click();
 
         // Giriş işlemi gerçekleşmemeli
-        Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
+        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
+        Driver.getDriver().close();
 
     }
-
 
 }

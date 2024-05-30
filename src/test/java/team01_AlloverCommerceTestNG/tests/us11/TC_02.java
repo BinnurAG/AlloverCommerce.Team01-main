@@ -1,6 +1,7 @@
 package team01_AlloverCommerceTestNG.tests.us11;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
@@ -29,10 +30,14 @@ public class TC_02 {
         // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
 
-        //Giris isleminin gerceklesmedigi dogrulanir
+        // Giris isleminin gerceklesmedigi dogrula
+        String validationMessage = allPages.userVendorLoginPage().emailBox.getAttribute("validationMessage");
+        Assert.assertEquals(validationMessage, "Please fill out this field.");
 
-        // Assert.assertTrue(allPages.homePage().signOutButton.isDisplayed());
+        Driver.getDriver().close();
 
 
     }
+
+
 }

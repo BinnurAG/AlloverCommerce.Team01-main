@@ -1,5 +1,7 @@
 package team01_AlloverCommerceTestNG.tests.us11;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
@@ -9,33 +11,55 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 public class TC_08 {
     Pages allPages = new Pages();
 
+        @BeforeMethod
+        public void setUp() {
+            // Web sitesine git
+            Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
+
+            // Sing in butonuna tikla
+            Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
+            allPages.homePage().signInButton.click();
+        }
+
     @Test
-    public void tc08() {
+    public void tc08a() {
 
-        // Siteye ulaşılmalı
-        Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
-
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
-        Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
-        allPages.homePage().signInButton.click();
-
-        // Email boxa kayıtlı email gir
+        //Kayitli bir email adresi gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
-        // Kayıtlı password girilmeli
+        // Kayıtlı password gir
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
 
-        // Sign In butonu tıklanır olmalı
+        //  SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
 
-        //My Account linkine tıkla
+        //Sayfasinin en altinda bulunan My Account linkine tikla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
-        //Orders butonuna tıkla
-        ReusableMethods.click(allPages.myAccountPage().ordersButton);
-
-        //Addresses başlığı görüldüğünü doğrula
-        Assert.assertTrue(allPages.myAccountPage().ordersButtonTitle.isDisplayed());
-
+        //My Account sayfasinin goruntulendigini dogrula
+        Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
+           ReusableMethods.logOutClick();
     }
+
+
+    @Test
+    public void tc08b() {
+
+        //Kayitli bir email adresi gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+
+        // Kayıtlı password gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+
+        //  SIGN IN butonuna tikla
+        allPages.userVendorLoginPage().signInButton.click();
+
+        //Sayfasinin sag ust kosesinde bulunan Sign Out butonuna tikla
+        ReusableMethods.click(allPages.homePage().signOutButton);
+
+        //My Account sayfasinin goruntulendigini dogrula
+        Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
+        Driver.getDriver().close();
+    }
+
 }
