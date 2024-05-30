@@ -2,6 +2,8 @@ package team01_AlloverCommerceTestNG.tests;
 
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.Keys;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.P15_VendorAddressesPage;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
@@ -42,23 +44,57 @@ public class US12_TC02 {
         ReusableMethods.waitForSecond(7); //pop up hata verdigi icin bekletiyoruz
 
         //6-Billing Adress kismindaki Add sekmesini tikla
-        p15VendorAddressesPage.billingAdressAdd.click();
+        p15VendorAddressesPage.billingAddressEdit.click();
         // ReusableMethods.scroll(p15VendorAddressesPage.billingEmailAdresBox);
 
 
 
+        p15VendorAddressesPage.billingFirstNameBox.sendKeys(Keys.COMMAND,"A");
         p15VendorAddressesPage.billingFirstNameBox.sendKeys("Zeid");
+
+
+        p15VendorAddressesPage.billingLastNameBox.sendKeys(Keys.COMMAND,"A");
         p15VendorAddressesPage.billingLastNameBox.sendKeys("Duoat");
+
+
+
+        p15VendorAddressesPage.billingCompanyNameBox.sendKeys(Keys.COMMAND,"A");
         p15VendorAddressesPage.billingCompanyNameBox.sendKeys("Migros");
+
+
         ReusableMethods.ddmVisibleText(p15VendorAddressesPage.ddmBillingAddressCountry,"Norway");
+
+
+        p15VendorAddressesPage.billingStreetAddressNameBox.sendKeys(Keys.COMMAND,"A");
         p15VendorAddressesPage.billingStreetAddressNameBox.sendKeys("Doet straat");
+
+
+        p15VendorAddressesPage.billingStreetAddress2NameBox.sendKeys(Keys.COMMAND,"A");
         p15VendorAddressesPage.billingStreetAddress2NameBox.sendKeys("27 dallas");
+
+
+        p15VendorAddressesPage.billingStreetAddressNameBox.sendKeys(Keys.COMMAND,"A");
         p15VendorAddressesPage.billingStreetAddressNameBox.sendKeys("Doet straat 21");
+
+
+        p15VendorAddressesPage.billingZipCodeBox.sendKeys(Keys.COMMAND,"A");
         p15VendorAddressesPage.billingZipCodeBox.sendKeys("4410PG");
+
+
+        p15VendorAddressesPage.billingCityNameBox.sendKeys(Keys.COMMAND,"A");
         p15VendorAddressesPage.billingCityNameBox.sendKeys("Norway");
+
+
         ReusableMethods.scroll(p15VendorAddressesPage.billingPhoneNumberBox);
+
+
+        p15VendorAddressesPage.billingPhoneNumberBox.sendKeys(Keys.COMMAND,"A");
         p15VendorAddressesPage.billingPhoneNumberBox.sendKeys("+905467845637");
+
+
         p15VendorAddressesPage.billingSaveAddress.submit();
+        Assert.assertTrue(p15VendorAddressesPage.billingAddresSuccessfullText.isDisplayed());
+
 
 
 
