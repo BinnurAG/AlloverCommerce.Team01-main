@@ -1,15 +1,20 @@
+<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/TC_03.java
+package team01_AlloverCommerceTestNG.tests.us11.us11;
+
+=======
 
 package team01_AlloverCommerceTestNG.tests.us11;
+>>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/TC_03.java
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
-import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class TC_03 {
 
     Pages allPages = new Pages();
+
     @Test
     public void tc03() {
 
@@ -20,17 +25,23 @@ public class TC_03 {
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-        //  farkli bir email addressi gir
-        allPages.userVendorLoginPage().emailBox.sendKeys("ranaloa.coy@floodouts.com");
+        // email adresi alanina farkli bir email adresi gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("ranaloa@floodouts.com");
 
-        // Kayıtlı password girilmeli
+        // Kayitli bir Password  gir
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
 
-        // Sign In butonu tıklanır olmalı
+        // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
 
-        // "Wrong username or password."mesajini  görulmeli
+        // Giris isleminin gerceklesmedigi dogrula
         Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
+        Driver.getDriver().close();
 
     }
+<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/TC_03.java
+
+
+=======
+>>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/TC_03.java
 }

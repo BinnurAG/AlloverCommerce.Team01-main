@@ -1,5 +1,10 @@
+<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/TC_13.java
+package team01_AlloverCommerceTestNG.tests.us11.us11;
+
+=======
 
 package team01_AlloverCommerceTestNG.tests.us11;
+>>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/TC_10.java
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
@@ -7,11 +12,11 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_12 {
+public class TC_13 {
     Pages allPages = new Pages();
 
     @Test
-    public void tc12() {
+    public void tc13() {
 
         // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -32,11 +37,14 @@ public class TC_12 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
-        //Wishlist butonuna tıkla
-        ReusableMethods.click(allPages.myAccountPage().wishlistButton);
+        //Addresses butonuna tıkla
+        ReusableMethods.click(allPages.myAccountPage().addressesButton);
 
-        //Ticket(s) başlığı görülmeli
-        Assert.assertTrue(allPages.wishlistPage().wishlistTitle.isDisplayed());
-
+        //Addresses başlığı görüldüğünü doğrula
+        Assert.assertTrue(allPages.vendorAddressesPage().addressesTitle.isDisplayed());
+        Driver.getDriver().close();
     }
+
+
 }
+

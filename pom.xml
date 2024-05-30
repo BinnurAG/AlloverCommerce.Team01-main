@@ -77,6 +77,16 @@
             <version>1.0.2</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>4.0.9</version>
+        </dependency>
+
+
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
@@ -89,8 +99,8 @@
 
 
 
-    </dependencies>
 
+    </dependencies>
 
 
 

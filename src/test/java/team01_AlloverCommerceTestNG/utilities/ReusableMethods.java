@@ -368,6 +368,13 @@ public class ReusableMethods {
     public static void logOut(){
         ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewCoupon);
         allPages.vendorProductManagerPage().addNewCoupon.submit();
+
+    } //Arkadaslar bu method ismi yanlis olmus herhalde kimse kullanmiyor ise once yoruma alinip kimsede hata olusmaz ise silinebilir
+
+    public static void logOutClick(){
+        allPages.homePage().signOutButton.click();
+        allPages.myAccountPage().logoutButton.click();
+
     }
 
     public static void signInUS0304(){
@@ -408,6 +415,7 @@ public class ReusableMethods {
             click(allPages.comparePage().productDeleteIconInCompareScreen);
             waitForClickablility(allPages.comparePage().productDeleteIconInCompareScreen, 15);
         }
+
     }
 
 
