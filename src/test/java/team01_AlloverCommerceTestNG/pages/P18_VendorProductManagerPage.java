@@ -107,6 +107,12 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//*[@id='coupon_amount']")
     public  WebElement couponAmountBox;
 
+    @FindBy(xpath = "//*[@id=\"menu-item-upload\"][2]")
+    public WebElement uploadFilesButton;
+
+    @FindBy(xpath = "//*[@id=\"__wp-uploader-id-12\"]/div[3]/div[2]/div/div[3]/div/p")
+    public WebElement filesVerify;
+
 
 }
 
