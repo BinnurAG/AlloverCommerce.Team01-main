@@ -34,8 +34,8 @@ public class P5_AddressesPage {
     @FindBy(linkText = "Addresses")
     public WebElement addressesButton;
 
-    @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/edit-address/billing/']")
-    public WebElement editButonB;
+    @FindBy(xpath = "//header[h3='Shipping address']")
+    public WebElement shippingAddress;
 
 
 
@@ -43,6 +43,8 @@ public class P5_AddressesPage {
     @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/edit-address/billing/']")
     public WebElement addButonuB;
 
+    @FindBy(xpath = "//a[.='Edit Your Billing Address']")
+    public WebElement editButonB;
     @FindBy(className = "woocommerce-address-fields")
     public WebElement addressPageB;
 
@@ -96,6 +98,13 @@ public class P5_AddressesPage {
 
     @FindBy(xpath = "//li[contains(@class, 'alert') and contains(@class, 'alert-danger')]")
     public WebElement phoneFailB;
+
+    @FindBy(css = "table.address-table")
+    public WebElement addressTable;
+
+    @FindBy(css = "li[data-id='billing_city'] > i.fas.fa-exclamation-triangle")
+    public WebElement townFailB;
+
 
 
 

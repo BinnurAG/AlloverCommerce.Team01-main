@@ -74,4 +74,10 @@ public class JSUtils {
         System.out.println(value);
         return value;
     }
+
+
+    public static void JSMakeValueNull(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].value='';", element);
+    }
 }

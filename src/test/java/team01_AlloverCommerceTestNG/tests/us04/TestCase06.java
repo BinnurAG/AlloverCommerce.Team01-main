@@ -1,27 +1,24 @@
-package team01_AlloverCommerceTestNG.tests.us03;
+package team01_AlloverCommerceTestNG.tests.us04;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
-import org.testng.annotations.*;
-import team01_AlloverCommerceTestNG.pages.P1_HomePage;
-import team01_AlloverCommerceTestNG.pages.P4_MyAccountPage;
-import team01_AlloverCommerceTestNG.pages.P5_AddressesPage;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
-import team01_AlloverCommerceTestNG.utilities.ConfigReader;
-import team01_AlloverCommerceTestNG.utilities.Driver;
-import team01_AlloverCommerceTestNG.utilities.JSUtils;
-import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
+import team01_AlloverCommerceTestNG.utilities.*;
 
-public class TestCase05 {
+public class TestCase06 {
 
- Pages allpages = new Pages();
+
+    Pages allpages = new Pages();
     Faker faker = new Faker();
 
     @BeforeMethod
     public void beforeMethod(){
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuB.click();
+        allpages.addressesPage().addButonuS.click();
     }
 
 
@@ -29,6 +26,7 @@ public class TestCase05 {
 
     @Test
     public void saveAddress() {
+
         if (allpages.addressesPage().firstNameB !=null & allpages.addressesPage().lastNameB !=null &
                 allpages.addressesPage().companyB !=null & allpages.addressesPage().countryB !=null &
                 allpages.addressesPage().adress1B !=null & allpages.addressesPage().adress2B !=null &
@@ -73,12 +71,15 @@ public class TestCase05 {
             allpages.addressesPage().phoneB.sendKeys(faker.phoneNumber().cellPhone());
         }
 
-
+        Assert.assertTrue(allpages.addressesPage().savebutonB.isEnabled());
+        allpages.addressesPage().savebutonB.submit();
 
         ReusableMethods.waitForSecond(2);
 
-        Assert.assertTrue(allpages.addressesPage().savebutonB.isEnabled());
-        allpages.addressesPage().savebutonB.submit();
+        WaitUtils.waitForVisibility(allpages.addressesPage().addressChanged, 3);
+        JSUtils.JSblockDsiplay(allpages.addressesPage().addressChanged);
+
+        Assert.assertTrue(allpages.addressesPage().addressChanged.isDisplayed());
 
         ReusableMethods.waitForSecond(2);
 
@@ -89,6 +90,7 @@ public class TestCase05 {
     public void closeWindow(){
         Driver.closeDriver();
     }
+
 
 
 
