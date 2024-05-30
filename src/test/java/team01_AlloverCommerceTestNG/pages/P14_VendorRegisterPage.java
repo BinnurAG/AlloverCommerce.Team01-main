@@ -8,11 +8,12 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 public class P14_VendorRegisterPage {
     public P14_VendorRegisterPage() {
 
-        PageFactory.initElements(Driver.getDriver(), this); }
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
 
     //----------Vendor Registration with Sign Up------------------------------------------------------------------
     @FindBy(id = "user_email")
-    public static WebElement registrationEmail;
+    public static WebElement Email;
 
     @FindBy(xpath = "//*[.='Email: This field is required.']")
     public WebElement emailIsRequiredText;
@@ -20,20 +21,17 @@ public class P14_VendorRegisterPage {
     @FindBy(xpath = "//div[@class='wcfm-message email_verification_message wcfm-success']")
     public static WebElement verificationCodeText;
 
-    @FindBy(xpath = "//*[.='Please provide a valid email address.']")//Lütfen geçerli bir e-posta adresi girin
-    public WebElement provideValidEmailText;
-
     @FindBy(xpath = "//input[@name='wcfm_email_verified_button']")
     public static WebElement reSendCodeButton;
 
     @FindBy(xpath = "//input[@name='wcfm_email_verified_input']")
-    public WebElement reSendCodeInput;
+    public static WebElement reSendCodeInput;
 
     @FindBy(xpath = "//div[@class='wcfm-message wcfm-error']")
     public WebElement codeInvalidText;
 
     @FindBy(id = "passoword")
-    public WebElement password;
+    public static WebElement password;
 
     @FindBy(id = "confirm_pwd")
     public WebElement confirmPassword;
@@ -48,7 +46,7 @@ public class P14_VendorRegisterPage {
     public WebElement passwordRules;
 
     @FindBy(id = "user_email")
-    public WebElement emailBox;
+    public static WebElement emailBox;
 
     @FindBy(css = "input[placeholder='Verification Code']")
     public WebElement verificationCodeBox;
@@ -60,7 +58,7 @@ public class P14_VendorRegisterPage {
     public WebElement confirmPasswordBox;
 
     @FindBy(id = "wcfm_membership_register_button")
-    public WebElement registerButton;
+    public static WebElement registerButton;
 
     @FindBy(xpath = "//h1[.='Welcome to Allover Commerce!']")
     public WebElement welcomeMessage;
@@ -83,6 +81,25 @@ public class P14_VendorRegisterPage {
     @FindBy(xpath = "(//h1)[2]")
     public WebElement welcomeToAllevorCommerce;
 
+
+    @FindBy(css = ".wcfm-message.wcfm-error")
+    public static WebElement emailWrongText;
+
+    @FindBy(id = "user_email")
+    public WebElement registrationEmail;
+
+    @FindBy(xpath = "//*[.='Please provide a valid email address.']")//Lütfen geçerli bir e-posta adresi girin
+    public static WebElement provideValidEmailText;
+
+
+
+    /*--------  FAKE MAİL WEBELEMENTS   -------------     */
+
+    @FindBy(id = "email")
+    public WebElement fakeEmail;
+}
+
     @FindBy(css= ".wcfm-message.wcfm-error")
     public WebElement emailWrongText;}
+
 
