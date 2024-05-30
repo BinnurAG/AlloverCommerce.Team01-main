@@ -11,11 +11,8 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-<<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us03/TestCase12.java
-public class TestCase12 {
-========
 public class TestCase11 {
->>>>>>>> hcapraz:src/test/java/team01_AlloverCommerceTestNG/tests/us03/TestCase11.java
+
 
     P1_HomePage homePage = new P1_HomePage();
     P4_MyAccountPage myAccountPage = new P4_MyAccountPage();
