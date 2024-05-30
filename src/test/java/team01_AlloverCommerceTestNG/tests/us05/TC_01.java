@@ -5,16 +5,22 @@ import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_05 { //TC_05
+import java.util.Arrays;
+import java.util.List;
+
+
+public class TC_01 {
 
     Pages pages = new Pages();
 
     @Test
-    public void us05Tc05() {
+    public void us05Tc01() {
 
-        //Kullanıcı Account Details (Hesap Detaylarını) Display name Doldurmadan Ekleme Yapamamalı
+        //Kullanıcı Account Details (Hesap Detaylarını) görebilmeli
+
         //Web adresine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
 
@@ -36,25 +42,26 @@ public class TC_05 { //TC_05
         //Account details butonuna tıkla
         ReusableMethods.click(pages.myAccountPage().accountDetailsButton);
 
-        //Kullanıcı First name Geçerli Bir Veri Girişi Yapar
-        pages.accountDetails().detailsFirstNameBox.clear();
-        pages.accountDetails().detailsFirstNameBox.sendKeys("Aisha");
-        ReusableMethods.waitForSecond(2);
+        //Hesap Detayları( First name, Last name, Display name, Email address ve Biography) alanlarını görüntülendiği doğrulanmali
+        //Account Details basliginin goruntulendigini dogrula
+        Assert.assertTrue(pages.accountDetails().myAccountTitle.isDisplayed());
 
-        //Kullanıcı Last name Gecerli Bir Veri Girisi Yapar
-        pages.accountDetails().detailsLastNameBox.clear();
-        pages.accountDetails().detailsLastNameBox.sendKeys("Eksi");
+        //First name basliginin goruntulendigini dogrula
+        Assert.assertTrue(pages.accountDetails().firstNameTitle.isDisplayed());
 
-        //Kullanıcı Display name boş bırak.
-        pages.accountDetails().detailsDisplayNameBox.clear();
+        //Last name basliginin goruntulendigini dogrula
+        Assert.assertTrue(pages.accountDetails().lastNameTitle.isDisplayed());
 
-        //Kullanıcı SAVE CHANGES tıklar.
-        pages.accountDetails().detailsSaveChangesSubmitBox.submit();
+        //Display name basliginin goruntulendigini dogrula
+        Assert.assertTrue(pages.accountDetails().displayNameTitle.isDisplayed());
 
-        //DISPLAY NAME is a required field.
-        Assert.assertTrue(pages.accountDetails().zorunluAlanYazisiDisplayName.isDisplayed());
+        //Email adress name basliginin goruntulendigini dogrula
+        Assert.assertTrue(pages.accountDetails().emailTitle.isDisplayed());
+
+        //Biography basliginin goruntulendigini dogrula
+        Assert.assertTrue(pages.accountDetails().biographyTitle.isDisplayed());
+
         Driver.closeDriver();
+
     }
-
-
 }

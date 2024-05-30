@@ -12,7 +12,7 @@ public class TC_04 { //TC_04
     Pages pages = new Pages();
 
     @Test
-    public void us05Tc03() {
+    public void us05Tc04() {
 
         //Kullanıcı Account Details (Hesap Detaylarını) Last name Doldurmadan Ekleme Yapamamalı
 
@@ -40,8 +40,8 @@ public class TC_04 { //TC_04
         //Kullanıcı First name Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsFirstNameBox.clear();
         pages.accountDetails().detailsFirstNameBox.sendKeys("Ayse");
-
         ReusableMethods.waitForSecond(2);
+
         //Kullanıcı Last name boş bırakır.
         pages.accountDetails().detailsLastNameBox.clear();
 

@@ -12,7 +12,7 @@ public class TC_09 {
     Pages pages = new Pages();
 
     @Test
-    public void us05Tc06() {
+    public void us05Tc09() {
 
         //Kullanıcı Account Details (Hesap Detaylarını) Biography'i Doldurmadan  ve Yeni Şifre Girişi Yapmadan Değişiklik Yapabilmeli
         //Web adresine gidilir
@@ -54,6 +54,8 @@ public class TC_09 {
         pages.accountDetails().detailsTextArea.clear();
         Driver.getDriver().switchTo().parentFrame();
         ReusableMethods.waitForSecond(2);
+
+        //Password change girisi yapmadan gecer
 
         //Kullanıcı SAVE CHANGES tıklar.
         pages.accountDetails().detailsSaveChangesSubmitBox.submit();

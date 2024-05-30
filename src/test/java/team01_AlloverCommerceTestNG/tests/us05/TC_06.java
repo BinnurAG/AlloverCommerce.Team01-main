@@ -12,7 +12,7 @@ public class TC_06 {
     Pages pages = new Pages();
 
     @Test
-    public void us05Tc05() {
+    public void us05Tc06() {
 
         //Kullanıcı Account Details (Hesap Detaylarını) Email address  Doldurmadan Ekleme Yapamamalı
 

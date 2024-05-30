@@ -184,8 +184,6 @@ public class US16 {
 
     }
 
-
-
     @Test(dataProvider = "negativeTestDataForUs16",dataProviderClass = DataProviderUtils.class)
     public void test07(String negativeDataForUS16) {
         // Price bilgisini gir
@@ -226,14 +224,10 @@ public class US16 {
 
     }
 
-
     @AfterMethod
     public void tearDown() {
         //    Driver.getDriver().close();
     }
-
-
-
 
 }
 

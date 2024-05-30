@@ -12,7 +12,7 @@ public class TC_03 {       // TC-03
     Pages pages = new Pages();
 
     @Test
-    public void us05Tc02() {
+    public void us05Tc03() {
 
         //Kullanıcı Account Details (Hesap Detaylarını) First Name Doldurmadan Ekleme Yapamamalı
 

@@ -94,6 +94,12 @@ public class P6_AccountDetails {
     @FindBy(linkText = "Account details")
     public WebElement accountDetailsLink;
 
+    @FindBy(linkText = "My Account")
+    public WebElement myAccountTitle;
+
+    @FindBy(linkText = "Account Details")
+    public WebElement accountDetailsTitle;
+
     //Account Details First Name Box
     @FindBy(id = "account_first_name")
     public WebElement detailsFirstNameBox;
@@ -149,6 +155,22 @@ public class P6_AccountDetails {
     //EMAIL ADDRESS is a required field. alan yazısı
     @FindBy(xpath = "//li[@data-id='account_email']")
     public WebElement zorunluAlanYazisiEmail;
+
+    @FindBy(xpath = "(//label)[1]")
+    public WebElement firstNameTitle;
+
+    @FindBy(xpath = "(//label)[1]")
+    public WebElement lastNameTitle;
+
+    @FindBy(xpath = "(//label)[3]")
+    public WebElement displayNameTitle;
+
+    @FindBy(xpath = "(//label)[4]")
+    public WebElement emailTitle;
+
+    @FindBy(xpath = "(//label)[5]")
+    public WebElement biographyTitle;
+
 
 //----------------------------------------------------------------
 }
