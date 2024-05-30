@@ -71,13 +71,16 @@ public class P14_VendorRegisterPage {
 
     @FindBy(xpath = "//*[.='Registration Successfully Completed.']")
     public WebElement registrationSuccessMessage;
+  
     @FindBy(xpath = "//div[.='Password and Confirm-password are not same.']")
     public WebElement PasswordAndConfirmPasswordAreNotMessage;
+  
     @FindBy(id = "password_strength")
     public WebElement passwordWrongMessage;
 
     @FindBy(xpath = "(//h1)[2]")
     public WebElement welcomeToAllevorCommerce;
+
 
     @FindBy(css = ".wcfm-message.wcfm-error")
     public static WebElement emailWrongText;
@@ -95,3 +98,8 @@ public class P14_VendorRegisterPage {
     @FindBy(id = "email")
     public WebElement fakeEmail;
 }
+
+    @FindBy(css= ".wcfm-message.wcfm-error")
+    public WebElement emailWrongText;}
+
+

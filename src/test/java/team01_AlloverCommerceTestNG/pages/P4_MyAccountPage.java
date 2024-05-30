@@ -52,4 +52,11 @@ public class P4_MyAccountPage {
     @FindBy(xpath = "//h4[.='Downloads']")
     public WebElement dowloadsButtonTitle;
 
+    @FindBy(xpath = "//h2[.='My Account']")
+    public WebElement myAccountTitle;
+
+    @FindBy(xpath = "//a[text()='Browse products']")
+    public WebElement browseProduct;
+
+
 }
