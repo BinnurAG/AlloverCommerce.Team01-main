@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.tests.us01Register;
 
 import com.github.javafaker.Faker;
@@ -14,7 +15,7 @@ public class TC_01 {
     Faker faker = new Faker();
 
     @Test(description = "US01 - TC01 The user should be able to register with valid data")
-    public void registrationTest() {
+    public void positiveRegistrationTest() {
 //        1	Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 //        2	Register linkine tıkla
@@ -22,7 +23,7 @@ public class TC_01 {
 //        3	Username alanına bir veri gir
         p2_registerPage.userName.sendKeys(faker.name().username());
 //        4	Your Email address alanına bir veri gir
-       p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
+        p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
 //        5	Password alanına bir veri gir
         p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
         //       6	I agree to the privacy policy kontrol kutusunu seç
@@ -31,7 +32,7 @@ public class TC_01 {
         p2_registerPage.submitButton.click();
 //        8	Anasayfanın açıldığını ve Sign Out linkinin göründüğünü doğrula
         Assert.assertTrue(p2_registerPage.signOut.isDisplayed());
-        //Driver.closeDriver();
+        Driver.closeDriver();
     }
 
 }

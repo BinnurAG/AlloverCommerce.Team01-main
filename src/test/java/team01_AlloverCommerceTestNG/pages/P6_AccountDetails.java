@@ -7,7 +7,6 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 
 public class P6_AccountDetails {
 
-
     public P6_AccountDetails() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
@@ -90,6 +89,7 @@ public class P6_AccountDetails {
     @FindBy(xpath = "//p[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
     public static WebElement orderReceived;
 
+
     // US 05 Account Details(aysebetul) ---------------------------------
     @FindBy(linkText = "Account details")
     public WebElement accountDetailsLink;
@@ -119,6 +119,7 @@ public class P6_AccountDetails {
     //Account Details Text Area (bunu kullanmadan önce swichTo ile iframe'e geçin)
     @FindBy(id = "tinymce")
     public WebElement detailsTextArea;
+
 
     //Account Details Current Password Box
     @FindBy(id = "password_current")
@@ -172,5 +173,9 @@ public class P6_AccountDetails {
     public WebElement biographyTitle;
 
 
+
 //----------------------------------------------------------------
 }
+
+
+

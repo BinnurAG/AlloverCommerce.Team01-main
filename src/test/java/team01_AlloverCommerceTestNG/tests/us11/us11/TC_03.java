@@ -1,5 +1,10 @@
+<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/TC_03.java
 package team01_AlloverCommerceTestNG.tests.us11.us11;
 
+=======
+
+package team01_AlloverCommerceTestNG.tests.us11;
+>>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/TC_03.java
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
@@ -34,6 +39,9 @@ public class TC_03 {
         Driver.getDriver().close();
 
     }
+<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/TC_03.java
 
 
+=======
+>>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/TC_03.java
 }
