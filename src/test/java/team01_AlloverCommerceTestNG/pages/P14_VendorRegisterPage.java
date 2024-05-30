@@ -99,7 +99,8 @@ public class P14_VendorRegisterPage {
     public WebElement fakeEmail;
 }
 
-    @FindBy(css= ".wcfm-message.wcfm-error")
-    public WebElement emailWrongText;}
+    //@FindBy(css= ".wcfm-message.wcfm-error")
+   // public WebElement emailWrongText;
+
 
 

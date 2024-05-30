@@ -8,6 +8,7 @@ import org.testng.asserts.SoftAssert;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.*;
 
+import javax.swing.text.Utilities;
 import java.awt.datatransfer.StringSelection;
 
 public class TC02_UrunFotografiEkleme { //Ürün fotoğrafı eklenebilmeli (öne çıkan ürün fotoğrafı) PASS
@@ -38,49 +39,52 @@ public class TC02_UrunFotografiEkleme { //Ürün fotoğrafı eklenebilmeli (öne
         // Add New butonuna tıkla.
         allPages.vendorStoreManagerPage().addNew2.click();
 
-        //Simple product menuye kadar scroll yap.
-        ReusableMethods.scroll(allPages.vendorProductManagerPage().dropdownSimpleProduct);
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().uploadPhoto);
 
         // Add Product sayfasına geldiğini doğrula.
         WebElement actualResultText = allPages.vendorStoreManagerPage().addProductVerify;
         softAssert.assertTrue(actualResultText.isDisplayed());
+        WaitUtils.waitFor(1);
 
     }
+
 
     @Test
     public void test01() {
+
         //Açılan sayfanın sağ üst köşesindeki boş resim ikonuna tıkla.
         allPages.vendorProductManagerPage().uploadPhoto.click();
-    }
+        WaitUtils.waitForPageToLoad(10);
 
-    @Test
-    public void test02() {
-        //Upload fıles butonuna tıkla.
-        allPages.vendorProductManagerPage().uploadFilesButton.click();
-    }
-
-    @Test
-    public void test03() {
         //Select files butonuna tıkla.
         allPages.vendorProductManagerPage().selectFiles.click();
-    }
 
-    @Test
-    public void test04() {
         //Açılan dosyadan uygun formatta olan ürün fotoğrafını seç ve aç butonuna tıkla.
+        String fotografDosyasiUpload = System.getProperty("user.home")+"\\Downloads\\Photo.jpg";
+        ReusableMethods.uploadFilePath(fotografDosyasiUpload);
 
-    }
+        WaitUtils.waitForClickablility(allPages.vendorProductManagerPage().selectButton, 8);
 
-    @Test
-    public void test05() {
         //Media Library alanına gelen fotoğrafı, sağ alt köşedeki select butonuna basarak ekle.
         allPages.vendorProductManagerPage().selectButton.click();
-    }
 
-    @Test
-    public void test06() {
+        WaitUtils.waitForClickablility(allPages.vendorProductManagerPage().uploadPhoto, 10);
+
         //Ürün fotoğrafı eklendiğini doğrula.
+        allPages.vendorProductManagerPage().uploadPhoto.click();
         allPages.vendorProductManagerPage().filesVerify.isDisplayed();
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
