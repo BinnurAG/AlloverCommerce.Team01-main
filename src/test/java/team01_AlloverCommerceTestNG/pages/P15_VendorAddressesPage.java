@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.pages;
 
 import org.openqa.selenium.WebElement;
@@ -33,7 +34,7 @@ public class P15_VendorAddressesPage {
 
 
 
-//mustafameric
+    //mustafameric
     @FindBy(xpath = "//*[@id='wcfm_membership_register_button']")
     public WebElement submitBecomeVendor;
 

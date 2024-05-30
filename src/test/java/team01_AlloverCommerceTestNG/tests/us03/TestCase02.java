@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.tests.us03;
 
 
@@ -21,7 +22,7 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class TestCase02 {
 
-        Pages allpages = new Pages();
+    Pages allpages = new Pages();
 
     @BeforeMethod
     public void beforeMethod(){
@@ -35,7 +36,7 @@ public class TestCase02 {
         allpages.addressesPage().firstNameB.sendKeys(ConfigReader.getProperty("firstNameUs03"));
         allpages.addressesPage().lastNameB.sendKeys(ConfigReader.getProperty("lastNameUS03"));
 
-        
+
 
     }
 

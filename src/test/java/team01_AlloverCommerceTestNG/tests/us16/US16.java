@@ -150,11 +150,11 @@ public class US16 {
 
         //SELECT FILES kutusu tikla
 
-       // Acilan sekmede resmin bulundugu yerden urune ait bir resim dosyasi sec
+        // Acilan sekmede resmin bulundugu yerden urune ait bir resim dosyasi sec
 
-      // Sag alt kosedeki SELECT kutusuna tikla
+        // Sag alt kosedeki SELECT kutusuna tikla
 
-      //  Resim kisminin altinda bulunan kucuk resim kisminin uzerine tikla (galery image)
+        //  Resim kisminin altinda bulunan kucuk resim kisminin uzerine tikla (galery image)
 
         //Acilan Add to Galery bolumunden Upload files kutusunun uzerine tikla
 
@@ -221,4 +221,3 @@ public class US16 {
 
 
 }
-

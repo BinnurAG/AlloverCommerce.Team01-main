@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.tests.us01Register;
 
 import com.github.javafaker.Faker;
@@ -22,7 +23,7 @@ public class TC_01 {
 //        3	Username alanına bir veri gir
         p2_registerPage.userName.sendKeys(faker.name().username());
 //        4	Your Email address alanına bir veri gir
-       p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
+        p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
 //        5	Password alanına bir veri gir
         p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
         //       6	I agree to the privacy policy kontrol kutusunu seç

@@ -80,7 +80,7 @@ public class TC03 extends ReusableMethods {
 
         //ReusableMethods.ddmIndex(p20VendorCouponsPage.discountType,0);
         //extentTest.info("Percentage Discount was selected.");
-       //actions.sendKeys(Keys.PAGE_DOWN).perform();
+        //actions.sendKeys(Keys.PAGE_DOWN).perform();
 
         waitForSecond(2);
 

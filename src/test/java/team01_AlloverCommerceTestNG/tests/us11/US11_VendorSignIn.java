@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.tests.us11;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -11,7 +12,7 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class US11_VendorSignIn {
 
-   // @Listeners(team01_AlloverCommerceTestNG.utilities.Listeners.class)
+    // @Listeners(team01_AlloverCommerceTestNG.utilities.Listeners.class)
 
     Pages allPages = new Pages();
     @BeforeMethod
@@ -174,7 +175,7 @@ public class US11_VendorSignIn {
 
         //Giris isleminin gerceklesmedigini dogrula
         Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
-       // Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
+        // Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
 
     }  //fail
 
@@ -195,7 +196,7 @@ public class US11_VendorSignIn {
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
         //My Account sayfasinin goruntulendigini dogrula
-       Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
+        Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
 
     }
 
