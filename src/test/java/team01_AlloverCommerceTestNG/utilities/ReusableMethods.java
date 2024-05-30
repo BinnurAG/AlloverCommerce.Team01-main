@@ -151,17 +151,17 @@ public class ReusableMethods {
     //Tüm sayfa screenshoti rapora ekleme
 
 
-     public static void addScreenShotToReport() {
-         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-         String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
-         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
-         try {
-             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
-             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
-         } catch (IOException e) {
-             throw new RuntimeException(e);
-         }
-     }
+    public static void addScreenShotToReport() {
+        String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
+        String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
+        TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+        try {
+            Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
+            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     //webelement screenshot rapora ekleme
@@ -368,6 +368,13 @@ public class ReusableMethods {
     public static void logOut(){
         ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewCoupon);
         allPages.vendorProductManagerPage().addNewCoupon.submit();
+
+    } //Arkadaslar bu method ismi yanlis olmus herhalde kimse kullanmiyor ise once yoruma alinip kimsede hata olusmaz ise silinebilir
+
+    public static void logOutClick(){
+        allPages.homePage().signOutButton.click();
+        allPages.myAccountPage().logoutButton.click();
+
     }
 
     public static void signInUS0304(){
@@ -395,7 +402,7 @@ public class ReusableMethods {
 
     }
 
-    public void deleteProduct(int repeatCount) {
+    public static void deleteProduct(int repeatCount) {
 
         for (int i = 0; i < repeatCount; i++) {
             click(allPages.comparePage().productDeleteIcon);
@@ -408,6 +415,7 @@ public class ReusableMethods {
             click(allPages.comparePage().productDeleteIconInCompareScreen);
             waitForClickablility(allPages.comparePage().productDeleteIconInCompareScreen, 15);
         }
+
     }
 
 

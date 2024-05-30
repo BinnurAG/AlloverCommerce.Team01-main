@@ -79,12 +79,3 @@ public class TC02_UrunFotografiEkleme { //Ürün fotoğrafı eklenebilmeli (öne
 
 
 
-
-
-
-
-
-
-
-
-

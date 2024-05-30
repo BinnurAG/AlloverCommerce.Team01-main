@@ -1,4 +1,10 @@
+<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/TC_12.java
+package team01_AlloverCommerceTestNG.tests.us11.us11;
+
+=======
+
 package team01_AlloverCommerceTestNG.tests.us11;
+>>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/TC_09.java
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
@@ -6,19 +12,21 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_15 {
+public class TC_12 {
     Pages allPages = new Pages();
-    @Test
-    public void tc15() {
 
-        // Siteye ulaşılmalı
+    @Test
+    public void tc12() {
+
+        // Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
+        //Sing in butonuna tikla
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-        // Kayıtlı bir email adresi girilmeli
+
+        // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Kayıtlı password girilmeli
@@ -30,9 +38,14 @@ public class TC_15 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
-        //Dashboard altında Log out  menüsüne girildiğini doğrula
-        ReusableMethods.click(allPages.myAccountPage().logoutButton);
-        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
+        //Dowloads butonuna tıkla
+        ReusableMethods.click(allPages.myAccountPage().dowloadsButton);
+
+        //Downloads başlığının görüldüğünü doğrula
+        Assert.assertTrue(allPages.myAccountPage().dowloadsButtonTitle.isDisplayed());
+        ReusableMethods.logOutClick();
 
     }
+
 }
+

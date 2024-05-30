@@ -78,10 +78,10 @@ public class TC09 extends ReusableMethods {
         ReusableMethods.click(p20VendorCouponsPage.couponButton);
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-       ReusableMethods.waitForClickablility(p20VendorCouponsPage.couponCode, 10);
+        ReusableMethods.waitForClickablility(p20VendorCouponsPage.couponCode, 10);
 
-       Assert.assertEquals(p20VendorCouponsPage.couponCode.getText(), newCoupon);
-       ReusableMethods.scroll(p20VendorCouponsPage.couponCode);
+        Assert.assertEquals(p20VendorCouponsPage.couponCode.getText(), newCoupon);
+        ReusableMethods.scroll(p20VendorCouponsPage.couponCode);
         extentTest.info(reportMessage);
         Driver.closeDriver();
 

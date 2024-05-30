@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,6 +29,3 @@ public class P16_VendorStoreManagerPage {
 
 
 }
-
-
-

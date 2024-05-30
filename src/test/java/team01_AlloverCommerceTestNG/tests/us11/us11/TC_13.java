@@ -1,4 +1,10 @@
+<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/TC_13.java
+package team01_AlloverCommerceTestNG.tests.us11.us11;
+
+=======
+
 package team01_AlloverCommerceTestNG.tests.us11;
+>>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/TC_10.java
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
@@ -8,6 +14,7 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class TC_13 {
     Pages allPages = new Pages();
+
     @Test
     public void tc13() {
 
@@ -30,11 +37,14 @@ public class TC_13 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
-        //Support tickets butonuna tıkla
-        ReusableMethods.click(allPages.myAccountPage().supportTicketsButton);
+        //Addresses butonuna tıkla
+        ReusableMethods.click(allPages.myAccountPage().addressesButton);
 
-        //Ticket(s) başlığı görülmeli
-        Assert.assertTrue(allPages.myAccountPage().supportTicketsButtonTicketsText.isDisplayed());
-
+        //Addresses başlığı görüldüğünü doğrula
+        Assert.assertTrue(allPages.vendorAddressesPage().addressesTitle.isDisplayed());
+        Driver.getDriver().close();
     }
+
+
 }
+
