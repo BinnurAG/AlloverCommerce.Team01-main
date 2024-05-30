@@ -16,6 +16,16 @@ public class P16_VendorStoreManagerPage {
     @FindBy(xpath = "//h2[.='Store Manager']")
     public WebElement storeManagerTitle;
 
+    @FindBy(linkText = "Store Manager")
+    public WebElement storeManagerLink;
+
+    @FindBy(linkText = "Add New")
+    public WebElement addNew2;
+
+    @FindBy(xpath = "//h2[.='Add Product']")
+    public WebElement addProductVerify;
+
+
 
 }
 
