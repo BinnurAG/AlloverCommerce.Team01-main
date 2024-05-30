@@ -387,13 +387,9 @@ public class ReusableMethods {
         allPages.addressesPage().addressesButton.click();
         Assert.assertTrue(allPages.addressesPage().billingAddress.isDisplayed());
 
-        try {
-            allPages.addressesPage().addButonuB.click();
-        } catch (Exception e) {
-            allPages.addressesPage().editButonB.click();
-        }
-
     }
+
+
 
     public void deleteProduct(int repeatCount) {
 
