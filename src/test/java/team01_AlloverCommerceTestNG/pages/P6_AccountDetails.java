@@ -90,25 +90,92 @@ public class P6_AccountDetails {
     public static WebElement orderReceived;
 
 
+    // US 05 Account Details(aysebetul) ---------------------------------
+    @FindBy(linkText = "Account details")
+    public WebElement accountDetailsLink;
+
+    @FindBy(linkText = "My Account")
+    public WebElement myAccountTitle;
+
+    @FindBy(linkText = "Account Details")
+    public WebElement accountDetailsTitle;
+
+    //Account Details First Name Box
+    @FindBy(id = "account_first_name")
+    public WebElement detailsFirstNameBox;
+
+    //Account Details Last Name Box
+    @FindBy(id = "account_last_name")
+    public WebElement detailsLastNameBox;
+
+    //Account Details Display Name Box
+    @FindBy(id = "account_display_name")
+    public WebElement detailsDisplayNameBox;
+
+    //Account Details Email Box
+    @FindBy(id = "account_email")
+    public WebElement detailsEmailBox;
+
+    //Account Details Text Area (bunu kullanmadan önce swichTo ile iframe'e geçin)
+    @FindBy(id = "tinymce")
+    public WebElement detailsTextArea;
+
+
+    //Account Details Current Password Box
+    @FindBy(id = "password_current")
+    public WebElement detailsCurrentPasswordBox;
+
+    //Account Details New Password Box
+    @FindBy(id = "password_1")
+    public WebElement detailsNewPasswordBox;
+
+    //Account Details Confirm Password Box
+    @FindBy(id = "password_2")
+    public WebElement detailsConfirmPasswordBox;
+
+    //Account Details Save Changes Submit Box
+    @FindBy(xpath = "//*[.='Save changes']")
+    public WebElement detailsSaveChangesSubmitBox;
+
+    //Account details changed successfully. Doğrulama yazısı
+    @FindBy(xpath = "//div[@role='alert']")
+    public WebElement detailsSuccessfully;
+
+    //FIRST NAME is a required field. zorunlu alan yazısı
+    @FindBy(xpath = "//li[@data-id='account_first_name']")
+    public WebElement zorunluAlanYazisiFirstName;
+
+    //LAST NAME is a required field. zorunlu alan yazısı
+    @FindBy(xpath = "//li[@data-id='account_last_name']")
+    public WebElement zorunluAlanYazisiLastName;
+
+    //DISPLAY NAME is a required field. alan yazısı
+    @FindBy(xpath = "//li[@data-id='account_display_name']")
+    public WebElement zorunluAlanYazisiDisplayName;
+
+    //EMAIL ADDRESS is a required field. alan yazısı
+    @FindBy(xpath = "//li[@data-id='account_email']")
+    public WebElement zorunluAlanYazisiEmail;
+
+    @FindBy(xpath = "(//label)[1]")
+    public WebElement firstNameTitle;
+
+    @FindBy(xpath = "(//label)[1]")
+    public WebElement lastNameTitle;
+
+    @FindBy(xpath = "(//label)[3]")
+    public WebElement displayNameTitle;
+
+    @FindBy(xpath = "(//label)[4]")
+    public WebElement emailTitle;
+
+    @FindBy(xpath = "(//label)[5]")
+    public WebElement biographyTitle;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//----------------------------------------------------------------
 }
-
-
-
 
 
 

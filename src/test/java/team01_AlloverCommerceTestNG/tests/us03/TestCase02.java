@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.tests.us03;
 
 
@@ -22,7 +23,7 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class TestCase02 {
 
-        Pages allpages = new Pages();
+    Pages allpages = new Pages();
 
     @BeforeMethod
     public void beforeMethod(){
@@ -54,7 +55,6 @@ public class TestCase02 {
 
         Assert.assertEquals(actualFirstName, expectedFirstName, "First name does not match!");
         Assert.assertEquals(actualLastName, expectedLastName, "Last name does not match!");
-
 
 
 

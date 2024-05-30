@@ -63,7 +63,7 @@ public class TC05 extends ReusableMethods {
         extentTest.info("Add New was clicked to add the coupon..");
 
         waitForSecond(2);
-       actions.sendKeys(Keys.PAGE_DOWN).perform();
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
         couponAmount.clear();
         couponAmount.sendKeys("30");
         extentTest.pass("CouponAmount cleared the partition and number 30 was written.");

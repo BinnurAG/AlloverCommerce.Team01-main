@@ -70,10 +70,7 @@
             <version>2.17.2</version>
         </dependency>
 
-
-
         <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
-
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
@@ -81,11 +78,29 @@
         </dependency>
 
 
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>4.0.9</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+
+
+
+
+
 
 
 
     </dependencies>
-
 
 
 

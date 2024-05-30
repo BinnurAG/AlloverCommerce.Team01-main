@@ -75,7 +75,7 @@ public class TC10 extends ReusableMethods {
         String couponExpireDateValue = p20VendorCouponsPage.expiryDate.getAttribute("value");
         LocalDate expireDate = LocalDate.parse(couponExpireDateValue);
         LocalDate currentDate = LocalDate.now();
-       extentTest.fail("It has been checked whether a date earlier than today can be entered in the Coupon expiry date field..");
+        extentTest.fail("It has been checked whether a date earlier than today can be entered in the Coupon expiry date field..");
 
         try {
             Assert.assertTrue(expireDate.isBefore(currentDate));

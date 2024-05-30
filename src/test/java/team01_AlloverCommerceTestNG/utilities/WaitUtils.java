@@ -8,7 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class WaitUtils {
+public class
+WaitUtils {
 
     /**
      * Yeni bir sayfa açıldığında sayfanın tamamen yüklenmesini bekler.

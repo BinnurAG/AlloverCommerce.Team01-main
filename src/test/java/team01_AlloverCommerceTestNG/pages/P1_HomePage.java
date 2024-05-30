@@ -30,13 +30,13 @@ public class P1_HomePage {
 
     @FindBy(xpath = "//a[.='Become a Vendor']")
     public WebElement becomeAVendorButton;
-  
+
     @FindBy(xpath = "//h2[.='Vendor Registration']")
     public WebElement VendorRegistrationText;
-  
+
     @FindBy(xpath = "//h3[.='MY ACCOUNT']")
     public WebElement myAccountText;
-  
+
     @FindBy(xpath = "//span[.='Sign Out']")
     public WebElement signOut;
 
