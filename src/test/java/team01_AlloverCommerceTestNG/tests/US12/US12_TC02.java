@@ -1,7 +1,6 @@
-package team01_AlloverCommerceTestNG.tests;
+package team01_AlloverCommerceTestNG.tests.US12;
 
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,9 +25,9 @@ public class US12_TC02 {
 
         //3-Vendor hesabiyla giris yap
         //email girisi
-        p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmail"));
+        p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmailms"));
         //password girisi
-        p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPassword"));
+        p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPasswordms"));
         //submit butonuna tiklanir
         p15VendorAddressesPage.submit.click();
 
@@ -43,7 +42,7 @@ public class US12_TC02 {
         ReusableMethods.scroll(p15VendorAddressesPage.billingAdress);
         ReusableMethods.waitForSecond(7); //pop up hata verdigi icin bekletiyoruz
 
-        //6-Billing Adress kismindaki Add sekmesini tikla
+        //6-Billing AdressEdit kismindaki Add sekmesini tikla
         p15VendorAddressesPage.billingAddressEdit.click();
         // ReusableMethods.scroll(p15VendorAddressesPage.billingEmailAdresBox);
 

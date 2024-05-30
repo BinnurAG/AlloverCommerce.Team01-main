@@ -1,4 +1,4 @@
-package team01_AlloverCommerceTestNG.tests;
+package team01_AlloverCommerceTestNG.tests.US12;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -23,9 +23,9 @@ public class US12_TC01 {
 
             //3-Vendor hesabiyla giris yap
             //email girisi
-            p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmail"));
+            p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmailms"));
             //password girisi
-            p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPassword"));
+            p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPasswordms"));
             //submit butonuna tiklanir
             p15VendorAddressesPage.submit.click();
 
