@@ -22,9 +22,15 @@ public class US12_TC03 {
 
         //3-Vendor hesabiyla giris yap
         //email girisi
+
         p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmailms"));
         //password girisi
         p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPasswordms"));
+
+        p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmails"));
+        //password girisi
+        p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPasswords"));
+
         //submit butonuna tiklanir
         p15VendorAddressesPage.submit.click();
 
@@ -48,6 +54,8 @@ public class US12_TC03 {
         Assert.assertEquals( p15VendorAddressesPage.billingFirstNameBox.getAttribute("value"),"Zeid");
         Assert.assertEquals( p15VendorAddressesPage.billingLastNameBox.getAttribute("value"),"Duoat");
         Assert.assertEquals( p15VendorAddressesPage.billingEmailAdresBox.getAttribute("value"),"eshawn.kolden@floodouts.com");
+
+        Driver.closeDriver();
 
     }
 }

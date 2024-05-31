@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.pages;
 
 import org.openqa.selenium.WebElement;
@@ -5,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+
+import java.util.List;
 
 public class P15_VendorAddressesPage {
     public P15_VendorAddressesPage() {
@@ -33,7 +36,7 @@ public class P15_VendorAddressesPage {
 
 
 
-//mustafameric
+    //mustafameric
     @FindBy(xpath = "//*[@id='wcfm_membership_register_button']")
     public WebElement submitBecomeVendor;
 
@@ -189,6 +192,12 @@ public class P15_VendorAddressesPage {
 
     @FindBy(xpath = "//*[text()='Account details']")
     public WebElement wishlistShipping;
+
+
+    @FindBy(xpath = "//input[@class='input-text ']")
+    public List<WebElement> shippingAdressForm;
+
+
 
 
 

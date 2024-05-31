@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.pages;
 
 import org.openqa.selenium.WebElement;
@@ -107,6 +108,30 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//*[@id='coupon_amount']")
     public  WebElement couponAmountBox;
 
+    @FindBy(xpath = "//*[@id=\"menu-item-upload\"][2]")
+    public WebElement uploadFilesButton;
+
+    @FindBy(className = "load-more-count")
+    public WebElement filesVerify;
+
+
+    @FindBy(id = "tinymce")
+    public WebElement description;
+
+    @FindBy(xpath = "//ul[@id = 'product_cats_checklist']")
+    public WebElement productCategories;
+
+    @FindBy(xpath = "//input[@value=\"1283\"]")
+    public WebElement categoriesBox;
+
+    @FindBy(xpath = "//*[.='+Add new category']")
+    public WebElement newCategoriesButton;
+
+    @FindBy(id = "wcfm_new_cat")
+    public WebElement CategoriesBox;
+
+    @FindBy(xpath = "//button[@type='button' and @data-taxonomy='product_cat']")
+    public WebElement addNewCategories;
+
 
 }
-

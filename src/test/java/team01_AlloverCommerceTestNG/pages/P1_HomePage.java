@@ -4,8 +4,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class P1_HomePage {
+
+    public ReusableMethods singInButton;
 
     public P1_HomePage() {
 
@@ -30,13 +33,13 @@ public class P1_HomePage {
 
     @FindBy(xpath = "//a[.='Become a Vendor']")
     public WebElement becomeAVendorButton;
-  
+
     @FindBy(xpath = "//h2[.='Vendor Registration']")
     public WebElement VendorRegistrationText;
-  
+
     @FindBy(xpath = "//h3[.='MY ACCOUNT']")
     public WebElement myAccountText;
-  
+
     @FindBy(xpath = "//span[.='Sign Out']")
     public WebElement signOut;
 

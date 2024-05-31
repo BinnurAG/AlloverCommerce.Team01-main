@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <listeners>
+        <listener class-name="team01_AlloverCommerceTestNG.utilities.ExtentReportsListener"></listener>
+    </listeners>
+
+    <!--Yaptigimiz configurasyonlar sayesinde buraya yazacağımız ismi rapora ismine dynamic olarak
+       yansitabiliyoruz-->
+    <test name="us07">
+        <packages>
+            <package name="team01_AlloverCommerceTestNG.tests.us07"></package>
+        </packages>
+    </test>
+</suite>
+
+        <!-- ctrl + / ile yorum satiri ekeleyebilirsiinz-->

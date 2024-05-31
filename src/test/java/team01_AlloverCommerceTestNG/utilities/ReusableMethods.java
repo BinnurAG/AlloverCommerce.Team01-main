@@ -3,7 +3,6 @@ package team01_AlloverCommerceTestNG.utilities;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -32,12 +31,14 @@ import static team01_AlloverCommerceTestNG.pages.P12_ComparePage.userNameArea;
 import static team01_AlloverCommerceTestNG.pages.P6_AccountDetails.*;
 import static team01_AlloverCommerceTestNG.utilities.Driver.getDriver;
 
+import static team01_AlloverCommerceTestNG.utilities.Driver.getDriver;
+
 public class ReusableMethods {
     static Pages allPages = new Pages();
 
     protected ExtentReports extentReports;
     protected ExtentHtmlReporter extentHtmlReporter;
-    protected ExtentTest extentTest;
+    protected static ExtentTest extentTest;
 
 
     //HARD WAIT METHOD
@@ -139,21 +140,22 @@ public class ReusableMethods {
 
     public static void   screenShotOfWebElement(WebElement webElement){
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format( LocalDateTime.now() );
-        String dosyaYolu = System.getProperty("user.dir") + "src/test/java/team01_AlloverCommerceTestNG/resources/WEbElementScreenshots" +  date + ".png";
+        String dosyaYolu = System.getProperty("user.dir") + "src/test/java/team01_AlloverCommerceTestNG/testOutPuts/WebElementScreenShots" +  date + ".png";
         try {
             Files.write(  Paths.get(dosyaYolu) , webElement.getScreenshotAs(OutputType.BYTES) );
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-     //extent rapora ekran goruntusu ekleme
+    //extent rapora ekran goruntusu ekleme
     //Tüm sayfa screenshoti rapora ekleme
-    public void addScreenShotToReport() {
 
+
+    public static void addScreenShotToReport() {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-
         String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+
        // String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
         String path1 = "src\\test\\java\\screenshots\\NEW" + date + ".png";
@@ -167,25 +169,26 @@ public class ReusableMethods {
         }
     }
 
+
     //webelement screenshot rapora ekleme
-    public void addScreenShotOfWebElementToReport(WebElement webElement) {
-
+    public static void addScreenShotOfWebElementToReport(WebElement webElement) {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
-
         String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
+
 
         //String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
         //Burada Mac ve windows kullanicilari farkli path kullanmali
         String path3 = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
    
 
+
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
+            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
     //WebTable
     public static void printData(int satir, int sutun) {
         WebElement satirSutun = getDriver().findElement(By.xpath("(//tbody)[1]//tr[" + satir + "]//td[" + sutun + "]"));
@@ -246,7 +249,7 @@ public class ReusableMethods {
     }
 
     public void createExtentReport(String testName, String qaName, String name) {
-        
+
         //Bu objecti raporlari olusturmak ve yönetmek icin kullanacağız
         extentReports = new ExtentReports();
 
@@ -274,7 +277,7 @@ public class ReusableMethods {
     }
 
     //File Upload Robot Class
-    public void uploadFilePath(String dosyaYolu) {
+    public static void uploadFilePath(String dosyaYolu) {
         try {
             waitForSecond(3); // 3 saniye bekletir. Bu, kodun başka işlemler için hazır olmasını sağlar.
             StringSelection stringSelection = new StringSelection(dosyaYolu);
@@ -301,26 +304,28 @@ public class ReusableMethods {
         }
     }
 
-    public void loginToSite() {
+    public static void loginToSite() {
         // 1. Web sitesine git
         getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
         // 2. Sign In butonuna tıkla
-        click(
-                signIn);
+        visibleWait(allPages.accountDetails().signIn, 5);
+        waitForClickablility(allPages.accountDetails().signIn, 15);
+        click(allPages.accountDetails().signIn);
 
         // 3. Username or email address kutusuna geçerli bir email adresi gir
-        userNameArea.sendKeys(ConfigReader.getProperty("myEmail"));
+        visibleWait(allPages.accountDetails().userNameArea, 40);
+        allPages.accountDetails().userNameArea.sendKeys(ConfigReader.getProperty("myEmail"));
 
         // 4. Password alanına geçerli bir password gir
-        passwordArea.sendKeys(ConfigReader.getProperty("myPassword"));
+        allPages.accountDetails().passwordArea.sendKeys(ConfigReader.getProperty("myPassword"));
 
         // 5. Sign In butonuna tıkla
-        click(signInButton);
-        visibleWait(signOut, 5);
+        click(allPages.accountDetails().signInButton);
+        visibleWait(allPages.accountDetails().signOut, 5);
     }
 
-    public static void vendorRegisterEmail(){
+      public static void vendorRegisterEmail(){
         getDriver().switchTo().newWindow(WindowType.TAB);
         getDriver().get("https://www.fakemail.net/");
         String email= getDriver().findElement(By.id("email")).getText();
@@ -361,20 +366,18 @@ public class ReusableMethods {
 
     }
 
-    protected void searchProductAndShowAsList(String searchTerm) {
-        searchBox.sendKeys(searchTerm, Keys.ENTER);
-        visibleWait(searchResults, 5);
-        click(showResultsAsListIcon);
-        visibleWait(compareIcon, 10);
-        click(compareIcon);
+    public static void searchProductAndShowAsList(String searchTerm) {
+        allPages.accountDetails().searchBox.sendKeys(searchTerm, Keys.ENTER);
+        visibleWait(allPages.accountDetails().searchResults, 5);
+        click(allPages.comparePage().showResultsAsListIcon);
     }
 
-    public void AddNewProduct(int repeatCount) {
+    public static void AddNewProduct(int repeatCount) {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         for (int i = 0; i < repeatCount; i++) {
-            js.executeScript("arguments[0].remove();", comparePopup);
-            visibleWait(compareIcon, 5);
-            click(compareIcon);
+            js.executeScript("arguments[0].remove();", allPages.comparePage().comparePopup);
+            visibleWait(allPages.comparePage().compareIcon, 5);
+            click(allPages.comparePage().compareIcon);
         }
     }
 
@@ -382,6 +385,13 @@ public class ReusableMethods {
     public static void logOut(){
         ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewCoupon);
         allPages.vendorProductManagerPage().addNewCoupon.submit();
+
+    } //Arkadaslar bu method ismi yanlis olmus herhalde kimse kullanmiyor ise once yoruma alinip kimsede hata olusmaz ise silinebilir
+
+    public static void logOutClick(){
+        allPages.homePage().signOutButton.click();
+        allPages.myAccountPage().logoutButton.click();
+
     }
 
     public static void signInUS0304(){
@@ -399,25 +409,28 @@ public class ReusableMethods {
         allPages.addressesPage().signOut.click();
 
         allPages.addressesPage().addressesButton.click();
-        //Assert.assertTrue(addressesPage.billingAddress.isDisplayed());
         Assert.assertTrue(allPages.addressesPage().billingAddress.isDisplayed());
 
-        allPages.addressesPage().addButonuB.click();
     }
 
-    public void deleteProduct(int repeatCount) {
+    public static void deleteProduct(int repeatCount) {
+
+
         for (int i = 0; i < repeatCount; i++) {
-            click(productDeleteIcon);
+            click(allPages.comparePage().productDeleteIcon);
             waitForSecond(2);
         }
     }
 
-    public void deleteProductFromCompareScreen(int repeatCount) {
+    public static void deleteProductFromCompareScreen(int repeatCount) {
         for (int i = 0; i < repeatCount; i++) {
-            click(productDeleteIconInCompareScreen);
-            waitForClickablility(productDeleteIconInCompareScreen, 15);
+            click(allPages.comparePage().productDeleteIconInCompareScreen);
+            waitForClickablility(allPages.comparePage().productDeleteIconInCompareScreen, 15);
         }
+
     }
+
+
 
 
 

@@ -21,6 +21,7 @@ public class TestCase03 {
     @BeforeMethod
     public void beforeMethod(){
         ReusableMethods.signInUS0304();
+        allpages.addressesPage().addButonuB.click();
     }
 
 

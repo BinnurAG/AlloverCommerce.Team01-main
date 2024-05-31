@@ -25,9 +25,15 @@ public class US12_TC02 {
 
         //3-Vendor hesabiyla giris yap
         //email girisi
+
         p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmailms"));
         //password girisi
         p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPasswordms"));
+
+        p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmails"));
+        //password girisi
+        p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPasswords"));
+
         //submit butonuna tiklanir
         p15VendorAddressesPage.submit.click();
 
@@ -93,6 +99,10 @@ public class US12_TC02 {
 
         p15VendorAddressesPage.billingSaveAddress.submit();
         Assert.assertTrue(p15VendorAddressesPage.billingAddresSuccessfullText.isDisplayed());
+
+
+        Driver.closeDriver();
+
 
 
 

@@ -1,4 +1,6 @@
+
 package team01_AlloverCommerceTestNG.tests.us11;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
@@ -12,12 +14,13 @@ public class TC_12 {
     @Test
     public void tc12() {
 
-        // Siteye ulaşılmalı
+        // Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
+        //Sing in butonuna tikla
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
+
 
         // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -31,11 +34,14 @@ public class TC_12 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
-        //Wishlist butonuna tıkla
-        ReusableMethods.click(allPages.myAccountPage().wishlistButton);
+        //Dowloads butonuna tıkla
+        ReusableMethods.click(allPages.myAccountPage().dowloadsButton);
 
-        //Ticket(s) başlığı görülmeli
-        Assert.assertTrue(allPages.wishlistPage().wishlistTitle.isDisplayed());
+        //Downloads başlığının görüldüğünü doğrula
+        Assert.assertTrue(allPages.myAccountPage().dowloadsButtonTitle.isDisplayed());
+        ReusableMethods.logOutClick();
 
     }
+
 }
+
