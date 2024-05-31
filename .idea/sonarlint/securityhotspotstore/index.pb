@@ -3,8 +3,6 @@
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 q
 Asrc/test/java/team01_AlloverCommerceTestNG/pages/P1_HomePage.java,5/7/575cf3344bc9dc232a7e129c8c895c27722658fc
-|
-Lsrc/test/java/team01_AlloverCommerceTestNG/tests/US08_Register_WishList.java,7/1/71c108218ba840844bba240978635d011b7ddc4d
 v
 Fsrc/test/java/team01_AlloverCommerceTestNG/utilities/ConfigReader.java,0/f/0f843b165d9a129d9840c3ca448e99719abddc19
 o
@@ -24,3 +22,15 @@ H
 :
 
 .gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+t
+Dsrc/test/java/team01_AlloverCommerceTestNG/tests/US12/US12_TC01.java,7/3/7380511bc35cbce51b2569cf6dbc62105a5d8073
+t
+Dsrc/test/java/team01_AlloverCommerceTestNG/tests/US12/US12_TC02.java,5/2/52e5e13d309571ff68e59d4b1470eb08e259a2bd
+t
+Dsrc/test/java/team01_AlloverCommerceTestNG/tests/US12/US12_TC03.java,f/d/fde479baac9dc3e8dadecd247f9bcd8371e5ac36
+t
+Dsrc/test/java/team01_AlloverCommerceTestNG/tests/US12/US12_TC04.java,2/5/25ea02381050f07b004d37d2dc5b2041d3e780a0
+t
+Dsrc/test/java/team01_AlloverCommerceTestNG/tests/US13/US13_TC01.java,0/9/09961f66350d09f3eb391b6df4244c1b1cda8c66
+t
+Dsrc/test/java/team01_AlloverCommerceTestNG/tests/US13/US13_TC02.java,9/a/9ad8e472196823377aa5b33c35c275367558f172

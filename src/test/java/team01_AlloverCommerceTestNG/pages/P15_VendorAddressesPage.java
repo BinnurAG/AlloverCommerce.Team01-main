@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 
+import java.util.List;
+
 public class P15_VendorAddressesPage {
     public P15_VendorAddressesPage() {
         PageFactory.initElements(Driver.getDriver(),this);
@@ -76,6 +78,11 @@ public class P15_VendorAddressesPage {
     @FindBy(xpath = "//select[@id='billing_country']")
     public WebElement ddmBillingAddressCountry;
 
+    @FindBy(xpath = "//*[@id='shipping_country']")
+    public WebElement ddmShippingAddressCountry;
+
+
+
 
     @FindBy(xpath = "//input[@id='billing_first_name']")
     public WebElement billingFirstNameBox;
@@ -98,8 +105,105 @@ public class P15_VendorAddressesPage {
     @FindBy(xpath = "//input[@id='billing_postcode']")
     public WebElement billingZipCodeBox;
 
-    @FindBy(xpath = "//input[@id='billing_phone_field']")
+    @FindBy(xpath = "//input[@id='billing_phone']")
     public WebElement billingPhoneNumberBox;
+
+    @FindBy(xpath = "//button[@name='save_address']")
+    public WebElement billingSaveAddress;
+
+    @FindBy(xpath = "//div[text()='Address changed successfully.']")
+    public WebElement billingAddresSuccessfullText;
+
+
+
+    @FindBy(xpath = "//*[text()='First name is a required field.']")
+    public WebElement billingNameRequiredField;
+
+
+    @FindBy(xpath = "//*[text()='Last name is a required field.']")
+    public WebElement billingLastNameRequiredField;
+
+
+    @FindBy(xpath = "//*[text()='Country / Region is a required field.']")
+    public WebElement billingCountryRequiredField;
+
+
+    @FindBy(xpath = "//*[text()='Street address is a required field.']")
+    public WebElement billingStreetRequiredField;
+
+
+    @FindBy(xpath = "//*[text()='Town / City is a required field.']")
+    public WebElement billingCityRequiredField;
+
+
+    @FindBy(xpath = "//*[text()='State is a required field.']")
+    public WebElement billingStateRequiredField;
+
+
+    @FindBy(xpath = "//*[text()='ZIP Code is a required field.']")
+    public WebElement billingZipCodeRequiredField;
+
+    @FindBy(xpath = "//*[text()='Phone is a required field.']")
+    public WebElement billingPhoneRequiredField;
+
+
+
+
+
+
+
+    @FindBy(xpath = "//a[text()='Edit Your Shipping Address']")
+    public WebElement shippingAddressEdit;
+
+    @FindBy(xpath = "//a[contains(@href, 'shipping') and contains(text(), 'Add')]")
+    public WebElement shippingAddButton;
+
+    @FindBy(id = "shipping_first_name")
+    public WebElement shippingFirstName;
+
+    @FindBy(id = "shipping_last_name")
+    public WebElement shippingLastName;
+
+    @FindBy(id = "shipping_company")
+    public WebElement shippingCompanyName;
+
+    @FindBy(id = "shipping_country")
+    public WebElement shippingCountryDropdown;
+
+    @FindBy(id = "shipping_address_1")
+    public WebElement shippingStreetName;
+
+    @FindBy(id = "//input[@id='shipping_address_2']")
+    public WebElement shippingStreetName2;
+
+
+
+    @FindBy(id = "shipping_city")
+    public WebElement shippingCityName;
+
+    @FindBy(id = "shipping_state")
+    public WebElement shippingStateDropdown;
+
+    @FindBy(id = "shipping_postcode")
+    public WebElement shippingZipCodeName;
+
+    @FindBy(xpath = "//*[@name='save_address']")
+    public WebElement shippingSaveButton;
+
+    @FindBy(xpath = "//*[text()='Account details']")
+    public WebElement wishlistShipping;
+
+    @FindBy(xpath = "//input[@class='input-text ']")
+    public List<WebElement> shippingAdressForm;
+
+
+
+
+
+
+
+
+
 
 
 
