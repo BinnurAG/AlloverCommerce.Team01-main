@@ -1,4 +1,3 @@
-
 package team01_AlloverCommerceTestNG.tests.us02Register;
 
 import com.github.javafaker.Faker;

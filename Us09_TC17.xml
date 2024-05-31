@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Team 01">
+    <listeners>
+        <listener class-name="team01_AlloverCommerceTestNG.utilities.ExtentReportsListener"></listener>
+    </listeners>
+
+    <test name="US09-">
+        <classes>
+            <class name="team01_AlloverCommerceTestNG.tests.us09.US_09_TC_17">
+                <methods>
+                    <include name="US_09_TC_17"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

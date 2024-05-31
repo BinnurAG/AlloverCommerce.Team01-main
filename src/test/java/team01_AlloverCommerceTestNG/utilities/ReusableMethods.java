@@ -155,6 +155,12 @@ public class ReusableMethods {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
         String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
+
+       // String path = "src/test/java/team01_AlloverCommerceTestNG/reports/screenShotsReport" + date + ".png";
+        //Burada Mac ve windows kullanicilari farkli path kullanmali
+        String path1 = "src\\test\\java\\screenshots\\NEW" + date + ".png";
+        TakesScreenshot ts1 = (TakesScreenshot) getDriver();
+
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
@@ -168,6 +174,14 @@ public class ReusableMethods {
     public static void addScreenShotOfWebElementToReport(WebElement webElement) {
         String date = DateTimeFormatter.ofPattern("ddMMyyyy_HHmmss").format(LocalDateTime.now());
         String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
+
+
+        //String path = "src/test/java/team01_AlloverCommerceTestNG/reports/webElementSSReport" + date + ".png";
+        //Burada Mac ve windows kullanicilari farkli path kullanmali
+        String path3 = "src\\test\\java\\screenshots\\webElementSS" + date + ".png";
+   
+
+
         try {
             Files.write(Paths.get(path), webElement.getScreenshotAs(OutputType.BYTES));
             extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
@@ -295,9 +309,12 @@ public class ReusableMethods {
         getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
         // 2. Sign In butonuna tıkla
+        visibleWait(allPages.accountDetails().signIn, 5);
+        waitForClickablility(allPages.accountDetails().signIn, 15);
         click(allPages.accountDetails().signIn);
 
         // 3. Username or email address kutusuna geçerli bir email adresi gir
+        visibleWait(allPages.accountDetails().userNameArea, 40);
         allPages.accountDetails().userNameArea.sendKeys(ConfigReader.getProperty("myEmail"));
 
         // 4. Password alanına geçerli bir password gir
@@ -308,7 +325,7 @@ public class ReusableMethods {
         visibleWait(allPages.accountDetails().signOut, 5);
     }
 
-    public static void vendorRegisterEmail(){
+      public static void vendorRegisterEmail(){
         getDriver().switchTo().newWindow(WindowType.TAB);
         getDriver().get("https://www.fakemail.net/");
         String email= getDriver().findElement(By.id("email")).getText();
