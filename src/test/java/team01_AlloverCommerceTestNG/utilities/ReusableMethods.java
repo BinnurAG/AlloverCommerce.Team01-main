@@ -295,9 +295,12 @@ public class ReusableMethods {
         getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
         // 2. Sign In butonuna tıkla
+        visibleWait(allPages.accountDetails().signIn, 5);
+        waitForClickablility(allPages.accountDetails().signIn, 15);
         click(allPages.accountDetails().signIn);
 
         // 3. Username or email address kutusuna geçerli bir email adresi gir
+        visibleWait(allPages.accountDetails().userNameArea, 40);
         allPages.accountDetails().userNameArea.sendKeys(ConfigReader.getProperty("myEmail"));
 
         // 4. Password alanına geçerli bir password gir
@@ -308,7 +311,7 @@ public class ReusableMethods {
         visibleWait(allPages.accountDetails().signOut, 5);
     }
 
-    public static void vendorRegisterEmail(){
+      public static void vendorRegisterEmail(){
         getDriver().switchTo().newWindow(WindowType.TAB);
         getDriver().get("https://www.fakemail.net/");
         String email= getDriver().findElement(By.id("email")).getText();

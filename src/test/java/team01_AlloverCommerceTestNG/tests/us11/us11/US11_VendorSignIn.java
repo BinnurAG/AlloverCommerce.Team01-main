@@ -1,9 +1,4 @@
-<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/US11_VendorSignIn.java
 package team01_AlloverCommerceTestNG.tests.us11.us11;
-=======
-
-package team01_AlloverCommerceTestNG.tests.us11;
->>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/US11_VendorSignIn.java
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,11 +12,8 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 import java.util.Arrays;
 import java.util.List;
 
-<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/US11_VendorSignIn.java
 public class US11_VendorSignIn {
-=======
-    // @Listeners(team01_AlloverCommerceTestNG.utilities.Listeners.class)
->>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/US11_VendorSignIn.java
+
 
     Pages allPages = new Pages();
     private SoftAssert softAssert = new SoftAssert();
@@ -38,7 +30,7 @@ public class US11_VendorSignIn {
         ExtentReportUtils.extentTestInfo("SIGN IN tıklanır olmalı ve SIGN IN penceresi açıldı");
     }
 
-    @Test (description = "US11-TC01a")
+    @Test(description = "US11-TC01a")
     public void tc01a() {
 
         // Username or email address alanına gecerli (kayitli) bir email gir
@@ -181,6 +173,7 @@ public class US11_VendorSignIn {
         ExtentReportUtils.extentTestPass("Giriş işlemi gerçekleşmedi");
     }
 
+
     /*
     @Test(description = "US11-TC07a")
     public void tc07a() {
@@ -250,14 +243,7 @@ public class US11_VendorSignIn {
         ExtentReportUtils.extentTestInfo("Sayfanin en altindaki My account linkine tiklandi");
 
         //My Account sayfasinin goruntulendigini dogrula
-<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/US11_VendorSignIn.java
-       Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
-        ExtentReportUtils.extentTestPass("My Account sayfasi goruntulendi");
-        ReusableMethods.logOutClick();
-=======
-        Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
 
->>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/US11_VendorSignIn.java
     }
 
 
