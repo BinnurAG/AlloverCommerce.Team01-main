@@ -115,4 +115,23 @@ public class P18_VendorProductManagerPage {
     public WebElement filesVerify;
 
 
+    @FindBy(id = "tinymce")
+    public WebElement description;
+
+    @FindBy(xpath = "//ul[@id = 'product_cats_checklist']")
+    public WebElement productCategories;
+
+    @FindBy(xpath = "//input[@value=\"1283\"]")
+    public WebElement categoriesBox;
+
+    @FindBy(xpath = "//*[.='+Add new category']")
+    public WebElement newCategoriesButton;
+
+    @FindBy(id = "wcfm_new_cat")
+    public WebElement CategoriesBox;
+
+    @FindBy(xpath = "//button[@type='button' and @data-taxonomy='product_cat']")
+    public WebElement addNewCategories;
+
+
 }
