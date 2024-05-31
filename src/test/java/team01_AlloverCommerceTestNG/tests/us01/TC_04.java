@@ -33,8 +33,8 @@ public class TC_04 {
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
 
-//        ExtentReportUtils.extentTestPass("Test basarili oldu");
-//        ExtentReportUtils.addScreenShotToReport();
+       ExtentReportUtils.extentTestPass("Test basarili oldu");
+       ExtentReportUtils.addScreenShotToReport();
         String actualMsg = p2_registerPage.plsChooseAnotherMsg.getText();
         Assert.assertEquals
                 (actualMsg,"An account is already registered with that username. Please choose another.");

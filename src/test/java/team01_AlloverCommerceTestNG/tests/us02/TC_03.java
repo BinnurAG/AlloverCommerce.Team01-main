@@ -24,12 +24,13 @@ public class TC_03 {
 //        Your Email address alanına kayıtlı bir veri gir
         p2_registerPage.emailAddress.sendKeys(ConfigReader.getProperty("registeredEmail"));
 //        Password alanına 8 karakterli bir veri gir
+        ExtentReportUtils.extentTestInfo("Password alanına 8 karakterli bir veri gir");
         p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
         p2_registerPage.privacyPolicy.click();
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
       ExtentReportUtils.extentTestPass("Test basarili oldu");
-      ExtentReportUtils.addScreenShotToReport();
+//      ExtentReportUtils.addScreenShotToReport();
         String actualMessage = p2_registerPage.plsLogInMsg.getText();
         Assert.assertEquals
                 (actualMessage,"An account is already registered with your email address. Please log in.");

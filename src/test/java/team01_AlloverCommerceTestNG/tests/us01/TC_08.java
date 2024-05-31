@@ -19,6 +19,7 @@ public class TC_08 {
     public void boundaryValueAnalysisTest() {//BUG RAPORA YANSIT //BOUNDARY VALUA ANALYS
 // Siteye müşteri olarak kayıt olurken 7 karakterli bir password ile kayıt işlemi gerçekleşmemeli
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
+        ExtentReportUtils.extentTestInfo("Kullanıcıweb sitesine gider");
 //        Register linkine tıkla
         p2_registerPage.register.click();
 //        Username alanına bir veri gir
@@ -35,7 +36,6 @@ public class TC_08 {
 //       Kayıt işleminin gerçekleşmediğini doğrula
 
        ExtentReportUtils.extentTestFail("gecersiz password ile kayıt islemi gerceklesti");
-       ExtentReportUtils.addScreenShotToReport();
         Assert.assertTrue(p2_registerPage.register.isEnabled());
         Driver.closeDriver();
     }
