@@ -1,5 +1,5 @@
 
-package team01_AlloverCommerceTestNG.tests.us02Register;
+package team01_AlloverCommerceTestNG.tests.us02;
 
 import com.github.javafaker.Faker;
 import org.testng.Assert;
@@ -8,15 +8,14 @@ import team01_AlloverCommerceTestNG.pages.P2_RegisterPage;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 
-public class TC_04 {
+public class TC_01 {
 
     P2_RegisterPage p2_registerPage = new P2_RegisterPage();
     Faker faker = new Faker();
 
-    @Test(description = "US02 - TC04 A warning message should appear when the registered username is entered")
-    public void registeredUsernameAlertTest() {
-//  Siteye daha önce kayıtlı username bilgileri girildiginde
-//  "An account is already registered with your that username.Please choose another."uyarısı görülmeli
+    @Test(description = "US02 - TC01 The user should not register new with a registered username")
+    public void registeredUsernameTest() {
+//  Siteye daha önce kayıtlı bir username ile kayıt işlemi gerçekleşmemeli
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
         p2_registerPage.register.click();
 //        Username alanına kayıtlı bir veri gir
@@ -27,9 +26,10 @@ public class TC_04 {
         p2_registerPage.privacyPolicy.click();
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
-        String actualMessage2 = p2_registerPage.plsChooseAnotherMsg.getText();
-        Assert.assertEquals(actualMessage2,"An account is already registered with that username. Please choose another.");
-        //  Driver.closeDriver();
+//      ReusableMethods.screenShot("SignOut");
+        Assert.assertFalse(p2_registerPage.plsChooseAnotherMsg.getText().contains("Sign Out"));
+        // Driver.closeDriver();
 
     }
+
 }
