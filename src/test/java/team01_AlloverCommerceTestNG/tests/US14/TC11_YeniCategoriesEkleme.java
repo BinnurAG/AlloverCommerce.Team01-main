@@ -2,16 +2,13 @@ package team01_AlloverCommerceTestNG.tests.US14;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import team01_AlloverCommerceTestNG.pages.P18_VendorProductManagerPage;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.*;
 
-public class TC06_ShortDescriptionYazilabilirligi {
-
+public class TC11_YeniCategoriesEkleme {
     Pages allPages = new Pages();
     SoftAssert softAssert = new SoftAssert();
 
@@ -38,29 +35,23 @@ public class TC06_ShortDescriptionYazilabilirligi {
         // Add New butonuna tıkla.
         allPages.vendorStoreManagerPage().addNew2.click();
 
-        ReusableMethods.scroll(allPages.vendorProductManagerPage().uploadPhoto);
-
         // Add Product sayfasına geldiğini doğrula.
         WebElement actualResultText = allPages.vendorStoreManagerPage().addProductVerify;
         softAssert.assertTrue(actualResultText.isDisplayed());
         WaitUtils.waitFor(1);
+
     }
 
     @Test
-    public void test01() {
-        // "Short Description" alanına veri gir.
-        Driver.getDriver().switchTo().frame(0);
-        allPages.vendorProductManagerPage().shortDescription.sendKeys("kolye");
+    public void test02() {
+        //Add new category linkine tıkla.
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().newCategoriesButton);
+        allPages.vendorProductManagerPage().newCategoriesButton.click();
 
-        //Girilen verinin göründüğünü doğrula.
-        softAssert.assertEquals(allPages.vendorProductManagerPage().shortDescription.getText(), "kolye");
+        //Category Name alanına geçerli bir data gir.
+        allPages.vendorProductManagerPage().CategoriesBox.sendKeys("bijuteri");
+
+        //Add butonuna tıkla.
+        allPages.vendorProductManagerPage().addNewCategories.click();
     }
-
-   @AfterMethod
-   public void tearDown() {
-        Driver.closeDriver();
-   }
-
 }
-
-

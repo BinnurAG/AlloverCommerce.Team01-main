@@ -9,7 +9,8 @@ import org.testng.asserts.SoftAssert;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.*;
 
-public class TC03_GaleriFotografiEkleme {
+public class TC06_ProductTitleYazilabilirligi {
+
     Pages allPages = new Pages();
     SoftAssert softAssert = new SoftAssert();
 
@@ -42,29 +43,16 @@ public class TC03_GaleriFotografiEkleme {
         WebElement actualResultText = allPages.vendorStoreManagerPage().addProductVerify;
         softAssert.assertTrue(actualResultText.isDisplayed());
         WaitUtils.waitFor(1);
-
     }
 
     @Test
     public void test01() {
+        //"Product Title" alanına veri gir.
+        allPages.vendorProductManagerPage().productTitle.sendKeys("kolye");
 
-        //Açılan sayfanın sağ üst köşesindeki kucuk boş resim ikonuna tıkla.
-        allPages.vendorProductManagerPage().addGalleryPhotoButton.click();
-        ReusableMethods.waitForSecond(2);
-
-        //Select files butonuna tıkla.
-        allPages.vendorProductManagerPage().selectFiles.click();
-
-        //Açılan dosyadan uygun formatta olan ürün fotoğrafını seç ve aç butonuna tıkla.
-        String fotografDosyasiUpload = System.getProperty("user.home") + "\\Downloads\\Photo.jpg";
-        ReusableMethods.uploadFilePath(fotografDosyasiUpload);
-
-        ReusableMethods.waitForSecond(5);
-
-        WaitUtils.waitForClickablility(allPages.vendorProductManagerPage().addToGalleryPhotoButton, 8);
-
-        //Ürün fotoğrafı eklendiğini doğrula.
-        allPages.vendorProductManagerPage().filesVerify.isDisplayed();
+        //Girilen verinin göründüğünü doğrula.
+        String actualResultText = "kolye";
+        softAssert.assertEquals(actualResultText, allPages.vendorProductManagerPage().productTitleBox.getText());
     }
 
     @AfterMethod
