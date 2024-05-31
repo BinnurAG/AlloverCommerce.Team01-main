@@ -89,93 +89,103 @@ public class P6_AccountDetails {
     @FindBy(xpath = "//p[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
     public static WebElement orderReceived;
 
+    @FindBy(xpath = "//p[@class='alert alert-light alert-info woocommerce-info']")
+    public static WebElement invalidSearch;
 
-    // US 05 Account Details(aysebetul) ---------------------------------
-    @FindBy(linkText = "Account details")
-    public WebElement accountDetailsLink;
+    @FindBy(xpath = "//button[@value='54320']")
+    public static WebElement addToCart;
 
-    @FindBy(linkText = "My Account")
-    public WebElement myAccountTitle;
+    @FindBy(xpath = "//h4[@class='cart-title']")
+    public static WebElement shoppingCartList;
 
-    @FindBy(linkText = "Account Details")
-    public WebElement accountDetailsTitle;
+    @FindBy(xpath = "//i[@class='fas fa-times']")
+    public static WebElement removeProduct;
 
-    //Account Details First Name Box
-    @FindBy(id = "account_first_name")
-    public WebElement detailsFirstNameBox;
+    @FindBy(xpath = "//a[@class='button checkout wc-forward']")
+    public static WebElement checkout;
 
-    //Account Details Last Name Box
-    @FindBy(id = "account_last_name")
-    public WebElement detailsLastNameBox;
+    @FindBy(xpath = "//a[@class='btn btn-dark btn-link btn-icon-right btn-close']")
+    public static WebElement closeButton;
 
-    //Account Details Display Name Box
-    @FindBy(id = "account_display_name")
-    public WebElement detailsDisplayNameBox;
+    @FindBy (xpath = "//button[@title='Plus']")
+    public static WebElement plus;
 
-    //Account Details Email Box
-    @FindBy(id = "account_email")
-    public WebElement detailsEmailBox;
+    @FindBy(xpath = "//button[@title='Minus']")
+    public static WebElement minus;
 
-    //Account Details Text Area (bunu kullanmadan önce swichTo ile iframe'e geçin)
-    @FindBy(id = "tinymce")
-    public WebElement detailsTextArea;
+    @FindBy(xpath = "//a[@class='showcoupon']")
+    public static WebElement enterYourCode;
 
+    @FindBy(id = "coupon_code")
+    public static WebElement couponCode;
 
-    //Account Details Current Password Box
-    @FindBy(id = "password_current")
-    public WebElement detailsCurrentPasswordBox;
+    @FindBy(xpath = "//*[@name='apply_coupon']")
+    public static WebElement applyCouponButton;
 
-    //Account Details New Password Box
-    @FindBy(id = "password_1")
-    public WebElement detailsNewPasswordBox;
-
-    //Account Details Confirm Password Box
-    @FindBy(id = "password_2")
-    public WebElement detailsConfirmPasswordBox;
-
-    //Account Details Save Changes Submit Box
-    @FindBy(xpath = "//*[.='Save changes']")
-    public WebElement detailsSaveChangesSubmitBox;
-
-    //Account details changed successfully. Doğrulama yazısı
     @FindBy(xpath = "//div[@role='alert']")
-    public WebElement detailsSuccessfully;
+    public static WebElement couponAlertMessage;
 
-    //FIRST NAME is a required field. zorunlu alan yazısı
-    @FindBy(xpath = "//li[@data-id='account_first_name']")
-    public WebElement zorunluAlanYazisiFirstName;
+    @FindBy(xpath = "//button[@name='clear_cart']")
+    public static WebElement clearCart;
 
-    //LAST NAME is a required field. zorunlu alan yazısı
-    @FindBy(xpath = "//li[@data-id='account_last_name']")
-    public WebElement zorunluAlanYazisiLastName;
+    @FindBy(xpath = "//input[@id='billing_first_name']")
+    public static WebElement firstName;
 
-    //DISPLAY NAME is a required field. alan yazısı
-    @FindBy(xpath = "//li[@data-id='account_display_name']")
-    public WebElement zorunluAlanYazisiDisplayName;
+    @FindBy(xpath = "//input[@id='billing_last_name']")
+    public static WebElement lastName;
 
-    //EMAIL ADDRESS is a required field. alan yazısı
-    @FindBy(xpath = "//li[@data-id='account_email']")
-    public WebElement zorunluAlanYazisiEmail;
+    @FindBy(xpath = "//select[@id='billing_country']")
+    public static WebElement countryRegion1;
 
-    @FindBy(xpath = "(//label)[1]")
-    public WebElement firstNameTitle;
+    @FindBy(xpath = "//input[@id='billing_address_1']")
+    public static WebElement streetAddress;
 
-    @FindBy(xpath = "(//label)[1]")
-    public WebElement lastNameTitle;
+    @FindBy(xpath = "//input[@id='billing_city']")
+    public static WebElement city;
 
-    @FindBy(xpath = "(//label)[3]")
-    public WebElement displayNameTitle;
+    @FindBy(xpath = "//input[@id='billing_postcode']")
+    public static WebElement zipCode;
 
-    @FindBy(xpath = "(//label)[4]")
-    public WebElement emailTitle;
+    @FindBy(xpath = "//select[@id='billing_state']")
+    public static WebElement state;
 
-    @FindBy(xpath = "(//label)[5]")
-    public WebElement biographyTitle;
+    @FindBy(xpath = "//input[@id='billing_phone']")
+    public static WebElement phone;
+
+    @FindBy(xpath = "//h4[normalize-space()='Payment Methods']")
+    public static WebElement paymentMethods;
+
+    @FindBy(xpath = "//tr[@class='cart-subtotal']//bdi[1]")
+    public static WebElement subTotal;
+
+    @FindBy(xpath = "//button[@id='place_order']")
+    public static WebElement placeOrder;
+
+    @FindBy(xpath = "//input[@id='billing_email']")
+    public static WebElement emailAddress;
+
+    @FindBy(xpath = "//*[@class='woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received order-success']")
+    public static WebElement orderMessage;
 
 
 
-//----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
-
-
-
