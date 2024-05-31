@@ -133,5 +133,8 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//button[@type='button' and @data-taxonomy='product_cat']")
     public WebElement addNewCategories;
 
+    @FindBy(xpath = "//input[@value ='1085']")
+    public WebElement addProductBrands;
+
 
 }

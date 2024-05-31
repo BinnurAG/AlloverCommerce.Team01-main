@@ -44,6 +44,11 @@ public class TC10_ProductBrandsSeçimi {
     @Test
     public void test01(){
         //Product brands başlığı altında bulunan seçeneklerden ürün ile ilişkili olanları seç.
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().productCategories);
+        WaitUtils.waitForVisibility(allPages.vendorProductManagerPage().productCategories, 3);
+        allPages.vendorProductManagerPage().addProductBrands.click();
 
+        //Product brands alanından seçim yapıldığını doğrula.
+        softAssert.assertTrue(allPages.vendorProductManagerPage().addProductBrands.isSelected());
     }
 }
