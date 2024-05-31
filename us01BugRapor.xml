@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="Smoke Test">
 
     <listeners>
         <listener class-name="team01_AlloverCommerceTestNG.utilities.ExtentReportsListener"></listener>

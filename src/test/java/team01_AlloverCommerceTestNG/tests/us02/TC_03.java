@@ -29,7 +29,7 @@ public class TC_03 {
         p2_registerPage.privacyPolicy.click();
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
-      ExtentReportUtils.extentTestPass("Test basarili oldu");
+//      ExtentReportUtils.extentTestPass("Test basarili oldu");
 //      ExtentReportUtils.addScreenShotToReport();
         String actualMessage = p2_registerPage.plsLogInMsg.getText();
         Assert.assertEquals
