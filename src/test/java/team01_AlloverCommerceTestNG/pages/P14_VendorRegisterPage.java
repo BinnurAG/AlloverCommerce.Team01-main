@@ -98,14 +98,11 @@ public class P14_VendorRegisterPage {
     /*--------  FAKE MAİL WEBELEMENTS   -------------     */
 
     @FindBy(id = "email")
-<<<<<<< Updated upstream
+
     public WebElement fakeEmaill;
-}
 
     //@FindBy(css= ".wcfm-message.wcfm-error")
    // public WebElement emailWrongText;
-=======
-    public WebElement fakeEmail;
 
     @FindBy(css= ".wcfm-message.wcfm-error")
     public WebElement emailWrongText1;
@@ -121,6 +118,6 @@ public class P14_VendorRegisterPage {
 
 
 }
->>>>>>> Stashed changes
+
 
 

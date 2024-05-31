@@ -7,7 +7,7 @@
 
     <test name="US01 US02">
         <packages>
-            <package name="team01_AlloverCommerceTestNG.tests.us01"></package>
+            <package name="team01_AlloverCommerceTestNG.tests.us01."></package>
             <package name="team01_AlloverCommerceTestNG.tests.us02"></package>
         </packages>
     </test>
