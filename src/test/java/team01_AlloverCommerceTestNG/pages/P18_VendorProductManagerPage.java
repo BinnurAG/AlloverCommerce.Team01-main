@@ -37,25 +37,11 @@ public class P18_VendorProductManagerPage {
     @FindBy(id = "featured_img_display")
     public WebElement uploadPhoto;
 
-    @FindBy(xpath = "//option[@value='external']")
-    public WebElement dropdownExternalProduct;
-
-    @FindBy(xpath = "//option[@value='grouped']")
-    public WebElement dropdownGroupedProduct;
-
-    @FindBy(xpath = "//option[@value='variable']")
-    public WebElement dropdownVariableProduct;
-
     @FindBy(id ="__wp-uploader-id-1")
     public WebElement selectFiles;
-    @FindBy(id = "__wp-uploader-id-4")
-    public WebElement selectFiles2;
 
     @FindBy(xpath = "//button[text()='Select']")
     public WebElement selectButton;
-
-    @FindBy(xpath = "//div[@class='media-frame-content']//li[contains(@class, 'attachment')]//img")
-    public WebElement addedImage;
 
     @FindBy (id= "pro_title")
     public WebElement productTitle;
@@ -101,17 +87,12 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//input[@id='title']")
     public WebElement codeBox;
 
-    @FindBy(xpath = "//*[@id='description']")
-    public  WebElement descriptionBox;
 
     @FindBy(xpath = "(//select)[1]")
     public  WebElement discountType;
 
     @FindBy(xpath = "//*[@id='coupon_amount']")
     public  WebElement couponAmountBox;
-
-    @FindBy(xpath = "//*[@id=\"menu-item-upload\"][2]")
-    public WebElement uploadFilesButton;
 
     @FindBy(className = "load-more-count")
     public WebElement filesVerify;
@@ -155,4 +136,24 @@ public class P18_VendorProductManagerPage {
 
     @FindBy(className = "wcfm-message wcfm-error")
     public WebElement titleErrorMessage;
+
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[1]")
+    public WebElement inventory;
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[4]")
+    public WebElement shipping;
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[5]")
+    public WebElement attributes;
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[7]")
+    public WebElement linked;
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[8]")
+    public WebElement seo;
+    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[10]")
+    public WebElement advanced;
+
+
+
+
+
+
+
 }
