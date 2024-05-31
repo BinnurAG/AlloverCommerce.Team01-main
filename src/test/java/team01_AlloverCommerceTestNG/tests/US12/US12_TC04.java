@@ -25,9 +25,9 @@ public class US12_TC04 {
 
         //3-Vendor hesabiyla giris yap
         //email girisi
-        p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmailms"));
+        p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmails"));
         //password girisi
-        p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPasswordms"));
+        p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPasswords"));
         //submit butonuna tiklanir
         p15VendorAddressesPage.submit.click();
 
