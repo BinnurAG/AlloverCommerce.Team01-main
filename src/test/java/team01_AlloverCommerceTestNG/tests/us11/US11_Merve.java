@@ -1,4 +1,4 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
+package team01_AlloverCommerceTestNG.tests.us11;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -157,7 +157,7 @@ public class US11_Merve {
         // Sign In butonu tıklanır olmalı
         allPages.userVendorLoginPage().signInButton.click();
         ExtentReportUtils.extentTestInfo("Sign In butonu tıklandı");
-//Burada
+
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
         ExtentReportUtils.extentTestInfo("My Account linkine tıklandı");

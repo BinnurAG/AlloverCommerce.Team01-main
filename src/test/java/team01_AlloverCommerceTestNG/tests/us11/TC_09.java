@@ -1,10 +1,5 @@
-<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/TC_10.java
-package team01_AlloverCommerceTestNG.tests.us11.us11;
-
-=======
-
 package team01_AlloverCommerceTestNG.tests.us11;
->>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/TC_07.java
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
@@ -12,12 +7,14 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_10 {
+import java.util.Arrays;
+import java.util.List;
 
+public class TC_09 {
     Pages allPages = new Pages();
 
     @Test
-    public void tc10() {
+    public void tc09() {
 
         // Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -26,7 +23,8 @@ public class TC_10 {
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-        // Email boxa kayıtlı email gir
+
+        //Kayitli bir email adresi gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Kayıtlı password girilmeli
@@ -38,13 +36,26 @@ public class TC_10 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
-        //Store manager butonuna tıkla
-        ReusableMethods.click(allPages.myAccountPage().storeManagerButton);
 
-        //Store manager başlığı görüldüğünü doğrula
-        Assert.assertTrue(allPages.vendorStoreManagerPage().storeManagerTitle.isDisplayed());
+        //Dashboard altında  Store manager, orders, downloads, addresses , account details, wishlist, Support tickets, followings ve log out seçeneklerinin görüldüğünü doğrula
+        List<String> linkTexts = allPages.myAccountPage().getLinkTexts();
+        List<String> expectedTexts = Arrays.asList(
+                "Dashboard",
+                "Store Manager",
+                "Orders",
+                "Downloads",
+                "Addresses",
+                "Account details",
+                "Wishlist",
+                "Support Tickets",
+                "Followings",
+                "Logout"
+        );
+        Assert.assertEquals(linkTexts, expectedTexts);
         Driver.getDriver().close();
+
     }
 
 
 }
+

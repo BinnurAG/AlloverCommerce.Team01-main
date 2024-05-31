@@ -64,6 +64,8 @@ public class ExtentReportsListener implements ITestListener {
      * Test başarısız olduğunda, ekran görüntüsü alınır ve raporlama oluşturulur.
      * @param result Test sonucu nesnesi
      */
+
+
     @Override
     public void onTestFailure(ITestResult result) {
         /*
@@ -84,6 +86,7 @@ public class ExtentReportsListener implements ITestListener {
             Driver.closeDriver();
         }
     }
+
 
     /**
      * onfinish==> Tum testlerden sonra tek bir kez cagrilir
