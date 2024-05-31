@@ -49,7 +49,7 @@ public class P14_VendorRegisterPage {
     public static WebElement passwordStrength;
 
     @FindBy(xpath = "//div[@class='wcfm-message wcfm-error']")
-    public WebElement errorMessage;
+    public static WebElement errorMessage;
 
     @FindBy(xpath = "//div[contains(text(), 'Password strength should be atleast')]")
     public WebElement passwordRules;
@@ -58,7 +58,7 @@ public class P14_VendorRegisterPage {
     public static WebElement emailBox;
 
     @FindBy(css = "input[placeholder='Verification Code']")
-    public WebElement verificationCodeBox;
+    public static WebElement verificationCodeBox;
 
     @FindBy(id = "passoword")
     public WebElement passwordBox;
@@ -98,10 +98,29 @@ public class P14_VendorRegisterPage {
     /*--------  FAKE MAİL WEBELEMENTS   -------------     */
 
     @FindBy(id = "email")
+<<<<<<< Updated upstream
     public WebElement fakeEmaill;
 }
 
     //@FindBy(css= ".wcfm-message.wcfm-error")
    // public WebElement emailWrongText;
+=======
+    public WebElement fakeEmail;
+
+    @FindBy(css= ".wcfm-message.wcfm-error")
+    public WebElement emailWrongText1;
+
+    @FindBy(xpath = "//*[contains(text(), 'Email Verification Code')]")
+    public WebElement verificationCodeTextfakemail;
+
+   // @FindBy(id = "email")
+   // public WebElement email;
+
+    @FindBy(xpath ="//*[@title='Refresh mailbox']")
+    public WebElement refresh;
+
+
+}
+>>>>>>> Stashed changes
 
 
