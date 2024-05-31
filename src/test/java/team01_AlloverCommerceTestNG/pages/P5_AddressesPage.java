@@ -157,7 +157,7 @@ public class P5_AddressesPage {
     public WebElement savebutonS;
 
     public List<String> getLinkTexts() {
-        List<WebElement> linkElements = addressTable.findElements(By.tagName("tr"));
+        List<WebElement> linkElements = addressTable.findElements(By.tagName("td"));
         List<String> linkTexts = new ArrayList<>();
 
         for (WebElement linkElement : linkElements) {
