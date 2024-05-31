@@ -2,10 +2,7 @@ package team01_AlloverCommerceTestNG.tests.us03;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import team01_AlloverCommerceTestNG.pages.P1_HomePage;
 import team01_AlloverCommerceTestNG.pages.P4_MyAccountPage;
 import team01_AlloverCommerceTestNG.pages.P5_AddressesPage;
@@ -17,10 +14,13 @@ public class TestCase12 {
     Pages allpages = new Pages();
 
 
-    @BeforeMethod
+    @BeforeTest
     public void beforeMethod(){
+        ExtentReportUtils.setUpExtentReport("US03-TC12", "Fatma Binnur Arslanhan");
+        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
         allpages.addressesPage().addButonuB.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
     }
 
 
@@ -53,9 +53,12 @@ public class TestCase12 {
     }
 
     @AfterTest
-    public void closeWindow(){
+    public void afterMethod(){
+        //Sayfa kapanmalı
         Driver.closeDriver();
+        ExtentReportUtils.extentTestInfo("Sayfa kapandı");
     }
+
 
 
 }

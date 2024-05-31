@@ -42,7 +42,7 @@ public class TC10 extends ReusableMethods {
         try {
             loginToSite();
             ExtentReportUtils.extentTestInfo("Logged in successfully.");
-            screenShot2("Logged in");
+            screenShot("Logged in");
 
             Actions actions = new Actions(Driver.getDriver());
             if (Integer.parseInt(cartCount.getText()) > 0) {
@@ -55,33 +55,33 @@ public class TC10 extends ReusableMethods {
             searchBox.submit();
             waitForSecond(2);
             actions.sendKeys(Keys.PAGE_DOWN).perform();
-            screenShot2("Searched product");
+            screenShot("Searched product");
 
             click(addToCart);
             actions.sendKeys(Keys.PAGE_UP).perform();
             click(cart);
             click(checkout);
             ExtentReportUtils.extentTestInfo("Clicked on the Checkout button.");
-            screenShot2("Checkout");
+            screenShot("Checkout");
 
             click(enterYourCode);
             couponCode.sendKeys("369789");
             waitForSecond(2);
             click(applyCouponButton);
-            screenShot2("Applied coupon code");
+            screenShot("Applied coupon code");
 
             fillBillingDetails(actions);
             validateOrderSummary();
 
             click(placeOrder);
             ExtentReportUtils.extentTestInfo("The Place Order button was clicked to complete the order.");
-            screenShot2("Placed order");
+            screenShot("Placed order");
 
             Assert.assertTrue(orderMessage.isDisplayed(), "Order message is displayed");
             ExtentReportUtils.extentTestInfo("Verified that the order was created successfully.");
         } catch (Exception e) {
             extentTest.fail("Test failed due to an exception: " + e.getMessage());
-            screenShot2("Exception");
+            screenShot("Exception");
             throw e; // re-throw the exception to ensure the test is marked as failed
         }
     }
@@ -90,45 +90,45 @@ public class TC10 extends ReusableMethods {
         firstName.clear();
         firstName.sendKeys(faker.name().firstName());
         ExtentReportUtils.extentTestInfo("First name was entered in the First name field.");
-        screenShot2("First name entered");
+        screenShot("First name entered");
 
         lastName.clear();
         lastName.sendKeys(faker.name().lastName());
         ExtentReportUtils.extentTestInfo("Last name was entered in the Last name field.");
-        screenShot2("Last name entered");
+        screenShot("Last name entered");
 
         ReusableMethods.ddmVisibleText(countryRegion1, "United States (US)");
         ExtentReportUtils.extentTestInfo("Country was entered in the Country section.");
-        screenShot2("Country selected");
+        screenShot("Country selected");
 
         streetAddress.clear();
         streetAddress.sendKeys(faker.address().streetAddress());
         ExtentReportUtils.extentTestInfo("Address was entered in the Address field.");
-        screenShot2("Street address entered");
+        screenShot("Street address entered");
 
         city.clear();
         city.sendKeys(faker.address().city());
         ExtentReportUtils.extentTestInfo("City was entered in the City section.");
-        screenShot2("City entered");
+        screenShot("City entered");
 
         ReusableMethods.ddmVisibleText(state, "New York");
         ExtentReportUtils.extentTestInfo("State was entered in the State section.");
-        screenShot2("State selected");
+        screenShot("State selected");
 
         zipCode.clear();
         zipCode.sendKeys("10021");
         ExtentReportUtils.extentTestInfo("Postcode was entered in the Postcode section.");
-        screenShot2("Postcode entered");
+        screenShot("Postcode entered");
 
         phone.clear();
         phone.sendKeys("+1 212-744-6562");
         ExtentReportUtils.extentTestInfo("Phone number was entered in the Phone section.");
-        screenShot2("Phone entered");
+        screenShot("Phone entered");
 
         emailAddress.clear();
         emailAddress.sendKeys("team01vendor@gmail.com");
         ExtentReportUtils.extentTestInfo("Email address was entered in the Email Address section.");
-        screenShot2("Email entered");
+        screenShot("Email entered");
         ReusableMethods.scroll(emailAddress);
         waitForSecond(2);
 
@@ -139,25 +139,25 @@ public class TC10 extends ReusableMethods {
         Assert.assertTrue(subTotal.isDisplayed(), "Subtotal is displayed");
         Assert.assertTrue(paymentMethods.isDisplayed(), "Payment Methods are displayed");
         ExtentReportUtils.extentTestInfo("Payment Methods confirmed.");
-        screenShot2("Order summary");
+        screenShot("Order summary");
 
         waitForSecond(2);
         click(wireTransfer);
         Assert.assertTrue(wireTransfer.isSelected(), "Wire Transfer/EFT is selected");
         ExtentReportUtils.extentTestInfo("Verified that Wire Transfer/EFT is selected.");
-        screenShot2("Wire transfer selected");
+        screenShot("Wire transfer selected");
 
         waitForSecond(2);
         click(payAtTheDoor);
         ExtentReportUtils.extentTestInfo("Pay at the door is selected.");
         Assert.assertTrue(payAtTheDoor.isSelected(), "Pay at the door is selected");
         ExtentReportUtils.extentTestInfo("It has been confirmed that you cannot choose both options at the same time.");
-        screenShot2("Pay at the door selected");
+        screenShot("Pay at the door selected");
 
         waitForSecond(2);
         click(wireTransfer);
         ExtentReportUtils.extentTestInfo("Wire Transfer/EFT is selected.");
-        screenShot2("Wire transfer re-selected");
+        screenShot("Wire transfer re-selected");
         waitForSecond(2);
     }
 

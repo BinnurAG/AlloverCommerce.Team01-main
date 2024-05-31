@@ -10,6 +10,7 @@ import team01_AlloverCommerceTestNG.pages.P5_AddressesPage;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class TestCase04 {
@@ -18,12 +19,14 @@ public class TestCase04 {
     Pages allpages = new Pages();
     Faker faker = new Faker();
 
-    @BeforeMethod
+    @BeforeTest
     public void beforeMethod(){
+        ExtentReportUtils.setUpExtentReport("US03-TC04", "Fatma Binnur Arslanhan");
+        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
         allpages.addressesPage().addButonuB.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
     }
-
 
 
 
@@ -37,8 +40,11 @@ public class TestCase04 {
 
     }
 
-    @AfterMethod
-    public void closeWindow(){
+    @AfterTest
+    public void afterMethod(){
+        //Sayfa kapanmalı
         Driver.closeDriver();
+        ExtentReportUtils.extentTestInfo("Sayfa kapandı");
     }
+
 }
