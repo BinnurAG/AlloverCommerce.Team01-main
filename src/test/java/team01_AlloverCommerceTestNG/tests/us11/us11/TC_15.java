@@ -1,10 +1,6 @@
-<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/TC_15.java
 package team01_AlloverCommerceTestNG.tests.us11.us11;
 
-=======
 
-package team01_AlloverCommerceTestNG.tests.us11;
->>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/TC_12.java
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;

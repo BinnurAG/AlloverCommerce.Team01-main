@@ -16,7 +16,7 @@ import team01_AlloverCommerceTestNG.utilities.*;
 
 public class TestCase11 {
 
-
+        Pages allpages = new Pages();
 
     @BeforeMethod
     public void beforeMethod(){
