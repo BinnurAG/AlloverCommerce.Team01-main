@@ -23,9 +23,12 @@ public class US12_TC01 {
 
             //3-Vendor hesabiyla giris yap
             //email girisi
+
+     
             p15VendorAddressesPage.userName.sendKeys(ConfigReader.getProperty("alloverEmails"));
             //password girisi
             p15VendorAddressesPage.password.sendKeys(ConfigReader.getProperty("alloverPasswords"));
+
             //submit butonuna tiklanir
             p15VendorAddressesPage.submit.click();
 
@@ -43,13 +46,18 @@ public class US12_TC01 {
             //6-Billing Adress kismindaki Add sekmesini tikla
 
             p15VendorAddressesPage.billingAddressEdit.click();
+
            // ReusableMethods.scroll(p15VendorAddressesPage.billingEmailAdresBox);
 
 
 
             //7-Mail adresini otomatik geldigini dogrula
+
+            Assert.assertEquals( p15VendorAddressesPage.billingEmailAdresBox.getAttribute("value"),"colston.lukus@floodouts.com");
+
             Assert.assertEquals( p15VendorAddressesPage.billingEmailAdresBox.getAttribute("value"),"eshawn.kolden@floodouts.com");
             Driver.closeDriver();
+
         }
     }
 
