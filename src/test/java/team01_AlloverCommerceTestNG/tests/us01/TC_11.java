@@ -1,4 +1,3 @@
-
 package team01_AlloverCommerceTestNG.tests.us01;
 
 import com.github.javafaker.Faker;
@@ -13,10 +12,10 @@ public class TC_11 {
     P2_RegisterPage p2_registerPage = new P2_RegisterPage();
     Faker faker = new Faker();
 
-    @Test(description = "US01 - TC11 User should be able to register with special password characters")
-    public void specialCharacterTest() {
-// Siteye müşteri olarak kayıt olurken password büyük ve küçük harfler,
-// sayılar ve ! " ? $ % ^ & karakterleri kullanılarak kayıt işlemi gerçekleşmeli
+    @Test(description = "US01 - TC11 Registration should not occur when the user does not select the checkbox")
+    public void controlBoxTest() {
+// Siteye müşteri olarak kayıt olurken
+// "I agree to the privacy policy" kontrol kutusu boş bırakıldığında kayıt işlemi gerçekleşmemeli
 
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
         p2_registerPage.register.click();
@@ -24,15 +23,14 @@ public class TC_11 {
         p2_registerPage.userName.sendKeys(faker.name().username());
 //        Your Email adrdress alanına bir veri gir
         p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
-//        Password alanına özel karakterlerden olusan bir veri gir
-        p2_registerPage.password.sendKeys(ConfigReader.getProperty("specialChPassword"));
-//        I agree to the privacy policy kontrol kutusunu seç
-        p2_registerPage.privacyPolicy.click();
+//        Password alanına 8 karakterli bir veri gir
+        p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
+//        I agree to the privacy policy kontrol kutusunu boş bırak
+        p2_registerPage.submitButton.sendKeys("");
 //        SIGN UP butonuna tıkla
         p2_registerPage.submitButton.click();
-//        Anasayfanın açıldığını ve Sign Out linkinin göründüğünü doğrula
-        Assert.assertTrue(p2_registerPage.signOut.isEnabled());
+//        Kayıt işleminin gerçekleşmediğini doğrula
+        Assert.assertTrue(p2_registerPage.register.isEnabled());
         Driver.closeDriver();
     }
-
 }

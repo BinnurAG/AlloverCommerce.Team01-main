@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.P2_RegisterPage;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
 
 public class TC_02 {
 
@@ -26,9 +27,9 @@ public class TC_02 {
         p2_registerPage.privacyPolicy.click();
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
-//      ReusableMethods.screenShotOfWebElement(p2_registerPage.alreadyRegEmail);
-//      ReusableMethods.screenShot("Sign Out");
+       ExtentReportUtils.extentTestPass("Test basarili oldu");
+       ExtentReportUtils.addScreenShotToReport();
         Assert.assertFalse(p2_registerPage.plsLogInMsg.getText().contains("Sign Out"));
-//      Driver.closeDriver();
+      Driver.closeDriver();
     }
 }

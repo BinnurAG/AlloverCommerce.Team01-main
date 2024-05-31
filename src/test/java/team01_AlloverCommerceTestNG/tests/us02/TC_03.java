@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.P2_RegisterPage;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
 
 public class TC_03 {
 
@@ -27,11 +28,13 @@ public class TC_03 {
         p2_registerPage.privacyPolicy.click();
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
+      ExtentReportUtils.extentTestPass("Test basarili oldu");
+      ExtentReportUtils.addScreenShotToReport();
         String actualMessage = p2_registerPage.plsLogInMsg.getText();
         Assert.assertEquals
                 (actualMessage,"An account is already registered with your email address. Please log in.");
 
-//      Driver.closeDriver();
+      Driver.closeDriver();
 
     }
 }
