@@ -26,9 +26,8 @@ public class TC_01 {
         p2_registerPage.privacyPolicy.click();
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
-//      ReusableMethods.screenShot("SignOut");
         Assert.assertFalse(p2_registerPage.plsChooseAnotherMsg.getText().contains("Sign Out"));
-        // Driver.closeDriver();
+         Driver.closeDriver();
 
     }
 

@@ -113,6 +113,7 @@ public class ExtentReportUtils {
         }
     }
 
+
     /**
      * Bir web elementin görüntüsünü alıp rapora ekler.
      *
