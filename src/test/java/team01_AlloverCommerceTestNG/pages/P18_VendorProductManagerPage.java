@@ -84,15 +84,6 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//*[@id='add_new_coupon_dashboard']")
     public WebElement addNewCoupon;
 
-    @FindBy(xpath = "//input[@id='title']")
-    public WebElement codeBox;
-
-
-    @FindBy(xpath = "(//select)[1]")
-    public  WebElement discountType;
-
-    @FindBy(xpath = "//*[@id='coupon_amount']")
-    public  WebElement couponAmountBox;
 
     @FindBy(className = "load-more-count")
     public WebElement filesVerify;
@@ -137,23 +128,17 @@ public class P18_VendorProductManagerPage {
     @FindBy(className = "wcfm-message wcfm-error")
     public WebElement titleErrorMessage;
 
-    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[1]")
+    @FindBy(id = "wcfm_products_manage_form_inventory_head")
     public WebElement inventory;
-    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[4]")
+    @FindBy(id = "wcfm_products_manage_form_shipping_head")
     public WebElement shipping;
-    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[5]")
+    @FindBy(id = "wcfm_products_manage_form_attribute_head")
     public WebElement attributes;
-    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[7]")
+    @FindBy(id = "wcfm_products_manage_form_linked_head")
     public WebElement linked;
-    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[8]")
+    @FindBy(id = "wcfm_products_manage_form_yoast_head")
     public WebElement seo;
-    @FindBy(xpath = "(//div[@class='page_collapsible_content_holder'])[10]")
+    @FindBy(id = "wcfm_products_manage_form_advanced_head")
     public WebElement advanced;
-
-
-
-
-
-
 
 }
