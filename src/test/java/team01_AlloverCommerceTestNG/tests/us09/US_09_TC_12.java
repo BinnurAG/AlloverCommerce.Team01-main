@@ -11,9 +11,9 @@ import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class US_09_TC_12 {
-<<<<<<< Updated upstream
-}
-=======
+
+
+
     P14_VendorRegisterPage p14_VendorRegisterPage = new P14_VendorRegisterPage();
     P1_HomePage p1_HomePage = new P1_HomePage();
     Actions actions = new Actions(Driver.getDriver());
@@ -67,4 +67,4 @@ ReusableMethods.waitForSecond(1);
     }
 
 }
->>>>>>> Stashed changes
+
