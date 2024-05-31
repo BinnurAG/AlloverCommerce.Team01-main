@@ -58,7 +58,7 @@ public class TC08 extends ReusableMethods {
         extentTest.info("Clicked on the Checkout button.");
 
         String actualResult = Driver.getDriver().getTitle();
-        ReusableMethods.screenShot2("Checkout");
+        ReusableMethods.screenShot("Checkout");
         String expectedResult = "Checkout";
         Assert.assertTrue(actualResult.contains(expectedResult), reportMessage);
         extentTest.pass("Checkout page is displayed.");

@@ -61,7 +61,7 @@ public class TC07 extends ReusableMethods {
         extentTest.info("Clicked on 'View Cart'.");
 
         String actualResult = Driver.getDriver().getTitle();
-        ReusableMethods.screenShot2("Shopping Cart");
+        ReusableMethods.screenShot("Shopping Cart");
         String expectedResult = "Cart";
         Assert.assertTrue(actualResult.contains(expectedResult), reportMessage);
         extentTest.pass("Shopping Cart page and product are displayed.");

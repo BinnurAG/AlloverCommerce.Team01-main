@@ -17,12 +17,14 @@ public class TestCase06 {
     Pages allpages = new Pages();
     Faker faker = new Faker();
 
-    @BeforeMethod
+    @BeforeTest
     public void beforeMethod(){
+        ExtentReportUtils.setUpExtentReport("US03-TC06", "Fatma Binnur Arslanhan");
+        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
         allpages.addressesPage().addButonuB.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
     }
-
 
 
 
@@ -88,10 +90,13 @@ public class TestCase06 {
 
     }
 
-    @AfterMethod
-    public void closeWindow(){
+    @AfterTest
+    public void afterMethod(){
+        //Sayfa kapanmalı
         Driver.closeDriver();
+        ExtentReportUtils.extentTestInfo("Sayfa kapandı");
     }
+
 
 
 

@@ -2,54 +2,69 @@
 package team01_AlloverCommerceTestNG.tests.us03;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import team01_AlloverCommerceTestNG.pages.Pages;
-import team01_AlloverCommerceTestNG.utilities.ConfigReader;
-import team01_AlloverCommerceTestNG.utilities.Driver;
-import team01_AlloverCommerceTestNG.utilities.ExtentReportsListener;
-import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
-
+import team01_AlloverCommerceTestNG.utilities.*;
 
 
 public class TestCase01 {
 
     Pages allPages = new Pages();
     ExtentReportsListener extentReportsListener = new ExtentReportsListener();
-    @BeforeMethod
+    @BeforeTest
     public void beforeTest(){
-
+        ExtentReportUtils.setUpExtentReport("US03-TC01", "Fatma Binnur Arslanhan");
     }
     @Test(description = "US03")
     public void ADDbutonu() {
 
-
+        //Site anasyfası açılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
+        ExtentReportUtils.extentTestInfo("Site anasyfası açıldı");
 
-
+        //Sign in sayfası açılmalı
         ReusableMethods.waitForSecond(2);
         allPages.addressesPage().signIn1.click();
+        ExtentReportUtils.extentTestInfo("Sign in sayfası açıldı");
+
+        //Username ve password girilebilmeli
         allPages.addressesPage().usernameSignIn.sendKeys(ConfigReader.getProperty("usernameUS03"));
         allPages.addressesPage().passwordSignIn.sendKeys(ConfigReader.getProperty("passwordUS03"));
+        ExtentReportUtils.extentTestInfo("Username ve password girildi");
 
+        //Sign In butonu tıklanır olmalı
         allPages.addressesPage().signIn2.click();
+        ExtentReportUtils.extentTestInfo("Sign In butonu tıklandı");
 
+        //Sign Out butonu tıklanır olmalı
         ReusableMethods.waitForSecond(1);
         allPages.addressesPage().signOut.click();
+        ExtentReportUtils.extentTestInfo("Sign Out butonu tıklandı");
 
+        //Addresses sayfası açılmalı
         allPages.addressesPage().addressesButton.click();
+        ExtentReportUtils.extentTestInfo("Addresses sayfası açıldı");
 
+        //ADD butonu tıklanabilir olmalıdır
         Assert.assertTrue(allPages.addressesPage().billingAddress.isDisplayed());
-
         allPages.addressesPage().addButonuB.click();
+        ExtentReportUtils.extentTestInfo("ADD butonu tıklandı");
+
+        //Adresses sayfası kapanıp Billing Adress sayfası açılmış olmalıdır
         Assert.assertTrue(allPages.addressesPage().addressPageB.isDisplayed());
+        ExtentReportUtils.extentTestInfo("Adresses sayfası kapanıp Billing Adress sayfası açıldı");
 
 
 
     }
 
+    @AfterTest
+    public void afterMethod(){
+        //Sayfa kapanmalı
+        Driver.closeDriver();
+        ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+    }
 
 
 
