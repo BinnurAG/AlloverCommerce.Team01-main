@@ -2,6 +2,7 @@ package team01_AlloverCommerceTestNG.tests.US14;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -45,10 +46,15 @@ public class TC10_ProductBrandsSeçimi {
     public void test01(){
         //Product brands başlığı altında bulunan seçeneklerden ürün ile ilişkili olanları seç.
         ReusableMethods.scroll(allPages.vendorProductManagerPage().productCategories);
-        WaitUtils.waitForVisibility(allPages.vendorProductManagerPage().productCategories, 3);
+        WaitUtils.waitFor(1);
         allPages.vendorProductManagerPage().addProductBrands.click();
 
         //Product brands alanından seçim yapıldığını doğrula.
         softAssert.assertTrue(allPages.vendorProductManagerPage().addProductBrands.isSelected());
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        Driver.closeDriver();
     }
 }

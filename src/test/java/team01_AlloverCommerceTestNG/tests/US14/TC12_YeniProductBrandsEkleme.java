@@ -9,7 +9,8 @@ import org.testng.asserts.SoftAssert;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.*;
 
-public class TC03_GaleriFotografiEkleme {
+public class TC12_YeniProductBrandsEkleme {
+
     Pages allPages = new Pages();
     SoftAssert softAssert = new SoftAssert();
 
@@ -36,35 +37,27 @@ public class TC03_GaleriFotografiEkleme {
         // Add New butonuna tıkla.
         allPages.vendorStoreManagerPage().addNew2.click();
 
-        ReusableMethods.scroll(allPages.vendorProductManagerPage().uploadPhoto);
-
         // Add Product sayfasına geldiğini doğrula.
         WebElement actualResultText = allPages.vendorStoreManagerPage().addProductVerify;
         softAssert.assertTrue(actualResultText.isDisplayed());
-        WaitUtils.waitFor(1);
-
     }
 
     @Test
     public void test01() {
 
-        //Açılan sayfanın sağ üst köşesindeki kucuk boş resim ikonuna tıkla.
-        allPages.vendorProductManagerPage().addGalleryPhotoButton.click();
-        ReusableMethods.waitForSecond(2);
+        //Add new Product brands linkine tıkla.
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewProducts);
+        WaitUtils.waitFor(1);
+        allPages.vendorProductManagerPage().addNewProducts.click();
+        WaitUtils.waitFor(1);
 
-        //Select files butonuna tıkla.
-        allPages.vendorProductManagerPage().selectFiles.click();
+        //Product brands name alanına geçerli bir data gir.
+        allPages.vendorProductManagerPage().ProductBox.sendKeys("bbb");
+        WaitUtils.waitFor(1);
 
-        //Açılan dosyadan uygun formatta olan ürün fotoğrafını seç ve aç butonuna tıkla.
-        String fotografDosyasiUpload = System.getProperty("user.home") + "\\Downloads\\Photo.jpg";
-        ReusableMethods.uploadFilePath(fotografDosyasiUpload);
+        //Yeni marka eklendiğini doğrula.
+        softAssert.assertTrue(allPages.vendorProductManagerPage().verifyAddProduct.isDisplayed());
 
-        ReusableMethods.waitForSecond(5);
-
-        WaitUtils.waitForClickablility(allPages.vendorProductManagerPage().addToGalleryPhotoButton, 8);
-
-        //Ürün fotoğrafı eklendiğini doğrula.
-        allPages.vendorProductManagerPage().filesVerify.isDisplayed();
     }
 
     @AfterMethod

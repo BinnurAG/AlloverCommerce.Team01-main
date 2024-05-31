@@ -48,6 +48,8 @@ public class P18_VendorProductManagerPage {
 
     @FindBy(id ="__wp-uploader-id-1")
     public WebElement selectFiles;
+    @FindBy(id = "__wp-uploader-id-4")
+    public WebElement selectFiles2;
 
     @FindBy(xpath = "//button[text()='Select']")
     public WebElement selectButton;
@@ -136,5 +138,21 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//input[@value ='1085']")
     public WebElement addProductBrands;
 
+    @FindBy(xpath = "//*[.='+Add new Product brands']")
+    public WebElement addNewProducts;
 
+    @FindBy(id = "wcfm_new_product_brand")
+    public WebElement ProductBox;
+
+    @FindBy(xpath = "//li[@*='1509']")
+    public WebElement verifyAddProduct;
+
+    @FindBy(xpath = "//button[@class='button upload-dismiss-errors'][1]")
+    public WebElement dismissError;
+
+    @FindBy(xpath = "(//button[@class='media-modal-close'])[6]")
+    public WebElement closeButton;
+
+    @FindBy(className = "wcfm-message wcfm-error")
+    public WebElement titleErrorMessage;
 }
