@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+
+    <listeners>
+        <listener class-name="team01_AlloverCommerceTestNG.utilities.ExtentReportsListener"></listener>
+    </listeners>
+    <test verbose="2" preserve-order="true"
+          name="US01">
+        <classes>
+            <class name="team01_AlloverCommerceTestNG.tests.us01.TC_02">
+                <methods>
+                    <include name="specialCharacterTest"/>
+                </methods>
+            </class>
+            <class name="team01_AlloverCommerceTestNG.tests.us01.TC_08">
+                <methods>
+                    <include name="boundaryValueAnalysisTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
