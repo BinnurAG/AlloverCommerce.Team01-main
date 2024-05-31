@@ -23,38 +23,28 @@ public class TestCase10 {
     @BeforeMethod
     public void beforeMethod(){
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().editButonB.click();
+
     }
 
 
 
 
     @Test
-    public List<String> addressTableIsDisplayed() {
+    public void addressTableIsDisplayed() {
 
-        WebElement addressTable = allpages.addressesPage().addressTable;
+        List<String> linkTexts = allpages.addressesPage().getLinkTexts();
+        allpages.addressesPage().editButonB.click();
 
-        List<String> linkTexts = Collections.singletonList(addressTable.getText());
-
-
-
+        JSUtils.JSMakeValueNull(allpages.addressesPage().adress1B);
         allpages.addressesPage().adress1B.sendKeys(faker.address().fullAddress());
+        allpages.addressesPage().savebutonB.submit();
 
 
-        List<String> expectedTexts = Arrays.asList(
-                "Name",
-                "Company",
-                "Address",
-                "City",
-                "Country",
-                "Postcode",
-                "Phone"
+        List<String> expectedTexts = allpages.addressesPage().getLinkTexts();
 
-        );
-        Assert.assertEquals(linkTexts, expectedTexts);
+        Assert.assertNotEquals(linkTexts, expectedTexts);
 
 
-        return linkTexts;
     }
 
     @AfterTest
