@@ -1,5 +1,5 @@
 
-package team01_AlloverCommerceTestNG.tests.us02Register;
+package team01_AlloverCommerceTestNG.tests.us02;
 
 import com.github.javafaker.Faker;
 import org.testng.Assert;
