@@ -1,6 +1,5 @@
 
-package team01_AlloverCommerceTestNG.tests.us11.us11;
-
+package team01_AlloverCommerceTestNG.tests.us11;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

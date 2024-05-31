@@ -1,4 +1,6 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
+
+package team01_AlloverCommerceTestNG.tests.us11;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
@@ -6,16 +8,16 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_11 {
+public class TC_14 {
     Pages allPages = new Pages();
 
     @Test
-    public void tc11() {
+    public void tc14() {
 
-        // Web sitesine git
+        // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
-        //Sing in butonuna tikla
+        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
@@ -31,11 +33,11 @@ public class TC_11 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
-        //Orders butonuna tıkla
-        ReusableMethods.click(allPages.myAccountPage().ordersButton);
+        //Account details butonuna tıkla
+        ReusableMethods.click(allPages.myAccountPage().accountDetailsButton);
 
-        //Addresses başlığı görüldüğünü doğrula
-        Assert.assertTrue(allPages.myAccountPage().ordersButtonTitle.isDisplayed());
+        //Account details başlığı görüldüğünü doğrula
+        Assert.assertTrue(allPages.myAccountPage().accountDetailsButton.isDisplayed());
         Driver.getDriver().close();
     }
 

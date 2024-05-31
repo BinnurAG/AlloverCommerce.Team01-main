@@ -1,10 +1,14 @@
 
 package team01_AlloverCommerceTestNG.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class P5_AddressesPage {
 
@@ -99,7 +103,7 @@ public class P5_AddressesPage {
     @FindBy(xpath = "//li[contains(@class, 'alert') and contains(@class, 'alert-danger')]")
     public WebElement phoneFailB;
 
-    @FindBy(css = "table.address-table")
+    @FindBy(xpath = "(//table)[1]")
     public WebElement addressTable;
 
     @FindBy(css = "li[data-id='billing_city'] > i.fas.fa-exclamation-triangle")
@@ -151,5 +155,16 @@ public class P5_AddressesPage {
 
     @FindBy(name = "save_address")
     public WebElement savebutonS;
+
+    public List<String> getLinkTexts() {
+        List<WebElement> linkElements = addressTable.findElements(By.tagName("td"));
+        List<String> linkTexts = new ArrayList<>();
+
+        for (WebElement linkElement : linkElements) {
+            linkTexts.add(linkElement.getText());
+        }
+
+        return linkTexts;
+    }
 
 }

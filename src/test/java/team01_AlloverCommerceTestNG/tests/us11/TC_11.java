@@ -1,4 +1,5 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
+
+package team01_AlloverCommerceTestNG.tests.us11;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,14 +8,11 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class TC_09 {
+public class TC_11 {
     Pages allPages = new Pages();
 
     @Test
-    public void tc09() {
+    public void tc11() {
 
         // Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -23,8 +21,7 @@ public class TC_09 {
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-
-        //Kayitli bir email adresi gir
+        // Email boxa kayıtlı email gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Kayıtlı password girilmeli
@@ -36,24 +33,12 @@ public class TC_09 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
+        //Orders butonuna tıkla
+        ReusableMethods.click(allPages.myAccountPage().ordersButton);
 
-        //Dashboard altında  Store manager, orders, downloads, addresses , account details, wishlist, Support tickets, followings ve log out seçeneklerinin görüldüğünü doğrula
-        List<String> linkTexts = allPages.myAccountPage().getLinkTexts();
-        List<String> expectedTexts = Arrays.asList(
-                "Dashboard",
-                "Store Manager",
-                "Orders",
-                "Downloads",
-                "Addresses",
-                "Account details",
-                "Wishlist",
-                "Support Tickets",
-                "Followings",
-                "Logout"
-        );
-        Assert.assertEquals(linkTexts, expectedTexts);
+        //Addresses başlığı görüldüğünü doğrula
+        Assert.assertTrue(allPages.myAccountPage().ordersButtonTitle.isDisplayed());
         Driver.getDriver().close();
-
     }
 
 

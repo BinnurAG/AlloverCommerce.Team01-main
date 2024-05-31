@@ -1,4 +1,6 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
+
+package team01_AlloverCommerceTestNG.tests.us11;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
@@ -6,11 +8,11 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_15 {
+public class TC_18 {
     Pages allPages = new Pages();
 
     @Test
-    public void tc15() {
+    public void tc18() {
 
         // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -19,7 +21,7 @@ public class TC_15 {
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-        // Email boxa kayıtlı email gir
+        // Kayıtlı bir email adresi girilmeli
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Kayıtlı password girilmeli
@@ -31,15 +33,12 @@ public class TC_15 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
-        //Wishlist butonuna tıkla
-        ReusableMethods.click(allPages.myAccountPage().wishlistButton);
-
-        //Ticket(s) başlığı görülmeli
-        Assert.assertTrue(allPages.wishlistPage().wishlistTitle.isDisplayed());
-
+        //Dashboard altında Log out  menüsüne girildiğini doğrula
+        ReusableMethods.click(allPages.myAccountPage().logoutButton);
+        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
         Driver.getDriver().close();
-    }
 
+    }
 
 }
 

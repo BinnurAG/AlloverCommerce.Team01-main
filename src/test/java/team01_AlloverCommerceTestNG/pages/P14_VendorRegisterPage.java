@@ -97,8 +97,11 @@ public class P14_VendorRegisterPage {
 
     /*--------  FAKE MAİL WEBELEMENTS   -------------     */
 
+    @FindBy(id = "email")
+    public WebElement fakeEmaill;
 }
 
     //@FindBy(css= ".wcfm-message.wcfm-error")
    // public WebElement emailWrongText;
+
 

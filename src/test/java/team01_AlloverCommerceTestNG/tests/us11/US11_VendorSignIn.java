@@ -1,4 +1,6 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
+
+package team01_AlloverCommerceTestNG.tests.us11;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,6 +13,7 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 import java.util.Arrays;
 import java.util.List;
+
 
 public class US11_VendorSignIn {
 
@@ -30,7 +33,7 @@ public class US11_VendorSignIn {
         ExtentReportUtils.extentTestInfo("SIGN IN tıklanır olmalı ve SIGN IN penceresi açıldı");
     }
 
-    @Test(description = "US11-TC01a")
+    @Test (description = "US11-TC01a")
     public void tc01a() {
 
         // Username or email address alanına gecerli (kayitli) bir email gir
@@ -173,55 +176,7 @@ public class US11_VendorSignIn {
         ExtentReportUtils.extentTestPass("Giriş işlemi gerçekleşmedi");
     }
 
-
-    /*
-    @Test(description = "US11-TC07a")
-    public void tc07a() {
-
-        // Kayitli bir email adresi gir
-        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
-        ExtentReportUtils.extentTestInfo("Kayıtlı bir email adresi girildi");
-
-        // Basina space koyarak kayitli olan passwordu gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys(" yvtve8V$");
-        ExtentReportUtils.extentTestInfo("Basina space koyarak kayitli password girildi");
-
-        // SIGN IN butonuna tikla
-        allPages.userVendorLoginPage().signInButton.click();
-        ExtentReportUtils.extentTestInfo("Sign In butonu tıklandı");
-
-        //Giris isleminin gerceklesmedigini dogrula
-        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
-        ExtentReportUtils.extentTestPass("Password hatali girildigi halde giriş işlemi gerçeklesdi");
-    }  //fail
-
-    @Test(description = "US11-TC07b")
-    public void tc07b() {
-
-        // Kayitli bir email adresi gir
-        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
-        ExtentReportUtils.extentTestInfo("Kayıtlı bir email adresi girildi");
-
-        // Sonuna space koyarak kayitli olan passwordu gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$ ");
-        ExtentReportUtils.extentTestInfo("Sonuna space koyarak kayitli password girildi");
-
-        // SIGN IN butonuna tikla
-        allPages.userVendorLoginPage().signInButton.click();
-        ExtentReportUtils.extentTestInfo("Sign In butonu tıklandı");
-
-        //Giris isleminin gerceklesmedigini dogrula
-        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
-<<<<<<< HEAD:src/test/java/team01_AlloverCommerceTestNG/tests/us11/us11/US11_VendorSignIn.java
-        ExtentReportUtils.extentTestPass("Password hatali girildigi halde giriş işlemi gerçeklesdi");
-=======
-        // Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
-
->>>>>>> main:src/test/java/team01_AlloverCommerceTestNG/tests/us11/US11_VendorSignIn.java
-    }  //fail
-
-     */
-
+    // 7a ve 7b asagida
 
     @Test(description = "US11-TC08a")
     public void tc08a() {
@@ -244,6 +199,9 @@ public class US11_VendorSignIn {
 
         //My Account sayfasinin goruntulendigini dogrula
 
+       Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
+        ExtentReportUtils.extentTestPass("My Account sayfasi goruntulendi");
+        ReusableMethods.logOutClick();
     }
 
 
@@ -334,7 +292,7 @@ public class US11_VendorSignIn {
 
         //Store manager başlığı görüldüğünü doğrula
         Assert.assertTrue(allPages.vendorStoreManagerPage().storeManagerTitle.isDisplayed());
-        ExtentReportUtils.extentTestPass("Store manager başlığı görüldüğünü doğrulandı");
+        ExtentReportUtils.extentTestPass("Store manager başlığı görüldüğü doğrulandı");
         ReusableMethods.logOutClick();
     }
 
@@ -363,7 +321,7 @@ public class US11_VendorSignIn {
 
         //Orders başlığı görüldüğünü doğrula
         Assert.assertTrue(allPages.myAccountPage().ordersButtonTitle.isDisplayed());
-        ExtentReportUtils.extentTestPass("Orders başlığı görüldüğünü doğrulandı");
+        ExtentReportUtils.extentTestPass("Orders başlığı görüldüğü doğrulandı");
         ReusableMethods.logOutClick();
     }
 
@@ -392,38 +350,12 @@ public class US11_VendorSignIn {
 
         //Downloads başlığının görüldüğünü doğrula
         Assert.assertTrue(allPages.myAccountPage().dowloadsButtonTitle.isDisplayed());
-        ExtentReportUtils.extentTestPass("Downloads başlığı görüldüğünü doğrulandı");
+        ExtentReportUtils.extentTestPass("Downloads başlığı görüldüğü doğrulandı");
+
         ReusableMethods.logOutClick();
     }
 
-    @Test(description = "US11-TC13")
-    public void tc13() {
-
-        // Email boxa kayıtlı email gir
-        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
-        ExtentReportUtils.extentTestInfo("Kayıtlı bir email adresi girildi");
-
-        // Kayıtlı password girilmeli
-        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
-        ExtentReportUtils.extentTestInfo("Kayıtlı password girildi");
-
-        // Sign In butonu tıklanır olmalı
-        allPages.userVendorLoginPage().signInButton.click();
-        ExtentReportUtils.extentTestInfo("Sign In butonu tıklandı");
-
-        //My Account linkine tıkla
-        ReusableMethods.click(allPages.homePage().myAccountButton);
-        ExtentReportUtils.extentTestInfo("My Account linkine tıklandı");
-
-        //Addresses butonuna tıkla
-        ReusableMethods.click(allPages.myAccountPage().addressesButton);
-        ExtentReportUtils.extentTestInfo("Addresses butonuna tıklandı");
-
-        //Addresses başlığı görüldüğünü doğrula
-        Assert.assertTrue(allPages.vendorAddressesPage().addressesTitle.isDisplayed());
-        ExtentReportUtils.extentTestPass("Addresses başlığı görüldüğünü doğrulandı");
-        ReusableMethods.logOutClick();
-    }
+   // adressses asagida
 
     @Test(description = "US11-TC14")
     public void tc14() {
@@ -450,7 +382,7 @@ public class US11_VendorSignIn {
 
         //Account details başlığı görüldüğünü doğrula
         Assert.assertTrue(allPages.myAccountPage().accountDetailsButton.isDisplayed());
-        ExtentReportUtils.extentTestPass("Account details basligi görüldüğünü doğrulandı");
+        ExtentReportUtils.extentTestPass("Account details basligi görüldüğü doğrulandı");
         ReusableMethods.logOutClick();
     }
 
@@ -479,7 +411,7 @@ public class US11_VendorSignIn {
 
         //Ticket(s) başlığı görülmeli
         Assert.assertTrue(allPages.wishlistPage().wishlistTitle.isDisplayed());
-        ExtentReportUtils.extentTestPass("Ticket(s) başlığı görüldüğünü doğrulandı");
+        ExtentReportUtils.extentTestPass("Wishlist başlığı görüldüğü doğrulandı");
         ReusableMethods.logOutClick();
     }
 
@@ -508,7 +440,7 @@ public class US11_VendorSignIn {
 
         //Ticket(s) başlığı görülmeli
         Assert.assertTrue(allPages.myAccountPage().supportTicketsButtonTicketsText.isDisplayed());
-        ExtentReportUtils.extentTestPass("Ticket(s) başlığı görüldüğünü doğrulandı");
+        ExtentReportUtils.extentTestPass("Ticket(s) başlığı görüldüğü doğrulandı");
         ReusableMethods.logOutClick();
     }
 
@@ -563,13 +495,12 @@ public class US11_VendorSignIn {
         //Dashboard altında Log out menüsüne girildiğini doğrula
         ReusableMethods.click(allPages.myAccountPage().logoutButton);
         Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
-        ExtentReportUtils.extentTestPass("Log out başlığı görüldüğünü doğrulandı");
-        ReusableMethods.logOutClick();
+        ExtentReportUtils.extentTestPass("Sign In butonu görüldüğü doğrulandı");
        // Driver.getDriver().close();
     }
 
     @Test(description = "US11-TC07a")
-    public void tc07a() {
+    public void tc19a() {
 
         // Kayitli bir email adresi gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -586,12 +517,13 @@ public class US11_VendorSignIn {
         //Giris isleminin gerceklesmedigini dogrula (Sign Out butonu gozukmemeli)
         softAssert.assertFalse(allPages.homePage().signOutButton.isDisplayed());
         ExtentReportUtils.extentTestPass("Password hatali girildigi halde giriş işlemi gerçeklesti");
-        ReusableMethods.logOutClick();
         softAssert.assertAll();
+        ReusableMethods.logOutClick();
     }  //fail
 
+
     @Test(description = "US11-TC07b")
-    public void tc07b() {
+    public void tc19b() {
 
         // Kayitli bir email adresi gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
@@ -612,13 +544,36 @@ public class US11_VendorSignIn {
         softAssert.assertAll();
     }  //fail
 
+    @Test(description = "US11-TC13")
+    public void tc20() {   //tc13
 
-    /*
-    public static void logOutClick(){
-        allPages.homePage().signOutButton.click();
-        allPages.myAccountPage().logoutButton.click();
+        // Email boxa kayıtlı email gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+        ExtentReportUtils.extentTestInfo("Kayıtlı bir email adresi girildi");
+
+        // Kayıtlı password girilmeli
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        ExtentReportUtils.extentTestInfo("Kayıtlı password girildi");
+
+        // Sign In butonu tıklanır olmalı
+        allPages.userVendorLoginPage().signInButton.click();
+        ExtentReportUtils.extentTestInfo("Sign In butonu tıklandı");
+
+        //My Account linkine tıkla
+        ReusableMethods.click(allPages.homePage().myAccountButton);
+        ExtentReportUtils.extentTestInfo("My Account linkine tıklandı");
+
+        //Addresses butonuna tıkla
+        ReusableMethods.click(allPages.myAccountPage().addressesButton);
+        ExtentReportUtils.extentTestInfo("Addresses butonuna tıklandı");
+
+        //Addresses başlığı görüldüğünü doğrula
+        Assert.assertTrue(allPages.vendorAddressesPage().addressesTitle.isDisplayed());
+        ExtentReportUtils.extentTestPass("Addresses başlığı görüldüğünü doğrulandı");
+        ReusableMethods.logOutClick();
     }
-*/
+
+
 
 
 }

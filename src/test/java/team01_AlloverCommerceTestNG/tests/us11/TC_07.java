@@ -1,4 +1,4 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
+package team01_AlloverCommerceTestNG.tests.us11;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
