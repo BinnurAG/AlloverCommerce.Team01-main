@@ -4,8 +4,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class P1_HomePage {
+
+    public ReusableMethods singInButton;
 
     public P1_HomePage() {
 

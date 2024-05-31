@@ -29,7 +29,7 @@ public class P2_RegisterPage {
     @FindBy(xpath = "//button[@name='register']")
     public WebElement submitButton;
 
-    @FindBy(xpath = "//*[.='Sign Out']")
+    @FindBy(xpath = "(//*[.='Sign Out'])[1]")
     public WebElement signOut;
 
     @FindBy(xpath = "//*[.='Please enter a valid account username.']")
@@ -38,13 +38,18 @@ public class P2_RegisterPage {
     @FindBy(linkText = "Become a Vendor")
     public WebElement becomeAVendorLink;
 
-
+    @FindBy(xpath = "//a[text()='Log out']")
+    public WebElement logout;
 
     @FindBy(xpath = "(//p[@class='submit-status'])[2]")
     public WebElement plsLogInMsg;
 
     @FindBy(xpath = "//p[.='An account is already registered with that username. Please choose another.']")
     public WebElement plsChooseAnotherMsg;
+
+    @FindBy(xpath = "//a[@class='live-chat']")
+    public WebElement mailOfSite;
+
 
 
 

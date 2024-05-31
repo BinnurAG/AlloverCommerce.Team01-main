@@ -193,8 +193,10 @@ public class P15_VendorAddressesPage {
     @FindBy(xpath = "//*[text()='Account details']")
     public WebElement wishlistShipping;
 
+
     @FindBy(xpath = "//input[@class='input-text ']")
     public List<WebElement> shippingAdressForm;
+
 
 
 

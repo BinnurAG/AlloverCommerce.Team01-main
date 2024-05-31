@@ -107,11 +107,13 @@ public class ExtentReportUtils {
         TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         try {
             Files.write(Paths.get(path), ts.getScreenshotAs(OutputType.BYTES));
-            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "/" + path);
+            extentTest.addScreenCaptureFromPath(System.getProperty("user.dir") + "\\" + path);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
+
 
     /**
      * Bir web elementin görüntüsünü alıp rapora ekler.

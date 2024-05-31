@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.tests.us01;
 
 import com.github.javafaker.Faker;
@@ -12,25 +13,21 @@ public class TC_12 {
     P2_RegisterPage p2_registerPage = new P2_RegisterPage();
     Faker faker = new Faker();
 
-    @Test(description = "US01 - TC12 Registration should not occur when the user does not select the checkbox")
-    public void controlBoxTest() {
+    @Test(description = "US01 - TC12 Registration should not occur without entering username,password and email")
+    public void emptyChTest() {
 // Siteye müşteri olarak kayıt olurken
-// "I agree to the privacy policy" kontrol kutusu boş bırakıldığında kayıt işlemi gerçekleşmemeli
-
+// Username,Email address ve Password girilmeden SIGN UP tıklandığında kayıt gerçekleşmemeli
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
         p2_registerPage.register.click();
-//        Username alanına bir veri gir
-        p2_registerPage.userName.sendKeys(faker.name().username());
-//        Your Email adrdress alanına bir veri gir
-        p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
-//        Password alanına 8 karakterli bir veri gir
-        p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
-//        I agree to the privacy policy kontrol kutusunu boş bırak
-        p2_registerPage.submitButton.sendKeys("");
-//        SIGN UP butonuna tıkla
+        p2_registerPage.userName.sendKeys("");
+        p2_registerPage.emailAddress.sendKeys("");
+        p2_registerPage.password.sendKeys("");
+        p2_registerPage.privacyPolicy.click();
         p2_registerPage.submitButton.click();
-//        Kayıt işleminin gerçekleşmediğini doğrula
-        Assert.assertTrue(p2_registerPage.register.isEnabled());
+
+//      Kayıt işleminin gerçekleşmediğini doğrula
+        Assert.assertTrue(p2_registerPage.submitButton.isEnabled());
         Driver.closeDriver();
+
     }
 }

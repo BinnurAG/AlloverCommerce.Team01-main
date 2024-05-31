@@ -13,18 +13,19 @@ public class TC_10 {
     P2_RegisterPage p2_registerPage = new P2_RegisterPage();
     Faker faker = new Faker();
 
-    @Test(description = "US01 - TC10 Registration should be possible with a 9 characters password")
-    public void boundaryValueAnalysisTest() {
-//  Siteye müşteri olarak kayıt olurken 9 karakterli bir password ile kayıt işlemi gerçekleşmeli
+    @Test(description = "US01 - TC10 User should be able to register with special password characters")
+    public void specialCharacterTest() {
+// Siteye müşteri olarak kayıt olurken password büyük ve küçük harfler,
+// sayılar ve ! " ? $ % ^ & karakterleri kullanılarak kayıt işlemi gerçekleşmeli
+
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
-//        Register linkine tıkla
         p2_registerPage.register.click();
 //        Username alanına bir veri gir
         p2_registerPage.userName.sendKeys(faker.name().username());
 //        Your Email adrdress alanına bir veri gir
         p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
-//        Password alanına 9 karakterli bir veri gir
-        p2_registerPage.password.sendKeys(ConfigReader.getProperty("nineCharacterPassword"));
+//        Password alanına özel karakterlerden olusan bir veri gir
+        p2_registerPage.password.sendKeys(ConfigReader.getProperty("specialChPassword"));
 //        I agree to the privacy policy kontrol kutusunu seç
         p2_registerPage.privacyPolicy.click();
 //        SIGN UP butonuna tıkla
@@ -33,4 +34,5 @@ public class TC_10 {
         Assert.assertTrue(p2_registerPage.signOut.isEnabled());
         Driver.closeDriver();
     }
+
 }

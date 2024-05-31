@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.P2_RegisterPage;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
 
 public class TC_03 {
 
@@ -23,15 +24,18 @@ public class TC_03 {
 //        Your Email address alanına kayıtlı bir veri gir
         p2_registerPage.emailAddress.sendKeys(ConfigReader.getProperty("registeredEmail"));
 //        Password alanına 8 karakterli bir veri gir
+        ExtentReportUtils.extentTestInfo("Password alanına 8 karakterli bir veri gir");
         p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
         p2_registerPage.privacyPolicy.click();
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
+      ExtentReportUtils.extentTestPass("Test basarili oldu");
+//      ExtentReportUtils.addScreenShotToReport();
         String actualMessage = p2_registerPage.plsLogInMsg.getText();
         Assert.assertEquals
                 (actualMessage,"An account is already registered with your email address. Please log in.");
 
-//      Driver.closeDriver();
+      Driver.closeDriver();
 
     }
 }

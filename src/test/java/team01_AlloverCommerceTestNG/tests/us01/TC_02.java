@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.P2_RegisterPage;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
 
 public class TC_02 {
 
@@ -23,6 +24,7 @@ public class TC_02 {
 //        3	Username alanına bir veri gir
         p2_registerPage.userName.sendKeys(ConfigReader.getProperty("privateUserName"));
 //        4	Your Email address alanına bir veri gir
+        ExtentReportUtils.extentTestInfo("Your Email address alanına bir veri gir");
         p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
 //        5	Password alanına bir veri gir
         p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
@@ -32,6 +34,7 @@ public class TC_02 {
         p2_registerPage.submitButton.click();
 //      ReusableMethods.screenShot("SignOut");
 //        8	Anasayfanın açıldığını ve Sign Out linkinin göründüğünü doğrula
+        ExtentReportUtils.extentTestFail("Test basarisiz oldu");
         Assert.assertTrue(p2_registerPage.signOut.isEnabled());
 
         Driver.closeDriver();

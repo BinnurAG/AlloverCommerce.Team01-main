@@ -30,6 +30,7 @@ public class TC_01 {
 //        7	SIGN UP butonuna tıkla
         p2_registerPage.submitButton.click();
 //        8	Anasayfanın açıldığını ve Sign Out linkinin göründüğünü doğrula
+
         Assert.assertTrue(p2_registerPage.signOut.isDisplayed());
         Driver.closeDriver();
     }
