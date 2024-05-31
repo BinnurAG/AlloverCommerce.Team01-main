@@ -17,7 +17,7 @@ public class US_09_TC_17 {
     @Test(description = "US09- AC08 Kayıtlı bir e-mail adresi ile kayıt olmaya çalıştığında \"This Email already exists. Please login to the site and apply as vendor.\" mesajını almalı")
 
     public void test_US_09_TC_12() {
-
+        ExtentReportUtils.setUpExtentReport("us_09_tc_17","Huseyinkaya");
         // Kullanıcı Allover Commerce URL'sine gitmeli
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
         String alloverCommerceWebSite = Driver.getDriver().getWindowHandle();

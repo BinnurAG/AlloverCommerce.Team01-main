@@ -12,9 +12,9 @@ import team01_AlloverCommerceTestNG.utilities.JSUtils;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class US_09_TC_13 {
-<<<<<<< Updated upstream
-}
-=======
+
+
+
     P14_VendorRegisterPage p14_VendorRegisterPage = new P14_VendorRegisterPage();
     P1_HomePage p1_HomePage = new P1_HomePage();
     Actions actions = new Actions(Driver.getDriver());
@@ -64,4 +64,4 @@ public class US_09_TC_13 {
 //Driver.getDriver().close();
     }
     }
->>>>>>> Stashed changes
+
