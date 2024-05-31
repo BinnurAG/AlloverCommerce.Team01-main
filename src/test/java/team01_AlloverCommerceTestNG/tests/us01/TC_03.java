@@ -1,5 +1,5 @@
 
-package team01_AlloverCommerceTestNG.tests.us01Register;
+package team01_AlloverCommerceTestNG.tests.us01;
 
 import com.github.javafaker.Faker;
 import org.testng.Assert;
@@ -8,20 +8,18 @@ import team01_AlloverCommerceTestNG.pages.P2_RegisterPage;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 
-public class TC_05 {
+public class TC_03 {
 
     P2_RegisterPage p2_registerPage = new P2_RegisterPage();
     Faker faker = new Faker();
 
-    @Test(description = "US01 - TC05 New registration should not be possible with the registered username")
-    public void registeredUsernameTest() {
-// Siteye müşteri olarak kayıt olurken daha önce kayıtlı bir username ile kayıt işlemi gerçekleşmemeli
-//        Web sitesine git
+    @Test(description = "US01 - TC03 The user should be able to register in digits only")
+    public void digitTest() {
+// Siteye müşteri olarak kayıt olurken username alanına sadece rakam girilebilmeli
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
-//        Register linkine tıkla
         p2_registerPage.register.click();
-//        Username alanına kayıtlı bir veri gir
-        p2_registerPage.userName.sendKeys(ConfigReader.getProperty("registeredUserName"));
+//        Username alanına sadece rakam gir
+        p2_registerPage.userName.sendKeys("1111");
 //        Your Email address alanına bir veri gir
         p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
 //        Password alanına 8 karakterli bir veri gir
@@ -30,14 +28,8 @@ public class TC_05 {
         p2_registerPage.privacyPolicy.click();
 //        SIGN UP butonuna tıkla
         p2_registerPage.submitButton.click();
-//        Kayıt işleminin gerçekleşmediğini doğrula
-
-//       ExtentReportUtils.extentTestPass("Test basarılı oldu");
-//       ExtentReportUtils.addScreenShotToReport();
-        String actualMsg = p2_registerPage.plsChooseAnotherMsg.getText();
-        Assert.assertEquals
-                (actualMsg,"An account is already registered with that username. Please choose another.");
+//        Anasayfanın açıldığını ve Sign Out linkinin göründüğünü doğrula
+        Assert.assertTrue(p2_registerPage.signOut.isEnabled());
         Driver.closeDriver();
     }
-
 }

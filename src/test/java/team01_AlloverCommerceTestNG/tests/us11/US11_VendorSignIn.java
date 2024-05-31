@@ -1,4 +1,6 @@
+
 package team01_AlloverCommerceTestNG.tests.us11;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,7 +14,9 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 import java.util.Arrays;
 import java.util.List;
 
+
 public class US11_VendorSignIn {
+
 
     Pages allPages = new Pages();
     private SoftAssert softAssert = new SoftAssert();
@@ -194,6 +198,7 @@ public class US11_VendorSignIn {
         ExtentReportUtils.extentTestInfo("Sayfanin en altindaki My account linkine tiklandi");
 
         //My Account sayfasinin goruntulendigini dogrula
+
        Assert.assertTrue(allPages.myAccountPage().myAccountTitle.isDisplayed());
         ExtentReportUtils.extentTestPass("My Account sayfasi goruntulendi");
         ReusableMethods.logOutClick();

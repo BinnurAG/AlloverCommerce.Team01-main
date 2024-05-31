@@ -1,3 +1,4 @@
+
 package team01_AlloverCommerceTestNG.utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -329,3 +330,4 @@ public class BrowserUtils {
         Driver.getDriver().switchTo().window(list.get(windowIndex));
     }
 }
+

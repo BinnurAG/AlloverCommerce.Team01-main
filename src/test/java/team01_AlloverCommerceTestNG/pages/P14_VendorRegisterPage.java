@@ -90,5 +90,18 @@ public class P14_VendorRegisterPage {
     @FindBy(xpath = "(//h1)[2]")
     public WebElement welcomeToAllevorCommerce;
 
-    @FindBy(css= ".wcfm-message.wcfm-error")
-    public static WebElement emailWrongText;}
+    @FindBy(css = ".wcfm-message.wcfm-error")
+    public static WebElement emailWrongText;
+
+
+
+    /*--------  FAKE MAİL WEBELEMENTS   -------------     */
+
+    @FindBy(id = "email")
+    public WebElement fakeEmaill;
+}
+
+    //@FindBy(css= ".wcfm-message.wcfm-error")
+   // public WebElement emailWrongText;
+
+

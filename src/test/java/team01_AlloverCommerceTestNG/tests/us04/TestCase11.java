@@ -1,27 +1,25 @@
-package team01_AlloverCommerceTestNG.tests.us03;
+package team01_AlloverCommerceTestNG.tests.us04;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import team01_AlloverCommerceTestNG.pages.P1_HomePage;
-import team01_AlloverCommerceTestNG.pages.P4_MyAccountPage;
-import team01_AlloverCommerceTestNG.pages.P5_AddressesPage;
 import team01_AlloverCommerceTestNG.pages.Pages;
-import team01_AlloverCommerceTestNG.utilities.*;
+import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.JSUtils;
+import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
+import team01_AlloverCommerceTestNG.utilities.WaitUtils;
 
 public class TestCase11 {
 
-        Pages allpages = new Pages();
+    Pages allpages = new Pages();
+
 
     @BeforeMethod
     public void beforeMethod(){
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuB.click();
+        allpages.addressesPage().addButonuS.click();
     }
 
 

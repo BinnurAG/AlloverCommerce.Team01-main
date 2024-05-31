@@ -1,4 +1,4 @@
-package team01_AlloverCommerceTestNG.tests.us03;
+package team01_AlloverCommerceTestNG.tests.us04;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
@@ -8,11 +8,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
-import team01_AlloverCommerceTestNG.utilities.*;
+import team01_AlloverCommerceTestNG.utilities.ConfigReader;
+import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.JSUtils;
+import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class TestCase10 {
@@ -23,7 +23,7 @@ public class TestCase10 {
     @BeforeMethod
     public void beforeMethod(){
         ReusableMethods.signInUS0304();
-
+        allpages.addressesPage().addButonuS.click();
     }
 
 

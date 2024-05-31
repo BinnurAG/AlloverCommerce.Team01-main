@@ -1,5 +1,5 @@
 
-package team01_AlloverCommerceTestNG.tests.us01Register;
+package team01_AlloverCommerceTestNG.tests.us01;
 
 import com.github.javafaker.Faker;
 import org.testng.Assert;
@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.P2_RegisterPage;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
-import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class TC_13 {
 
