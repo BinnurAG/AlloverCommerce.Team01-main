@@ -22,9 +22,9 @@ public class TC_02 {
 //        2	Register linkine tıkla
         p2_registerPage.register.click();
 //        3	Username alanına bir veri gir
+        ExtentReportUtils.extentTestInfo("Kullanici ozel karakterlerden olusan bir veri girer");
         p2_registerPage.userName.sendKeys(ConfigReader.getProperty("privateUserName"));
 //        4	Your Email address alanına bir veri gir
-        ExtentReportUtils.extentTestInfo("Your Email address alanına bir veri gir");
         p2_registerPage.emailAddress.sendKeys(faker.internet().emailAddress());
 //        5	Password alanına bir veri gir
         p2_registerPage.password.sendKeys(ConfigReader.getProperty("registeredPassword"));
