@@ -1,5 +1,5 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
 
+package team01_AlloverCommerceTestNG.tests.us11;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,32 +7,36 @@ import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 
-public class TC_04 {
+public class TC_02 {
     Pages allPages = new Pages();
 
     @Test
-    public void tc04() {
+    public void tc02() {
 
-        // Siteye ulaşılmalı
+        // Web sitesine git
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
+        //Sing in butonuna tikla
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-        //Kayitli email adresini eksik gir
-        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamessn@floodouts.com");
+        // email adresi alanini bos birak
+        allPages.userVendorLoginPage().emailBox.sendKeys("");
 
-        // Kayıtlı password girilmeli
+        // Kayitli bir Password  gir
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
 
-        // Sign In butonu tıklanır olmalı
+        // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
 
-        // Giriş işlemi gerçekleşmemeli
-        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
+        // Giris isleminin gerceklesmedigi dogrula
+        String validationMessage = allPages.userVendorLoginPage().emailBox.getAttribute("validationMessage");
+        Assert.assertEquals(validationMessage, "Please fill out this field.");
+
         Driver.getDriver().close();
 
+
     }
+
 
 }

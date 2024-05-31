@@ -1,5 +1,5 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
 
+package team01_AlloverCommerceTestNG.tests.us11;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,12 +7,12 @@ import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 
-public class TC_05 {
-
+public class TC_06 {
     Pages allPages = new Pages();
 
     @Test
-    public void tc05() {
+    public void tc06() {
+
         // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
@@ -23,8 +23,8 @@ public class TC_05 {
         // Kayitli bir email adresi gir
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
-        // Password  alanini bos birak
-        allPages.userVendorLoginPage().passwordBox.sendKeys("");
+        // Password alanina farkli bir sifre gir
+        allPages.userVendorLoginPage().passwordBox.sendKeys("dyu76@u7");
 
         // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
@@ -36,4 +36,3 @@ public class TC_05 {
     }
 
 }
-

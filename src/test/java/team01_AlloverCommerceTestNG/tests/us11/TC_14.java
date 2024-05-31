@@ -1,5 +1,5 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
 
+package team01_AlloverCommerceTestNG.tests.us11;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,10 +7,12 @@ import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
-public class TC_17 {
+
+public class TC_14 {
     Pages allPages = new Pages();
+
     @Test
-    public void tc17() {
+    public void tc14() {
 
         // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
@@ -20,7 +22,7 @@ public class TC_17 {
         allPages.homePage().signInButton.click();
 
         // Email boxa kayıtlı email gir
-        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com\n");
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Kayıtlı password girilmeli
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
@@ -31,14 +33,14 @@ public class TC_17 {
         //My Account linkine tıkla
         ReusableMethods.click(allPages.homePage().myAccountButton);
 
-        //Followings butonuna tıkla
-        ReusableMethods.click(allPages.myAccountPage().followingsButton);
+        //Account details butonuna tıkla
+        ReusableMethods.click(allPages.myAccountPage().accountDetailsButton);
 
-        //Actions başlığı görülmeli
-        Assert.assertTrue(allPages.myAccountPage().followingButtonActionText.isDisplayed());
-
+        //Account details başlığı görüldüğünü doğrula
+        Assert.assertTrue(allPages.myAccountPage().accountDetailsButton.isDisplayed());
         Driver.getDriver().close();
-
     }
 
+
 }
+

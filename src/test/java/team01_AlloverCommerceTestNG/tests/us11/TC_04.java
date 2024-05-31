@@ -1,5 +1,5 @@
-package team01_AlloverCommerceTestNG.tests.us11.us11;
 
+package team01_AlloverCommerceTestNG.tests.us11;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,31 +7,30 @@ import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 
-public class TC_03 {
-
+public class TC_04 {
     Pages allPages = new Pages();
 
     @Test
-    public void tc03() {
+    public void tc04() {
 
-        //Web sitesine git
+        // Siteye ulaşılmalı
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
 
-        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmali
+        // SIGN IN tıklanır olmalı ve SIGN IN penceresi açılmalı
         Assert.assertTrue(allPages.homePage().signInButton.isEnabled());
         allPages.homePage().signInButton.click();
 
-        // email adresi alanina farkli bir email adresi gir
-        allPages.userVendorLoginPage().emailBox.sendKeys("ranaloa@floodouts.com");
+        //Kayitli email adresini eksik gir
+        allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamessn@floodouts.com");
 
-        // Kayitli bir Password  gir
+        // Kayıtlı password girilmeli
         allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
 
-        // SIGN IN butonuna tikla
+        // Sign In butonu tıklanır olmalı
         allPages.userVendorLoginPage().signInButton.click();
 
-        // Giris isleminin gerceklesmedigi dogrula
-        Assert.assertTrue(allPages.userVendorLoginPage().warningMessage.isDisplayed());
+        // Giriş işlemi gerçekleşmemeli
+        Assert.assertTrue(allPages.homePage().signInButton.isDisplayed());
         Driver.getDriver().close();
 
     }
