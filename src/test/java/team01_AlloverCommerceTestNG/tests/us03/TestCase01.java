@@ -2,11 +2,14 @@
 package team01_AlloverCommerceTestNG.tests.us03;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ExtentReportsListener;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 
@@ -14,12 +17,17 @@ import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 public class TestCase01 {
 
     Pages allPages = new Pages();
+    ExtentReportsListener extentReportsListener = new ExtentReportsListener();
+    @BeforeMethod
+    public void beforeTest(){
 
-
-    @Test
+    }
+    @Test(description = "US03")
     public void ADDbutonu() {
 
+
         Driver.getDriver().get(ConfigReader.getProperty("alloverUrl"));
+
 
         ReusableMethods.waitForSecond(2);
         allPages.addressesPage().signIn1.click();
@@ -32,7 +40,7 @@ public class TestCase01 {
         allPages.addressesPage().signOut.click();
 
         allPages.addressesPage().addressesButton.click();
-        //Assert.assertTrue(addressesPage.billingAddress.isDisplayed());
+
         Assert.assertTrue(allPages.addressesPage().billingAddress.isDisplayed());
 
         allPages.addressesPage().addButonuB.click();
