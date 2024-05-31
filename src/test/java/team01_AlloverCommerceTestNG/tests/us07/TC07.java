@@ -8,12 +8,12 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 import static team01_AlloverCommerceTestNG.utilities.Driver.closeDriver;
 import static team01_AlloverCommerceTestNG.utilities.Driver.getDriver;
 import static team01_AlloverCommerceTestNG.utilities.ReusableMethods.*;
 
-public class TC03 {
+public class TC07 {
 
     Pages allPages = new Pages();
     Actions actions = new Actions(getDriver());
@@ -29,35 +29,32 @@ public class TC03 {
         closeDriver();
     }
 
-    @Test(description = "US07-AC03 Kullanıcı karşılaştırma listesinden ürün silip yeni ürün ekleyebilmeli")
+    @Test(description = "US07-AC05 Kullanıcı karşılaştırma ekranından ürün silebilmeli")
+    public void test_DeleteFromTheCompareScreen() {
 
-    public void test03_AllProductsShouldBeDeletedFromTheComparisonListAndAddNewOnes() {
-
-        //Siteye git, Bilgisayar ürününü seç, compare iconuna tıkla ve 4 ürünü listeye ekle
+        //Siteye git, phone ürününü seç, compare iconuna tıkla ve 4 ürünü listeye ekle
         loginToSite();
-        searchProductAndShowAsList("Bilgisayar");
+        searchProductAndShowAsList("phone");
         click(allPages.comparePage().compareIcon);
         AddNewProduct(3);
+        ExtentReportUtils.extentTestInfo("4 ürün eklendi");
 
-        //Compare popup'ındaki ürünleri teker teker sil ve 2 yeni ürün ekle
-        deleteProduct(3);
-        actions.clickAndHold(allPages.comparePage().scrollBarInComparePopup).moveByOffset(100, 0).perform();
-        deleteProduct(1);
+        //Start compare butonuna tıkla ve karşılaştırma ekranını aç
+        click(allPages.comparePage().startCompareButton);
+        visibleWait(allPages.comparePage().compareField, 5);
+        ExtentReportUtils.extentTestInfo("Karıştırma ekranı açıldı");
 
-        AddNewProduct(2);
+        //Karıştırma ekranında 4 ürünü de teker teker sil
+        deleteProductFromCompareScreen(4);
+        visibleWait(allPages.comparePage().noProductsAddedToCompareList, 5);
+        assertTrue(allPages.comparePage().noProductsAddedToCompareList.isDisplayed());
+        ExtentReportUtils.extentTestPass("Karşılaştırılan 4 ürün silindi");
 
-        //Son  olarak compare listesinin 2 ürün oldugunu test et
-        int count = Integer.parseInt(allPages.comparePage().comparingProductCount.getText().replaceAll("\\D+", ""));
-        assertEquals(count, 2, "Products count is not 2.");
-        ExtentReportUtils.extentTestPass("Compare listesinin 2 ürün oldugu doğrulandı");
-
-        js.executeScript("arguments[0].remove();", allPages.comparePage().comparePopup);
         actions.moveToElement(allPages.registerPage().mailOfSite).perform();
-        visibleWait(allPages.registerPage().signOut, 15);
-        click(allPages.registerPage().signOut);
+        visibleWait(allPages.accountDetails().signOut, 15);
+        click(allPages.accountDetails().signOut);
         visibleWait(allPages.registerPage().logout, 15);
         click(allPages.registerPage().logout);
     }
 
-
-}
+ }
