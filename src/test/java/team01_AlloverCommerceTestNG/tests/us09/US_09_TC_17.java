@@ -10,9 +10,6 @@ import team01_AlloverCommerceTestNG.pages.P1_HomePage;
 import team01_AlloverCommerceTestNG.utilities.*;
 
 public class US_09_TC_17 {
-<<<<<<< Updated upstream
-}
-=======
     P14_VendorRegisterPage p14_VendorRegisterPage = new P14_VendorRegisterPage();
     P1_HomePage p1_HomePage = new P1_HomePage();
     Actions actions = new Actions(Driver.getDriver());
@@ -80,4 +77,4 @@ ExtentReportUtils.extentTestPass("Register butonu tıklandigi test edildi");
         ExtentReportUtils.flush();
     }
 }
->>>>>>> Stashed changes
+
