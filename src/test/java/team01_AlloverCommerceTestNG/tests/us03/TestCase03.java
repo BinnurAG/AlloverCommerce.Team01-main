@@ -30,19 +30,29 @@ public class TestCase03 {
     @Test
     public void countryToPhoneFilling() {
 
+        //Firstname ve lastname bilgisi girilebilmeli
         allpages.addressesPage().firstNameB.sendKeys(ConfigReader.getProperty("firstNameUs03"));
         allpages.addressesPage().lastNameB.sendKeys(ConfigReader.getProperty("lastNameUS03"));
+        ExtentReportUtils.extentTestInfo("Firstname ve lastname bilgisi girildi");
 
+        //Company name girilebilmeli
         allpages.addressesPage().companyB.sendKeys(faker.name().lastName());
+        ExtentReportUtils.extentTestInfo("Company name girildi");
+
+        //Country dropdown'ı tıklanabilmeli ve France seçilebilmeli
         allpages.addressesPage().countryB.click();
         ReusableMethods.waitForSecond(2);
         allpages.addressesPage().countryChoose.sendKeys("France", Keys.ENTER);
+        ExtentReportUtils.extentTestInfo("Country dropdown'ı tıklandı ve France seçildi");
 
+        //Address, address2, ZipCode, Town/City ve Phone Number bilgileri girilebilmeli
         allpages.addressesPage().adress1B.sendKeys(faker.address().fullAddress());
         allpages.addressesPage().adress2B.sendKeys(faker.address().city());
         allpages.addressesPage().postcodeB.sendKeys(faker.address().zipCode());
         allpages.addressesPage().townB.sendKeys(faker.address().city());
         allpages.addressesPage().phoneB.sendKeys(faker.phoneNumber().phoneNumber());
+        ExtentReportUtils.extentTestInfo("Address, address2, ZipCode, Town/City ve Phone Number bilgileri girildi");
+        ExtentReportUtils.addScreenShotToReport();
 
 
 
@@ -53,6 +63,7 @@ public class TestCase03 {
         //Sayfa kapanmalı
         Driver.closeDriver();
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 }

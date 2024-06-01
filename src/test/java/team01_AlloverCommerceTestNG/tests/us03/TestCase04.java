@@ -33,8 +33,10 @@ public class TestCase04 {
     @Test
     public void emailIsDisplayed() {
 
+        //Email bilgisinin otomatik doldurulduğu görülebilmeli
         String value = allpages.addressesPage().emailB.getAttribute("value");
         Assert.assertNotEquals(value, null);
+        ExtentReportUtils.extentTestInfo("Email bilgisinin otomatik doldurulduğu görüldü");
 
 
 
@@ -45,6 +47,7 @@ public class TestCase04 {
         //Sayfa kapanmalı
         Driver.closeDriver();
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 }

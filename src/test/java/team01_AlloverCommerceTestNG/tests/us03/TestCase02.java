@@ -44,26 +44,28 @@ public class TestCase02 {
         }
         ExtentReportUtils.extentTestInfo("Firstname ve lastname bilgisi girildi");
 
+
+        //Firstname ve lastname bilgisinin girildiği doğrulanabilmeli
         String actualFirstName = allpages.addressesPage().firstNameB.getAttribute("value");
         String actualLastName = allpages.addressesPage().lastNameB.getAttribute("value");
-
 
         String expectedFirstName = ConfigReader.getProperty("firstNameUs03");
         String expectedLastName = ConfigReader.getProperty("lastNameUS03");
 
-
         Assert.assertEquals(actualFirstName, expectedFirstName, "First name does not match!");
         Assert.assertEquals(actualLastName, expectedLastName, "Last name does not match!");
 
+        ExtentReportUtils.extentTestInfo("Firstname ve lastname bilgisinin girildiği doğrulandı");
 
 
     }
 
-    @AfterMethod
+    @AfterTest
     public void afterMethod(){
         //Sayfa kapanmalı
         Driver.closeDriver();
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 

@@ -20,10 +20,9 @@ public class TestCase07 {
     @BeforeTest
     public void beforeMethod(){
         ExtentReportUtils.setUpExtentReport("US03-TC07", "Fatma Binnur Arslanhan");
-        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
+        //Siteye ulaşılmalı
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuB.click();
-        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı");
     }
 
 
@@ -31,8 +30,11 @@ public class TestCase07 {
     @Test
     public void editAddressButton() {
 
+        //Edit Your Billing Adress butonu tıklanabilir olmalı
         allpages.addressesPage().editButonB.click();
         Assert.assertTrue(allpages.addressesPage().addressPageB.isDisplayed());
+        ExtentReportUtils.extentTestInfo("Edit Your Billing Adress butonu tıklandı");
+        ExtentReportUtils.extentTestInfo("Address sayfası görüntülendi");
 
     }
 
@@ -43,6 +45,7 @@ public class TestCase07 {
         //Sayfa kapanmalı
         Driver.closeDriver();
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 

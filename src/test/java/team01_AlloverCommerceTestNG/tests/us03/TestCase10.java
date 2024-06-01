@@ -21,10 +21,9 @@ public class TestCase10 {
     @BeforeTest
     public void beforeMethod(){
         ExtentReportUtils.setUpExtentReport("US03-TC10", "Fatma Binnur Arslanhan");
-        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
+        //Siteye ulaşılmalı
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuB.click();
-        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı");
     }
 
 
@@ -33,17 +32,22 @@ public class TestCase10 {
     @Test
     public void addressTableIsDisplayed() {
 
-        List<String> linkTexts = allpages.addressesPage().getLinkTexts();
+        //Addres table görüntülenebilmeli
+        List<String> linkTexts = allpages.addressesPage().getLinkTexts(allpages.addressesPage().addressTable);
         allpages.addressesPage().editButonB.click();
+        ExtentReportUtils.extentTestInfo("//Addres table görüntülenebilmeli");
 
+        //Street adress değiştirilebilmeli
         JSUtils.JSMakeValueNull(allpages.addressesPage().adress1B);
         allpages.addressesPage().adress1B.sendKeys(faker.address().fullAddress());
         allpages.addressesPage().savebutonB.submit();
+        ExtentReportUtils.extentTestInfo("Street adress değiştirildi");
 
 
-        List<String> expectedTexts = allpages.addressesPage().getLinkTexts();
-
+        //Street Adress'in güncellendiği doğrulanabilmeli
+        List<String> expectedTexts = allpages.addressesPage().getLinkTexts(allpages.addressesPage().addressTable);
         Assert.assertNotEquals(linkTexts, expectedTexts);
+        ExtentReportUtils.extentTestInfo("Street Adress'in güncellendiği doğrulandı");
 
 
     }
@@ -53,6 +57,7 @@ public class TestCase10 {
         //Sayfa kapanmalı
         Driver.closeDriver();
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 

@@ -117,6 +117,9 @@ public class P5_AddressesPage {
     @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/edit-address/shipping/']")
     public WebElement addButonuS;
 
+    @FindBy(xpath = "//a[@href='https://allovercommerce.com/my-account-2/edit-address/shipping/']")
+    public WebElement editButonuS;
+
     @FindBy(className = "woocommerce-address-fields")
     public WebElement addressPageS;
 
@@ -129,8 +132,11 @@ public class P5_AddressesPage {
     @FindBy(id = "shipping_company")
     public WebElement companyS;
 
-    @FindBy(id = "shipping_country")
+    @FindBy(id = "select2-shipping_country-container")
     public WebElement countryS;
+
+    @FindBy(css = "input.select2-search__field")
+    public WebElement countryChooseS;
 
     @FindBy(id = "shipping_address_1")
     public WebElement adress1S;
@@ -138,7 +144,7 @@ public class P5_AddressesPage {
     @FindBy(id = "shipping_address_2")
     public WebElement adress2S;
 
-    @FindBy(id = "shipping_town")
+    @FindBy(id = "shipping_city")
     public WebElement townS;
 
     @FindBy(id = "shipping_state")
@@ -156,8 +162,20 @@ public class P5_AddressesPage {
     @FindBy(name = "save_address")
     public WebElement savebutonS;
 
-    public List<String> getLinkTexts() {
-        List<WebElement> linkElements = addressTable.findElements(By.tagName("td"));
+    @FindBy(xpath = "//li[contains(@class, 'alert') and contains(@class, 'alert-danger')]")
+    public WebElement postCodeFailS;
+
+    @FindBy(xpath = "//li[contains(@class, 'alert') and contains(@class, 'alert-danger')]")
+    public WebElement phoneFailS;
+
+    @FindBy(xpath = "(//table)[2]")
+    public WebElement addressTableS;
+
+    @FindBy(xpath = "//li[contains(@class, 'alert') and contains(@class, 'alert-danger')]")
+    public WebElement townFailS;
+
+    public List<String> getLinkTexts(WebElement element) {
+        List<WebElement> linkElements = element.findElements(By.tagName("td"));
         List<String> linkTexts = new ArrayList<>();
 
         for (WebElement linkElement : linkElements) {
