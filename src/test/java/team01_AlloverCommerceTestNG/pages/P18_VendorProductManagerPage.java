@@ -1,19 +1,24 @@
 
 package team01_AlloverCommerceTestNG.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import team01_AlloverCommerceTestNG.utilities.Driver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
+import team01_AlloverCommerceTestNG.utilities.*;
 
 import java.util.List;
 
 public class P18_VendorProductManagerPage {
 
+    Pages allPages = new Pages();
     public P18_VendorProductManagerPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
+    SoftAssert softAssert = new SoftAssert();
     @FindBy(id = "product_type")
     public WebElement dropdownSimpleProduct;
 
@@ -84,7 +89,6 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//*[@id='add_new_coupon_dashboard']")
     public WebElement addNewCoupon;
 
-
     @FindBy(className = "load-more-count")
     public WebElement filesVerify;
 
@@ -140,5 +144,57 @@ public class P18_VendorProductManagerPage {
     public WebElement seo;
     @FindBy(id = "wcfm_products_manage_form_advanced_head")
     public WebElement advanced;
+    @FindBy(xpath = "//input[@id='sku']")
+    public WebElement skuBox;
+    @FindBy(id = "manage_stock")
+    public WebElement manageStockButton;
+    @FindBy(id = "stock_qty")
+    public WebElement stockQtyBox;
+    @FindBy(id = "backorders")
+    public WebElement backOrdersDdm;
+    @FindBy(id = "stock_status")
+    public WebElement stockStatusDdm;
+    @FindBy(xpath = "(//option[@value='instock'])[1]")
+    public WebElement inStockDdmSelect;
+    @FindBy(id = "sold_individually")
+    public WebElement soldIndividually;
+    @FindBy(id = "weight")
+    public WebElement weightBox;
+    @FindBy(id = "length")
+    public WebElement lengthBox;
+    @FindBy(id = "width")
+    public WebElement widthBox;
+    @FindBy(id = "width")
+    public WebElement heightBox;
+    @FindBy(id = "shipping_class")
+    public WebElement shippingClass;
+    @FindBy(id = "_wcfmmp_processing_time")
+    public WebElement processingTime;
+    @FindBy(xpath = "//select/option[@value='1']")
+    public WebElement getProcessingTime;
 
+
+
+
+
+    @BeforeMethod
+    public void setUp(){
+        ReusableMethods.userVendorlogin(ConfigReader.getProperty("vendorEmail"),ConfigReader.getProperty("vendorPassword"));
+
+        allPages.homePage().signOutButton.click();
+        allPages.vendorStoreManagerPage().storeManagerLink.click();
+        allPages.vendorStoreManagerPage().productsMenu.click();
+        ActionsUtils.hoverOver(allPages.vendorStoreManagerPage().productsMenu);
+        WaitUtils.waitForVisibility(By.linkText("Add New"), 3);
+        allPages.vendorStoreManagerPage().addNew2.click();
+        WebElement actualResultText = allPages.vendorStoreManagerPage().addProductVerify;
+        softAssert.assertTrue(actualResultText.isDisplayed());
+        WaitUtils.waitFor(1);
+    }
+
+    @AfterMethod
+    public void tearDown() {
+
+        Driver.closeDriver();
+    }
 }
