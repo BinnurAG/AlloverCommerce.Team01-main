@@ -17,34 +17,38 @@ public class TestCase12 {
     @BeforeTest
     public void beforeMethod(){
         ExtentReportUtils.setUpExtentReport("US03-TC12", "Fatma Binnur Arslanhan");
-        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
+        //Siteye ulaşılmalı ve edit butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuB.click();
-        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
+        allpages.addressesPage().editButonB.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve edit butonu tıklandı");
     }
 
 
 
 
     @Test
-    public void companyNameIsAllowedToBeEmpty() {
+    public void TownIsNotAllowedToBeEmpty() {
 
 
 
-        //String companyName = allpages.addressesPage().companyB.getAttribute("value");
+        //Town/City bilgisi silinebilmeli
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("arguments[0].value='';", allpages.addressesPage().townB);
+        ExtentReportUtils.extentTestInfo("Town/City bilgisi silindi");
 
 
+        //Save Adress butonu tıklanabilir olmalı
         Assert.assertTrue(allpages.addressesPage().savebutonB.isEnabled());
         allpages.addressesPage().savebutonB.submit();
+        ExtentReportUtils.extentTestInfo("Save Adress butonu tıklandı");
 
-
+        //"Town / City is a required field." uyarısını alınmalı
         ReusableMethods.waitForSecond(2);
         WaitUtils.waitForVisibility(allpages.addressesPage().townFailB, 1);
         JSUtils.JSblockDsiplay(allpages.addressesPage().townFailB);
 
         Assert.assertTrue(allpages.addressesPage().townFailB.isDisplayed());
+        ExtentReportUtils.extentTestInfo("Town / City is a required field. uyarısını alındı");
 
 
 
@@ -57,6 +61,7 @@ public class TestCase12 {
         //Sayfa kapanmalı
         Driver.closeDriver();
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 

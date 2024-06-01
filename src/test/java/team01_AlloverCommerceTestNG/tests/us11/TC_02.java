@@ -24,7 +24,7 @@ public class TC_02 {
         allPages.userVendorLoginPage().emailBox.sendKeys("");
 
         // Kayitli bir Password  gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();

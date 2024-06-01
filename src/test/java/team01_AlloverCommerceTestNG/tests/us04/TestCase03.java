@@ -2,12 +2,11 @@ package team01_AlloverCommerceTestNG.tests.us04;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.Keys;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
+import team01_AlloverCommerceTestNG.utilities.ExtentReportUtils;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
 public class TestCase03 {
@@ -17,10 +16,13 @@ public class TestCase03 {
     Faker faker = new Faker();
 
 
-    @BeforeMethod
+    @BeforeTest
     public void beforeMethod(){
+        ExtentReportUtils.setUpExtentReport("US04-TC03", "Fatma Binnur Arslanhan");
+        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
         allpages.addressesPage().addButonuS.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
     }
 
 
@@ -28,27 +30,40 @@ public class TestCase03 {
     @Test
     public void countryToPhoneFilling() {
 
-        allpages.addressesPage().firstNameB.sendKeys(ConfigReader.getProperty("firstNameUs03"));
-        allpages.addressesPage().lastNameB.sendKeys(ConfigReader.getProperty("lastNameUS03"));
+        //Firstname ve lastname bilgisi girilebilmeli
+        allpages.addressesPage().firstNameS.sendKeys(ConfigReader.getProperty("firstNameUs03"));
+        allpages.addressesPage().lastNameS.sendKeys(ConfigReader.getProperty("lastNameUS03"));
+        ExtentReportUtils.extentTestInfo("Firstname ve lastname bilgisi girildi");
 
-        allpages.addressesPage().companyB.sendKeys(faker.name().lastName());
-        allpages.addressesPage().countryB.click();
+        //Company name girilebilmeli
+        allpages.addressesPage().companyS.sendKeys(faker.name().lastName());
+        ExtentReportUtils.extentTestInfo("Company name girildi");
+
+        //Country dropdown'ı tıklanabilmeli ve France seçilebilmeli
+        allpages.addressesPage().countryS.click();
         ReusableMethods.waitForSecond(2);
-        allpages.addressesPage().countryChoose.sendKeys("France", Keys.ENTER);
+        allpages.addressesPage().countryChooseS.sendKeys("France", Keys.ENTER);
+        ExtentReportUtils.extentTestInfo("Country dropdown'ı tıklandı ve France seçildi");
 
-        allpages.addressesPage().adress1B.sendKeys(faker.address().fullAddress());
-        allpages.addressesPage().adress2B.sendKeys(faker.address().city());
-        allpages.addressesPage().postcodeB.sendKeys(faker.address().zipCode());
-        allpages.addressesPage().townB.sendKeys(faker.address().city());
-        allpages.addressesPage().phoneB.sendKeys(faker.phoneNumber().phoneNumber());
+        //Address, address2, ZipCode, Town/City bilgileri girilebilmeli
+        allpages.addressesPage().adress1S.sendKeys(faker.address().fullAddress());
+        allpages.addressesPage().adress2S.sendKeys(faker.address().city());
+        allpages.addressesPage().townS.sendKeys(faker.address().city());
+        allpages.addressesPage().postcodeS.sendKeys(faker.address().zipCode());
+
+        ExtentReportUtils.extentTestInfo("Address, address2, ZipCode, Town/City bilgileri girildi");
+        ExtentReportUtils.addScreenShotToReport();
 
 
 
     }
 
-    @AfterMethod
+    @AfterTest
     public void afterMethod(){
+        //Sayfa kapanmalı
         Driver.closeDriver();
+        ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 }

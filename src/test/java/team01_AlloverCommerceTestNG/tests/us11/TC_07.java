@@ -31,7 +31,7 @@ public class TC_07 {
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Basina space koyarak kayitli olan passwordu gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys(" yvtve8V$");
+        allPages.userVendorLoginPage().passwordBox.sendKeys(" yvtve8V$9");
 
         // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
@@ -51,7 +51,7 @@ public class TC_07 {
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Sonuna space koyarak kayitli olan passwordu gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$ ");
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9 ");
 
         // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();

@@ -27,7 +27,7 @@ public class TC_08 {
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Kayıtlı password gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         //  SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();

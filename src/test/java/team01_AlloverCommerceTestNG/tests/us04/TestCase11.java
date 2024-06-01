@@ -4,51 +4,64 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
-import team01_AlloverCommerceTestNG.utilities.Driver;
-import team01_AlloverCommerceTestNG.utilities.JSUtils;
-import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
-import team01_AlloverCommerceTestNG.utilities.WaitUtils;
+import team01_AlloverCommerceTestNG.utilities.*;
 
 public class TestCase11 {
 
     Pages allpages = new Pages();
 
 
-    @BeforeMethod
+    @BeforeTest
     public void beforeMethod(){
+        ExtentReportUtils.setUpExtentReport("US04-TC11", "Fatma Binnur Arslanhan");
+        //Siteye ulaşılmalı ve edit butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuS.click();
+        allpages.addressesPage().editButonuS.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve edit butonu tıklandı");
     }
 
 
 
 
     @Test
-    public void companyNameIsAllowedToBeEmpty() {
+    public void TownIsNotAllowedToBeEmpty() {
 
 
 
-        //String companyName = allpages.addressesPage().companyB.getAttribute("value");
+        //Town/City bilgisi silinebilmeli
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].value='';", allpages.addressesPage().companyB);
+        js.executeScript("arguments[0].value='';", allpages.addressesPage().townS);
+        ExtentReportUtils.extentTestInfo("Town/City bilgisi silindi");
 
 
-        allpages.addressesPage().savebutonB.submit();
+        //Save Adress butonu tıklanabilir olmalı
+        Assert.assertTrue(allpages.addressesPage().savebutonS.isEnabled());
+        allpages.addressesPage().savebutonS.submit();
+        ExtentReportUtils.extentTestInfo("Save Adress butonu tıklandı");
 
-        WaitUtils.waitForVisibility(allpages.addressesPage().addressChanged, 3);
-        JSUtils.JSblockDsiplay(allpages.addressesPage().addressChanged);
+        //"Town / City is a required field." uyarısını alınmalı
+        ReusableMethods.waitForSecond(2);
+        WaitUtils.waitForVisibility(allpages.addressesPage().townFailS, 1);
+        JSUtils.JSblockDsiplay(allpages.addressesPage().townFailS);
 
-        Assert.assertTrue(allpages.addressesPage().addressChanged.isDisplayed());
+        Assert.assertTrue(allpages.addressesPage().townFailS.isDisplayed());
+        ExtentReportUtils.extentTestInfo("Town / City is a required field. uyarısını alındı");
+
+
+
 
 
     }
 
-     @AfterTest
-    public void closeWindow(){
+    @AfterTest
+    public void afterMethod(){
+        //Sayfa kapanmalı
         Driver.closeDriver();
+        ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
-
 
 }

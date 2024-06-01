@@ -18,12 +18,15 @@ public class P18_VendorProductManagerPage {
     public P18_VendorProductManagerPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
+
     SoftAssert softAssert = new SoftAssert();
-    @FindBy(id = "product_type")
-    public WebElement dropdownSimpleProduct;
+  
+     @FindBy(id = "product_type")
+     public WebElement dropdownSimpleProduct;
 
     @FindBy(id = "is_virtual")
     public WebElement virtualCheckBox;
+    
     @FindBy(id = "is_downloadable")
     public WebElement downloadableCheckBox;
 
@@ -52,7 +55,6 @@ public class P18_VendorProductManagerPage {
     public WebElement productTitle;
 
     public  WebElement shortDescription;
-
     @FindBy(xpath = "(//*[@id='menu-item-browse'])[1]")
     public WebElement menuLibraryButton;
 

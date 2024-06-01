@@ -8,9 +8,6 @@
     <test name="US09-">
         <classes>
             <class name="team01_AlloverCommerceTestNG.tests.us09.US_09_TC_17">
-                <methods>
-                    <include name="US_09_TC_17"/>
-                </methods>
             </class>
         </classes>
     </test>

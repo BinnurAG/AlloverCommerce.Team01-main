@@ -7,7 +7,7 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_05 { //TC_05
+public class TC_05 {
 
     Pages pages = new Pages();
 
@@ -22,10 +22,10 @@ public class TC_05 { //TC_05
         pages.homePage().signInButton.click();
 
         //Kullanıcı siteye üye olurken girdiği username'i kutucuğa girmeli
-        pages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+        pages.userVendorLoginPage().emailBox.sendKeys("bettybrown@gmail.com");
 
         //Kullanıcı siteye üye olurken girdiği passwordu kutucuğa girmeli
-        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonuna tikla
         pages.userVendorLoginPage().signInButton.click();

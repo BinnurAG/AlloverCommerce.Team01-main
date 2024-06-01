@@ -16,6 +16,8 @@ public class TestCase01 {
     public void beforeTest(){
         ExtentReportUtils.setUpExtentReport("US03-TC01", "Fatma Binnur Arslanhan");
     }
+
+
     @Test(description = "US03")
     public void ADDbutonu() {
 
@@ -64,6 +66,7 @@ public class TestCase01 {
         //Sayfa kapanmalı
         Driver.closeDriver();
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 

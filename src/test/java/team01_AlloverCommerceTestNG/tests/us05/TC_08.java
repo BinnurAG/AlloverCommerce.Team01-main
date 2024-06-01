@@ -7,14 +7,15 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_09 {
+public class TC_08 {
 
     Pages pages = new Pages();
 
     @Test
-    public void us05Tc09() {
+    public void us05Tc08() {
 
-        //Kullanıcı Account Details (Hesap Detaylarını) Biography'i Doldurmadan  ve Yeni Şifre Girişi Yapmadan Değişiklik Yapabilmeli
+        //Kullanıcı yeni password ile confirm eşleşmediyse işlem yapılmamalı
+
         //Web adresine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
 
@@ -38,37 +39,28 @@ public class TC_09 {
 
         //Kullanıcı First name Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsFirstNameBox.clear();
-        pages.accountDetails().detailsFirstNameBox.sendKeys("Betty");
         ReusableMethods.waitForSecond(2);
+        pages.accountDetails().detailsFirstNameBox.sendKeys("ABetul");
 
-        //Kullanıcı Last name Gecerli bir Veri Girisi yapar
+        //Kullanıcı Last name Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsLastNameBox.clear();
-        pages.accountDetails().detailsLastNameBox.sendKeys("Brown");
+        pages.accountDetails().detailsLastNameBox.sendKeys("Tekmen");
 
-        //Kullanıcı Display name Gecerli Bir Veri Girişi Yapar
-        pages.accountDetails().detailsDisplayNameBox.clear();
-        pages.accountDetails().detailsDisplayNameBox.sendKeys("britton");
-
-        //Kullanıcı Email address Geçerli Bir Veri Girişi Yapar
-        pages.accountDetails().detailsEmailBox.clear();
-        pages.accountDetails().detailsEmailBox.sendKeys("britton.jamesson@floodouts.com");
-
-
-        //Kullanıcı Biography Veri Girişi yapmaz
-        Driver.getDriver().switchTo().frame(0);
-        pages.accountDetails().detailsTextArea.clear();
-        Driver.getDriver().switchTo().parentFrame();
+        //Kullanıcı "Current password leave blank to leave unchanged" şifresini girer
         ReusableMethods.waitForSecond(2);
+        pages.accountDetails().detailsCurrentPasswordBox.sendKeys("2024deployment!");
 
-        //Password change girisi yapmadan gecer
+        //Kullanıcı "New password leave blank to leave unchanged" yeni şifre girer
+        pages.accountDetails().detailsNewPasswordBox.sendKeys("2024deployment");
+
+        //Kullanıcı Confirm password şifresini tekrar eksik girer
+        pages.accountDetails().detailsConfirmPasswordBox.sendKeys("2024deploymen");
 
         //Kullanıcı SAVE CHANGES tıklar.
         pages.accountDetails().detailsSaveChangesSubmitBox.submit();
 
-        //Account details changed successfully. Yazısını Gördüğünü doğrula
-        Assert.assertTrue(pages.accountDetails().detailsSuccessfully.isDisplayed());
-        Driver.closeDriver();
+        //"New passwords do not match" yazısını göruldugunu doğrula
+        Assert.assertTrue(pages.accountDetails().newPasswordNotMatchAlert.isDisplayed());
 
     }
-
 }

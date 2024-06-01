@@ -1,25 +1,24 @@
 package team01_AlloverCommerceTestNG.tests.us03;
 
 import org.testng.Assert;
-import org.testng.annotations.*;
-import team01_AlloverCommerceTestNG.pages.P1_HomePage;
-import team01_AlloverCommerceTestNG.pages.P4_MyAccountPage;
-import team01_AlloverCommerceTestNG.pages.P5_AddressesPage;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.*;
 
-public class TestCase08 {
+public class TestCase13 {
 
     Pages allpages = new Pages();
 
 
     @BeforeTest
     public void beforeMethod(){
-        ExtentReportUtils.setUpExtentReport("US03-TC08", "Fatma Binnur Arslanhan");
-        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
+        ExtentReportUtils.setUpExtentReport("US03-TC13", "Fatma Binnur Arslanhan");
+        //Siteye ulaşılmalı ve edit butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuB.click();
-        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
+        allpages.addressesPage().editButonB.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve edit butonu tıklandı");
     }
 
 
@@ -29,8 +28,8 @@ public class TestCase08 {
     public void postCodeFail() {
 
         //Post/Zip Code bilgisi girilebilmeli
-        allpages.addressesPage().postcodeB.sendKeys("aaaAA11");
-        ExtentReportUtils.extentTestInfo("Post/Zip Code bilgisi harf olarak girildi");
+        allpages.addressesPage().postcodeB.sendKeys("123456");
+        ExtentReportUtils.extentTestInfo("Post/Zip Code bilgisi 6 veya daha fazla rakam olarak girildi");
 
         //Save Adress butonu tıklanabilir olmalı
         allpages.addressesPage().savebutonB.submit();
@@ -54,6 +53,7 @@ public class TestCase08 {
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
         ExtentReportUtils.flush();
     }
+
 
 
 

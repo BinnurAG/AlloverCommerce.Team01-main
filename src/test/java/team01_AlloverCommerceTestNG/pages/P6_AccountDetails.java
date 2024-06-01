@@ -251,17 +251,8 @@ public class P6_AccountDetails {
     @FindBy(xpath = "(//label)[5]")
     public WebElement biographyTitle;
 
-
-
-
-
-
-
-
-
-
-
-
+    @FindBy(xpath = "//li[contains(@class, 'alert-danger')]")
+    public WebElement newPasswordNotMatchAlert;
 
 
 
