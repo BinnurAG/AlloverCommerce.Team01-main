@@ -8,6 +8,9 @@
     <!--Yaptigimiz configurasyonlar sayesinde buraya yazacağımız ismi rapora ismine dynamic olarak
        yansitabiliyoruz-->
     <test name="us07">
+        <groups>
+            r
+        </groups>
         <packages>
             <package name="team01_AlloverCommerceTestNG.tests.us07"></package>
         </packages>

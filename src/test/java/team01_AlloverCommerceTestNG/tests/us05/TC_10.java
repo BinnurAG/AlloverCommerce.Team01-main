@@ -7,14 +7,17 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_09 {
+public class TC_10 {
 
     Pages pages = new Pages();
 
     @Test
-    public void us05Tc09() {
+    public void us05Tc10() {
 
-        //Kullanıcı Account Details (Hesap Detaylarını) Biography'i Doldurmadan  ve Yeni Şifre Girişi Yapmadan Değişiklik Yapabilmeli
+
+        //Kullanıcı Account Details (Hesap Bilgilerini değiştirirken yeni password
+        // 12 karakterden az ise password kabul edilmemeli
+
         //Web adresine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
 
@@ -22,7 +25,7 @@ public class TC_09 {
         pages.homePage().signInButton.click();
 
         //Kullanıcı siteye üye olurken girdiği username'i kutucuğa girmeli
-        pages.userVendorLoginPage().emailBox.sendKeys("bettybrown@gmail.com");
+        pages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         //Kullanıcı siteye üye olurken girdiği passwordu kutucuğa girmeli
         pages.userVendorLoginPage().passwordBox.sendKeys("2024deployment!");
@@ -38,37 +41,36 @@ public class TC_09 {
 
         //Kullanıcı First name Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsFirstNameBox.clear();
-        pages.accountDetails().detailsFirstNameBox.sendKeys("Betty");
         ReusableMethods.waitForSecond(2);
+        pages.accountDetails().detailsFirstNameBox.sendKeys("Britton");
 
-        //Kullanıcı Last name Gecerli bir Veri Girisi yapar
+        //Kullanıcı Last name Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsLastNameBox.clear();
-        pages.accountDetails().detailsLastNameBox.sendKeys("Brown");
+        pages.accountDetails().detailsLastNameBox.sendKeys("Jamesson");
 
-        //Kullanıcı Display name Gecerli Bir Veri Girişi Yapar
-        pages.accountDetails().detailsDisplayNameBox.clear();
-        pages.accountDetails().detailsDisplayNameBox.sendKeys("britton");
-
-        //Kullanıcı Email address Geçerli Bir Veri Girişi Yapar
-        pages.accountDetails().detailsEmailBox.clear();
-        pages.accountDetails().detailsEmailBox.sendKeys("britton.jamesson@floodouts.com");
-
-
-        //Kullanıcı Biography Veri Girişi yapmaz
-        Driver.getDriver().switchTo().frame(0);
-        pages.accountDetails().detailsTextArea.clear();
-        Driver.getDriver().switchTo().parentFrame();
+        //Kullanıcı "Current password leave blank to leave unchanged" şifresini girer
         ReusableMethods.waitForSecond(2);
+        pages.accountDetails().detailsCurrentPasswordBox.sendKeys("2024deployment!");
 
-        //Password change girisi yapmadan gecer
+        //Kullanıcı "New password leave blank to leave unchanged" ( karakterli yeni şifre girer
+        pages.accountDetails().detailsNewPasswordBox.sendKeys("yvtve8V$9");
+
+        //Kullanıcı Confirm password tekrar şifresini girer
+        pages.accountDetails().detailsConfirmPasswordBox.sendKeys("yvtve8V$9");
 
         //Kullanıcı SAVE CHANGES tıklar.
         pages.accountDetails().detailsSaveChangesSubmitBox.submit();
 
-        //Account details changed successfully. Yazısını Gördüğünü doğrula
-        Assert.assertTrue(pages.accountDetails().detailsSuccessfully.isDisplayed());
-        Driver.closeDriver();
+        //Account details changed successfully. yazısını Görmedigini doğrula
+        Assert.assertFalse(pages.accountDetails().detailsSuccessfully.isDisplayed());
 
-    }
+        //Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & ).
+
+    } //fail
 
 }
+
+
+
+
+

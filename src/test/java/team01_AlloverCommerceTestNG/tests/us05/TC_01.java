@@ -30,7 +30,7 @@ public class TC_01 {
         pages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         //Kullanıcı siteye üye olurken girdiği passwordu kutucuğa girmeli
-        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonuna tikla
         pages.userVendorLoginPage().signInButton.click();
@@ -59,7 +59,6 @@ public class TC_01 {
 
         //Biography basliginin goruntulendigini dogrula
         Assert.assertTrue(pages.accountDetails().biographyTitle.isDisplayed());
-
         Driver.closeDriver();
 
     }

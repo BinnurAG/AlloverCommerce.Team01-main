@@ -1,14 +1,17 @@
-package team01_AlloverCommerceTestNG.tests.US14;
+package team01_AlloverCommerceTestNG.tests.US15;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import team01_AlloverCommerceTestNG.pages.P18_VendorProductManagerPage;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.*;
 
-public class TC09_YeniCategoriesEkleme {
+public class TC01_VendorOlarakAdvancedMenuleriGorebilmeli {
+
     Pages allPages = new Pages();
     SoftAssert softAssert = new SoftAssert();
 
@@ -34,24 +37,22 @@ public class TC09_YeniCategoriesEkleme {
 
         // Add New butonuna tıkla.
         allPages.vendorStoreManagerPage().addNew2.click();
-
-        // Add Product sayfasına geldiğini doğrula.
-        WebElement actualResultText = allPages.vendorStoreManagerPage().addProductVerify;
-        softAssert.assertTrue(actualResultText.isDisplayed());
-        WaitUtils.waitFor(1);
-
     }
 
     @Test
-    public void test02() {
-        //Add new category linkine tıkla.
-        ReusableMethods.scroll(allPages.vendorProductManagerPage().newCategoriesButton);
-        allPages.vendorProductManagerPage().newCategoriesButton.click();
+    public void test01() {
 
-        //Category Name alanına geçerli bir data gir.
-        allPages.vendorProductManagerPage().CategoriesBox.sendKeys("bijuteri");
+        //Tüm menülerin (Inventory, Shipping, Attributes, Linked, Seo, Advanced) görünür olup olmadığını kontrol et.
 
-        //Add butonuna tıkla.
-        allPages.vendorProductManagerPage().addNewCategories.click();
+        ReusableMethods.scroll(allPages.vendorProductManagerPage().inventory);
+        ReusableMethods.waitForSecond(3);
+        softAssert.assertTrue(allPages.vendorProductManagerPage().inventory.isDisplayed());
+        softAssert.assertTrue(allPages.vendorProductManagerPage().shipping.isDisplayed());
+        softAssert.assertTrue(allPages.vendorProductManagerPage().attributes.isDisplayed());
+        softAssert.assertTrue(allPages.vendorProductManagerPage().linked.isDisplayed());
+        softAssert.assertTrue(allPages.vendorProductManagerPage().seo.isDisplayed());
+        softAssert.assertTrue(allPages.vendorProductManagerPage().advanced.isDisplayed());
     }
+
+
 }

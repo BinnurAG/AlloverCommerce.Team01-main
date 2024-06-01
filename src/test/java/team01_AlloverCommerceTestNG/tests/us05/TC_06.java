@@ -23,10 +23,10 @@ public class TC_06 {
         pages.homePage().signInButton.click();
 
         //Kullanıcı siteye üye olurken girdiği username'i kutucuğa girmeli
-        pages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+        pages.userVendorLoginPage().emailBox.sendKeys("bettybrown@gmail.com");
 
         //Kullanıcı siteye üye olurken girdiği passwordu kutucuğa girmeli
-        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonuna tikla
         pages.userVendorLoginPage().signInButton.click();
@@ -39,7 +39,7 @@ public class TC_06 {
 
         //Kullanıcı First name Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsFirstNameBox.clear();
-        pages.accountDetails().detailsFirstNameBox.sendKeys("AyseBetul");
+        pages.accountDetails().detailsFirstNameBox.sendKeys("Ayse");
         ReusableMethods.waitForSecond(2);
 
         //Kullanıcı Last name icin gecerli bir veri girer

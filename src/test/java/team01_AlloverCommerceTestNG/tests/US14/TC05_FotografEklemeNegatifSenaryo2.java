@@ -6,11 +6,10 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import team01_AlloverCommerceTestNG.pages.P18_VendorProductManagerPage;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.*;
 
-public class TC06_ShortDescriptionYazilabilirligi {
+public class TC05_FotografEklemeNegatifSenaryo2 { //Ürün fotoğrafı uygun formatta değilse, fotoğraf sayfaya eklenmemeli
 
     Pages allPages = new Pages();
     SoftAssert softAssert = new SoftAssert();
@@ -44,23 +43,29 @@ public class TC06_ShortDescriptionYazilabilirligi {
         WebElement actualResultText = allPages.vendorStoreManagerPage().addProductVerify;
         softAssert.assertTrue(actualResultText.isDisplayed());
         WaitUtils.waitFor(1);
+
     }
 
     @Test
     public void test01() {
-        // "Short Description" alanına veri gir.
-        Driver.getDriver().switchTo().frame(0);
-        allPages.vendorProductManagerPage().shortDescription.sendKeys("kolye");
+        //Açılan sayfanın sağ üst köşesindeki boş resim ikonuna tıkla.
+        allPages.vendorProductManagerPage().uploadPhoto.click();
+        WaitUtils.waitForPageToLoad(10);
 
-        //Girilen verinin göründüğünü doğrula.
-        softAssert.assertEquals(allPages.vendorProductManagerPage().shortDescription.getText(), "kolye");
+        //Select files butonuna tıkla.
+        allPages.vendorProductManagerPage().selectFiles.click();
+
+        //Açılan dosyadan uygun formatta olmayan(boyutu 2mbden fazla) bir dosya seç ve aç butonuna tıkla.
+        String yuksekBoyut = System.getProperty("user.home")+"\\Downloads\\rum.jpg";
+        ReusableMethods.uploadFilePath(yuksekBoyut);
+
+        //"Exceeds the maximum upload size for this site" mesajının görüldüğünü doğrula.
+        softAssert.assertTrue(allPages.vendorProductManagerPage().dismissError.isDisplayed());
+
     }
 
-   @AfterMethod
-   public void tearDown() {
+    @AfterMethod
+    public void tearDown() {
         Driver.closeDriver();
-   }
-
+    }
 }
-
-

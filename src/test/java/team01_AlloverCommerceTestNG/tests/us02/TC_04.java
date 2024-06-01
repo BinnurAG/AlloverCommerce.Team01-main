@@ -28,8 +28,8 @@ public class TC_04 {
         p2_registerPage.privacyPolicy.click();
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
-      ExtentReportUtils.extentTestPass("Test basarili oldu");
-      ExtentReportUtils.addScreenShotToReport();
+//     ExtentReportUtils.extentTestPass("Test basarili oldu");
+//     ExtentReportUtils.addScreenShotToReport();
         String actualMessage2 = p2_registerPage.plsChooseAnotherMsg.getText();
         Assert.assertEquals(actualMessage2,"An account is already registered with that username. Please choose another.");
          Driver.closeDriver();

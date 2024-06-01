@@ -33,8 +33,8 @@ public class TC_03 {
         p2_registerPage.submitButton.click();
 //        Kayıt işleminin gerçekleşmediğini doğrula
 
-      ExtentReportUtils.extentTestPass("Test basarılı oldu");
-      ExtentReportUtils.addScreenShotToReport();
+//      ExtentReportUtils.extentTestPass("Test basarılı oldu");
+//      ExtentReportUtils.addScreenShotToReport();
         Assert.assertTrue(p2_registerPage.register.isEnabled());
         Driver.closeDriver();
     }

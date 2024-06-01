@@ -7,7 +7,7 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_02 { //TC02
+public class TC_02 {
 
     Pages pages = new Pages();
 
@@ -26,7 +26,7 @@ public class TC_02 { //TC02
         pages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         //Kullanıcı siteye üye olurken girdiği passwordu kutucuğa girmeli
-        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonuna tikla
         pages.userVendorLoginPage().signInButton.click();
@@ -52,7 +52,7 @@ public class TC_02 { //TC02
 
         //Kullanıcı Email address Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsEmailBox.clear();
-        pages.accountDetails().detailsEmailBox.sendKeys("britton.jamesson@floodouts.com");
+        pages.accountDetails().detailsEmailBox.sendKeys("bettybrown@gmail.com");
 
         //Kullanıcı Biography Veri Girişi Yapar
         Driver.getDriver().switchTo().frame(0);
@@ -60,21 +60,12 @@ public class TC_02 { //TC02
         pages.accountDetails().detailsTextArea.sendKeys("Hello World");
         Driver.getDriver().switchTo().parentFrame();
 
-        //Kullanıcı "Current password leave blank to leave unchanged" şifresini girer
-        ReusableMethods.waitForSecond(2);
-        pages.accountDetails().detailsCurrentPasswordBox.sendKeys("yvtve8V$");
-
-        //Kullanıcı "New password leave blank to leave unchanged" şifre girer
-        pages.accountDetails().detailsNewPasswordBox.sendKeys("yvtve8V$");
-
-        //Kullanıcı Confirm password tekrar şifresini girer
-        pages.accountDetails().detailsConfirmPasswordBox.sendKeys("yvtve8V$");
-
         //Kullanıcı SAVE CHANGES tıklar.
         pages.accountDetails().detailsSaveChangesSubmitBox.submit();
 
         //Account details changed successfully. Yazısını Gördüğünü doğrula
         Assert.assertTrue(pages.accountDetails().detailsSuccessfully.isDisplayed());
+        Driver.closeDriver();
     }
 }
 

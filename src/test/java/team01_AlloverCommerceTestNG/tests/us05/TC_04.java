@@ -7,7 +7,7 @@ import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.Driver;
 import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
 
-public class TC_04 { //TC_04
+public class TC_04 {
 
     Pages pages = new Pages();
 
@@ -23,10 +23,10 @@ public class TC_04 { //TC_04
         pages.homePage().signInButton.click();
 
         //Kullanıcı siteye üye olurken girdiği username'i kutucuğa girmeli
-        pages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
+        pages.userVendorLoginPage().emailBox.sendKeys("bettybrown@gmail.com");
 
         //Kullanıcı siteye üye olurken girdiği passwordu kutucuğa girmeli
-        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonuna tikla
         pages.userVendorLoginPage().signInButton.click();
@@ -39,7 +39,7 @@ public class TC_04 { //TC_04
 
         //Kullanıcı First name Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsFirstNameBox.clear();
-        pages.accountDetails().detailsFirstNameBox.sendKeys("Ayse");
+        pages.accountDetails().detailsFirstNameBox.sendKeys("Betty");
         ReusableMethods.waitForSecond(2);
 
         //Kullanıcı Last name boş bırakır.
@@ -50,6 +50,7 @@ public class TC_04 { //TC_04
 
         //LAST NAME is a required field.
         Assert.assertTrue(pages.accountDetails().zorunluAlanYazisiLastName.isDisplayed());
+        Driver.closeDriver();
 
     }
 }

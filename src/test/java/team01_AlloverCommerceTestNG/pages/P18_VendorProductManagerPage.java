@@ -14,10 +14,11 @@ public class P18_VendorProductManagerPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(id = "product_type")
-    public WebElement dropdownSimpleProduct;
+     @FindBy(id = "product_type")
+     public WebElement dropdownSimpleProduct;
 
     @FindBy(id = "is_virtual")
+
     public WebElement virtualCheckBox;
     @FindBy(id = "is_downloadable")
     public WebElement downloadableCheckBox;
@@ -37,23 +38,11 @@ public class P18_VendorProductManagerPage {
     @FindBy(id = "featured_img_display")
     public WebElement uploadPhoto;
 
-    @FindBy(xpath = "//option[@value='external']")
-    public WebElement dropdownExternalProduct;
-
-    @FindBy(xpath = "//option[@value='grouped']")
-    public WebElement dropdownGroupedProduct;
-
-    @FindBy(xpath = "//option[@value='variable']")
-    public WebElement dropdownVariableProduct;
-
     @FindBy(id ="__wp-uploader-id-1")
     public WebElement selectFiles;
 
     @FindBy(xpath = "//button[text()='Select']")
     public WebElement selectButton;
-
-    @FindBy(xpath = "//div[@class='media-frame-content']//li[contains(@class, 'attachment')]//img")
-    public WebElement addedImage;
 
     @FindBy (id= "pro_title")
     public WebElement productTitle;
@@ -96,20 +85,6 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//*[@id='add_new_coupon_dashboard']")
     public WebElement addNewCoupon;
 
-    @FindBy(xpath = "//input[@id='title']")
-    public WebElement codeBox;
-
-    @FindBy(xpath = "//*[@id='description']")
-    public  WebElement descriptionBox;
-
-    @FindBy(xpath = "(//select)[1]")
-    public  WebElement discountType;
-
-    @FindBy(xpath = "//*[@id='coupon_amount']")
-    public  WebElement couponAmountBox;
-
-    @FindBy(xpath = "//*[@id=\"menu-item-upload\"][2]")
-    public WebElement uploadFilesButton;
 
     @FindBy(className = "load-more-count")
     public WebElement filesVerify;
@@ -133,5 +108,38 @@ public class P18_VendorProductManagerPage {
     @FindBy(xpath = "//button[@type='button' and @data-taxonomy='product_cat']")
     public WebElement addNewCategories;
 
+    @FindBy(xpath = "//input[@value ='1085']")
+    public WebElement addProductBrands;
+
+    @FindBy(xpath = "//*[.='+Add new Product brands']")
+    public WebElement addNewProducts;
+
+    @FindBy(id = "wcfm_new_product_brand")
+    public WebElement ProductBox;
+
+    @FindBy(xpath = "//li[@*='1509']")
+    public WebElement verifyAddProduct;
+
+    @FindBy(xpath = "//button[@class='button upload-dismiss-errors'][1]")
+    public WebElement dismissError;
+
+    @FindBy(xpath = "(//button[@class='media-modal-close'])[6]")
+    public WebElement closeButton;
+
+    @FindBy(className = "wcfm-message wcfm-error")
+    public WebElement titleErrorMessage;
+
+    @FindBy(id = "wcfm_products_manage_form_inventory_head")
+    public WebElement inventory;
+    @FindBy(id = "wcfm_products_manage_form_shipping_head")
+    public WebElement shipping;
+    @FindBy(id = "wcfm_products_manage_form_attribute_head")
+    public WebElement attributes;
+    @FindBy(id = "wcfm_products_manage_form_linked_head")
+    public WebElement linked;
+    @FindBy(id = "wcfm_products_manage_form_yoast_head")
+    public WebElement seo;
+    @FindBy(id = "wcfm_products_manage_form_advanced_head")
+    public WebElement advanced;
 
 }
