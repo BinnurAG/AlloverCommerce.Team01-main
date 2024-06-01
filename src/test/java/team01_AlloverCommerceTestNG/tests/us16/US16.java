@@ -1,7 +1,6 @@
 package team01_AlloverCommerceTestNG.tests.us16;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
@@ -9,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import team01_AlloverCommerceTestNG.pages.Pages;
 import team01_AlloverCommerceTestNG.utilities.ConfigReader;
 import team01_AlloverCommerceTestNG.utilities.DataProviderUtils;
@@ -20,16 +20,16 @@ import java.util.List;
 public class US16 {
 
     Pages allPages = new Pages();
+    SoftAssert  softAssert=new SoftAssert();
 
     @BeforeMethod
     public void setUp() {
         // Web sitesine git
-        WebDriver driver = Driver.getDriver();
-        driver.get(ConfigReader.getProperty("alloverCommerceUrl"));
+        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
 
         // Kayitli vendor bilgileriyle giris yap
         allPages.homePage().signInButton.click();
-        ReusableMethods.userVendorlogin("britton.jamesson@floodouts.com", "yvtve8V$");
+        ReusableMethods.userVendorlogin("britton.jamesson@floodouts.com", "yvtve8V$9");
 
         // Sign out'a tiklayarak My account sayfasina git
         allPages.homePage().signOutButton.click();
@@ -46,12 +46,20 @@ public class US16 {
         allPages.vendorProductDashboardPage().addNewButton.click();
     }
 
+
     @Test
     public void test01() {
-        // Add Product sayfasindaki ilk dropdown menusunde Simple Product seceneginin default olarak gorundugunu dogrula
+        // Add Product sayfasındaki dropdown menüsünde "Simple Product" seçeneğinin varsayılan olarak göründüğünü doğrula
         Select select = new Select(allPages.vendorProductManagerPage().dropdownSimpleProduct);
+
+        // Beklenen değer
+        String expectedDefaultOption = "Simple Product";
+
+        // Gerçek değer
         String actualDefaultOption = select.getFirstSelectedOption().getText();
-        Assert.assertEquals(actualDefaultOption, "Simple Product");
+
+        // Assert kullanarak karşılaştırma yap
+        Assert.assertEquals(actualDefaultOption, expectedDefaultOption, "Dropdown'daki varsayılan seçenek doğru değil");
     }
 
     @Test
@@ -71,26 +79,28 @@ public class US16 {
         // Virtual ve Downloadable checkbox larinin secilebildigini dogrula
         Assert.assertTrue(virtualCheckBox.isSelected());
         Assert.assertTrue(downloadableCheckBox.isSelected());
+        softAssert.assertAll();
     }
 
     @Test
     public void test03() {
         //Price bilgisini gir
         ReusableMethods.scroll(allPages.vendorProductManagerPage().priceBox);
-        allPages.vendorProductManagerPage().priceBox.sendKeys("45");
+        allPages.vendorProductManagerPage().priceBox.sendKeys("120.8");
 
         //Sale Price bilgisini gir
-        allPages.vendorProductManagerPage().salePriceBox.sendKeys("37");
+        allPages.vendorProductManagerPage().salePriceBox.sendKeys("95.4");
 
         //Price ve Sale Price bilgilerini girebildigini dogrula
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String script = "return arguments[0].value;";
 
         String actualPriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().priceBox);
-        Assert.assertEquals(actualPriceValue, "120.8");
+        softAssert.assertEquals(actualPriceValue, "120.8");
 
         String actualSalePriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().salePriceBox);
-        Assert.assertEquals(actualSalePriceValue, "95.4");
+        softAssert.assertEquals(actualSalePriceValue, "95.4");
+        softAssert.assertAll();
     }
 
     @Test
@@ -165,14 +175,14 @@ public class US16 {
         allPages.vendorProductManagerPage().submitButton.click();
 
         // Soldaki menulerden Product i tikla
-        ReusableMethods.waitForSecond(4);
+        ReusableMethods.waitForSecond(3);
         ReusableMethods.scroll( allPages.vendorProductManagerPage().menuProduct);
         allPages.vendorProductManagerPage().menuProduct.click();
 
         //  Product kisminda urunun adini gorerek eklendigini onayla
         List<WebElement> products = allPages.vendorProductManagerPage().addedProducts;
         for (WebElement product: products) {
-       //     Assert.assertEquals("Techpro QA Education " + randomNumber, product.getText());
+            Assert.assertEquals("Your soul is a river", product.getText());
 
         }
 
@@ -188,15 +198,16 @@ public class US16 {
         WebElement salePriceBox = allPages.vendorProductManagerPage().salePriceBox;
         salePriceBox.sendKeys(negativeDataForUS16);
 
-        //  Price kismina invalid bilgiler girilemedigini dogrula	0, xqz, %#$,  space,
+        //  Price kismina invalid bilgiler girilemedigini dogrula	0, xqz, %#$, 0, 2.78, space,
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         String script = "return arguments[0].value;";
         String actualPriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().priceBox);
-        Assert.assertTrue(actualPriceValue.isEmpty());
+        softAssert.assertTrue(actualPriceValue.isEmpty());
 
-        // Sale Price kismina invalid bilgiler girilemedigini dogrula	xqz, %#$,  space,
+        // Sale Price kismina invalid bilgiler girilemedigini dogrula	xqz, %#$, 0, 2.78,space,
         String actualSalePriceValue = (String) js.executeScript(script, allPages.vendorProductManagerPage().salePriceBox);
-        Assert.assertTrue(actualSalePriceValue.isEmpty());
+        softAssert.assertTrue(actualSalePriceValue.isEmpty());
+        softAssert.assertAll();
     }
 
     @Test
@@ -220,7 +231,7 @@ public class US16 {
 
     @AfterMethod
     public void tearDown() {
-        //    Driver.getDriver().close();
+      //     Driver.getDriver().close();
     }
 
 }

@@ -25,7 +25,7 @@ public class TC_03 {
         allPages.userVendorLoginPage().emailBox.sendKeys("ranaloa@floodouts.com");
 
         // Kayitli bir Password  gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();

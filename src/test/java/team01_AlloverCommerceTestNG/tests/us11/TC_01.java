@@ -30,7 +30,7 @@ public class TC_01 {
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson@floodouts.com");
 
         // Password alanına gecerli (kayitli) bir password gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonu tıkla
         allPages.userVendorLoginPage().signInButton.click();
@@ -50,7 +50,7 @@ public class TC_01 {
         allPages.userVendorLoginPage().emailBox.sendKeys("britton.jamesson");
 
         // Password alanına gecerli (kayitli) bir password gir
-        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
+        allPages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonuna tikla
         allPages.userVendorLoginPage().signInButton.click();
