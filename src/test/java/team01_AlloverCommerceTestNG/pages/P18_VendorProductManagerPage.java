@@ -14,10 +14,11 @@ public class P18_VendorProductManagerPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(id = "product_type")
-    public WebElement dropdownSimpleProduct;
+     @FindBy(id = "product_type")
+     public WebElement dropdownSimpleProduct;
 
     @FindBy(id = "is_virtual")
+
     public WebElement virtualCheckBox;
     @FindBy(id = "is_downloadable")
     public WebElement downloadableCheckBox;

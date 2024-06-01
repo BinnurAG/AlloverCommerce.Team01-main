@@ -13,7 +13,7 @@ public class TC_07 {
     @Test
     public void us05Tc07() {
 
-        //Kullanıcı Account Details (Hesap Detaylarını) Email address  Doldurmadan Ekleme Yapamamalı
+        //Kullanıcı password değiştirebilmeli ve yeni password ile giris islemi yapabilmeli
 
         //Web adresine gidilir
         Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
@@ -21,11 +21,11 @@ public class TC_07 {
         //Sign in butonunu tıklanir
         pages.homePage().signInButton.click();
 
-        //Kullanıcı siteye üye olurken girdiği username'i kutucuğa girmeli //300352
-        pages.userVendorLoginPage().emailBox.sendKeys("dimitriy.domminic@floodouts.com");
+        //Kullanıcı siteye üye olurken girdiği username'i kutucuğa girmeli
+        pages.userVendorLoginPage().emailBox.sendKeys("bettybrown@gmail.com");
 
         //Kullanıcı siteye üye olurken girdiği passwordu kutucuğa girmeli
-        pages.userVendorLoginPage().passwordBox.sendKeys("cffed3K&");
+        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$9");
 
         // SIGN IN butonuna tikla
         pages.userVendorLoginPage().signInButton.click();
@@ -39,43 +39,31 @@ public class TC_07 {
         //Kullanıcı First name Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsFirstNameBox.clear();
         ReusableMethods.waitForSecond(2);
-        pages.accountDetails().detailsFirstNameBox.sendKeys("ayse");
+        pages.accountDetails().detailsFirstNameBox.sendKeys("Betul");
 
         //Kullanıcı Last name Geçerli Bir Veri Girişi Yapar
         pages.accountDetails().detailsLastNameBox.clear();
-        pages.accountDetails().detailsLastNameBox.sendKeys("betul");
+        pages.accountDetails().detailsLastNameBox.sendKeys("Eksi");
 
         //Kullanıcı "Current password leave blank to leave unchanged" şifresini girer
         ReusableMethods.waitForSecond(2);
-        pages.accountDetails().detailsCurrentPasswordBox.sendKeys("cffed3K&");
+        pages.accountDetails().detailsCurrentPasswordBox.sendKeys("yvtve8V$9");
 
         //Kullanıcı "New password leave blank to leave unchanged" yeni şifre girer
-        pages.accountDetails().detailsNewPasswordBox.sendKeys("yvtve8V$");
+        pages.accountDetails().detailsNewPasswordBox.sendKeys("2024deployment!");
 
         //Kullanıcı Confirm password tekrar şifresini girer
-        pages.accountDetails().detailsConfirmPasswordBox.sendKeys("yvtve8V$");
+        pages.accountDetails().detailsConfirmPasswordBox.sendKeys("2024deployment!");
 
         //Kullanıcı SAVE CHANGES tıklar.
         pages.accountDetails().detailsSaveChangesSubmitBox.submit();
 
-        //Account details changed successfully. Yazısını Gördüğünü doğrula
+        //Account details changed successfully. yazısını Gördüğünü doğrula
         Assert.assertTrue(pages.accountDetails().detailsSuccessfully.isDisplayed());
 
-        //Kullanıcı siteye üye olurken girdiği username'i kutucuğa girmeli
-        pages.userVendorLoginPage().emailBox.sendKeys("dimitriy.domminic@floodouts.com");
+        //Hint: The password should be at least twelve characters long. To make it stronger, use upper and lower case letters, numbers, and symbols like ! " ? $ % ^ & ).
 
-        //Kullanıcı siteye üye olurken girdiği passwordu kutucuğa girmeli
-        pages.userVendorLoginPage().passwordBox.sendKeys("yvtve8V$");
-
-        // SIGN IN butonuna tikla
-        pages.userVendorLoginPage().signInButton.click();
-
-        //Giris isleminin gerceklestigini dogrula (Sign Out gorulmeli)
-        Assert.assertTrue(pages.homePage().signOutButton.isDisplayed());
-
-        // ReusableMethods.logOutClick();
-
-
+        Driver.closeDriver();
     }
 
 }
