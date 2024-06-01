@@ -14,52 +14,17 @@ public class TC09_ShortDescriptionYazilabilirligi {
     Pages allPages = new Pages();
     SoftAssert softAssert = new SoftAssert();
 
-    @BeforeMethod
-    public void setUp() {
-
-        // Web sitesine git.
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // Kayıtlı vendor bilgileriyle giriş yap.
-        allPages.homePage().signInButton.click();
-        ReusableMethods.userVendorlogin("nrumeysa.ksck@gmail.com", "123456789Rr");
-
-        // My account butonuna tıkla.
-        allPages.homePage().signOutButton.click();
-
-        // Storage Manager linkine tıkla.
-        allPages.vendorStoreManagerPage().storeManagerLink.click();
-
-        // Mouse ile Products butonu üzerinde bekle.
-        ActionsUtils.hoverOver(allPages.vendorStoreManagerPage().productsMenu);
-        WaitUtils.waitForVisibility(By.linkText("Add New"), 3);
-
-        // Add New butonuna tıkla.
-        allPages.vendorStoreManagerPage().addNew2.click();
-
-        ReusableMethods.scroll(allPages.vendorProductManagerPage().uploadPhoto);
-
-        // Add Product sayfasına geldiğini doğrula.
-        WebElement actualResultText = allPages.vendorStoreManagerPage().addProductVerify;
-        softAssert.assertTrue(actualResultText.isDisplayed());
-        WaitUtils.waitFor(1);
-    }
-
     @Test
     public void test01() {
+        allPages.vendorProductManagerPage().setUp();
         // "Short Description" alanına veri gir.
         Driver.getDriver().switchTo().frame(0);
         allPages.vendorProductManagerPage().shortDescription.sendKeys("kolye");
 
         //Girilen verinin göründüğünü doğrula.
         softAssert.assertEquals(allPages.vendorProductManagerPage().shortDescription.getText(), "kolye");
+        allPages.vendorProductManagerPage().tearDown();
     }
-
-   @AfterMethod
-   public void tearDown() {
-        Driver.closeDriver();
-   }
-
 }
 
 

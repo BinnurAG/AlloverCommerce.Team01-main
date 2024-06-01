@@ -14,36 +14,10 @@ public class TC12_YeniProductBrandsEkleme {
     Pages allPages = new Pages();
     SoftAssert softAssert = new SoftAssert();
 
-    @BeforeMethod
-    public void setUp() {
-
-        // Web sitesine git.
-        Driver.getDriver().get(ConfigReader.getProperty("alloverCommerceUrl"));
-
-        // Kayıtlı vendor bilgileriyle giriş yap.
-        allPages.homePage().signInButton.click();
-        ReusableMethods.userVendorlogin("nrumeysa.ksck@gmail.com", "123456789Rr");
-
-        // My account butonuna tıkla.
-        allPages.homePage().signOutButton.click();
-
-        // Storage Manager linkine tıkla.
-        allPages.vendorStoreManagerPage().storeManagerLink.click();
-
-        // Mouse ile Products butonu üzerinde bekle.
-        ActionsUtils.hoverOver(allPages.vendorStoreManagerPage().productsMenu);
-        WaitUtils.waitForVisibility(By.linkText("Add New"), 3);
-
-        // Add New butonuna tıkla.
-        allPages.vendorStoreManagerPage().addNew2.click();
-
-        // Add Product sayfasına geldiğini doğrula.
-        WebElement actualResultText = allPages.vendorStoreManagerPage().addProductVerify;
-        softAssert.assertTrue(actualResultText.isDisplayed());
-    }
-
     @Test
     public void test01() {
+
+        allPages.vendorProductManagerPage().setUp();
 
         //Add new Product brands linkine tıkla.
         ReusableMethods.scroll(allPages.vendorProductManagerPage().addNewProducts);
@@ -58,10 +32,5 @@ public class TC12_YeniProductBrandsEkleme {
         //Yeni marka eklendiğini doğrula.
         softAssert.assertTrue(allPages.vendorProductManagerPage().verifyAddProduct.isDisplayed());
 
-    }
-
-    @AfterMethod
-    public void tearDown() {
-        Driver.closeDriver();
     }
 }
