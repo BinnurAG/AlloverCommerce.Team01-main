@@ -3,22 +3,23 @@ package team01_AlloverCommerceTestNG.tests.us04;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
-import team01_AlloverCommerceTestNG.utilities.Driver;
-import team01_AlloverCommerceTestNG.utilities.JSUtils;
-import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
-import team01_AlloverCommerceTestNG.utilities.WaitUtils;
+import team01_AlloverCommerceTestNG.utilities.*;
 
 public class TestCase08 {
 
     Pages allpages = new Pages();
 
 
-    @BeforeMethod
+    @BeforeTest
     public void beforeMethod(){
+        ExtentReportUtils.setUpExtentReport("US04-TC08", "Fatma Binnur Arslanhan");
+        //Siteye ulaşılmalı ve edit butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuS.click();
+        allpages.addressesPage().editButonuS.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve edit butonu tıklandı");
     }
 
 
@@ -27,26 +28,33 @@ public class TestCase08 {
     @Test
     public void postCodeFail() {
 
-        allpages.addressesPage().postcodeB.sendKeys("aaaAA11");
-        allpages.addressesPage().savebutonB.submit();
+        //Post/Zip Code bilgisi girilebilmeli
+        allpages.addressesPage().postcodeS.sendKeys("123456");
+        ExtentReportUtils.extentTestInfo("Post/Zip Code bilgisi 6 veya daha fazla rakam olarak girildi");
+
+        //Save Adress butonu tıklanabilir olmalı
+        allpages.addressesPage().savebutonS.submit();
+        ExtentReportUtils.extentTestInfo("Save Adress butonuna tıklandı");
 
         ReusableMethods.waitForSecond(2);
-        WaitUtils.waitForVisibility(allpages.addressesPage().postCodeFailB, 3);
-        JSUtils.JSblockDsiplay(allpages.addressesPage().postCodeFailB);
-
-        Assert.assertTrue(allpages.addressesPage().postCodeFailB.isDisplayed());
-
-
-
+        //"Please enter a valid postcode / ZIP." yazısı görüntülenebilmeli
+        WaitUtils.waitForVisibility(allpages.addressesPage().postCodeFailS, 3);
+        JSUtils.JSblockDsiplay(allpages.addressesPage().postCodeFailS);
+        Assert.assertTrue(allpages.addressesPage().postCodeFailS.isDisplayed());
+        ExtentReportUtils.extentTestInfo("Please enter a valid postcode / ZIP. yazısı görüntülendi");
 
 
 
     }
 
     @AfterTest
-    public void closeWindow(){
+    public void afterMethod(){
+        //Sayfa kapanmalı
         Driver.closeDriver();
+        ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
+
 
 
 

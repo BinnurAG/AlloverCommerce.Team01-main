@@ -1,58 +1,59 @@
 package team01_AlloverCommerceTestNG.tests.us04;
 
-import com.github.javafaker.Faker;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import team01_AlloverCommerceTestNG.pages.Pages;
-import team01_AlloverCommerceTestNG.utilities.ConfigReader;
-import team01_AlloverCommerceTestNG.utilities.Driver;
-import team01_AlloverCommerceTestNG.utilities.JSUtils;
-import team01_AlloverCommerceTestNG.utilities.ReusableMethods;
-
-import java.util.List;
+import team01_AlloverCommerceTestNG.utilities.*;
 
 public class TestCase10 {
 
     Pages allpages = new Pages();
-    Faker faker = new Faker();
 
-    @BeforeMethod
+    @BeforeTest
     public void beforeMethod(){
+        ExtentReportUtils.setUpExtentReport("US04-TC10", "Fatma Binnur Arslanhan");
+        //Siteye ulaşılmalı ve edit butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuS.click();
+        allpages.addressesPage().editButonuS.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve edit butonu tıklandı");
     }
 
 
 
 
     @Test
-    public void addressTableIsDisplayed() {
-
-        List<String> linkTexts = allpages.addressesPage().getLinkTexts();
-        allpages.addressesPage().editButonB.click();
-
-        JSUtils.JSMakeValueNull(allpages.addressesPage().adress1B);
-        allpages.addressesPage().adress1B.sendKeys(faker.address().fullAddress());
-        allpages.addressesPage().savebutonB.submit();
+    public void companyNameIsAllowedToBeEmpty() {
 
 
-        List<String> expectedTexts = allpages.addressesPage().getLinkTexts();
 
-        Assert.assertNotEquals(linkTexts, expectedTexts);
+        //Company name bilgisi silinebilmeli
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].value='';", allpages.addressesPage().companyS);
+        ExtentReportUtils.extentTestInfo("Company name bilgisi silindi");
+
+        //Save Adress butonu tıklanabilir olmalı
+        allpages.addressesPage().savebutonS.submit();
+        ExtentReportUtils.extentTestInfo("Save Adress butonu tıklandı");
+
+        //Address changed successfully. yazısı görünmeli
+        WaitUtils.waitForVisibility(allpages.addressesPage().addressChanged, 3);
+        JSUtils.JSblockDsiplay(allpages.addressesPage().addressChanged);
+
+        Assert.assertTrue(allpages.addressesPage().addressChanged.isDisplayed());
+        ExtentReportUtils.extentTestInfo("Address changed successfully. yazısı göründü");
 
 
     }
 
     @AfterTest
-    public void closeWindow(){
+    public void afterMethod(){
+        //Sayfa kapanmalı
         Driver.closeDriver();
+        ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
-
-
-
-
 }

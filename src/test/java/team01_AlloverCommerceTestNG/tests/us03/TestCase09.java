@@ -16,10 +16,10 @@ public class TestCase09 {
     @BeforeTest
     public void beforeMethod(){
         ExtentReportUtils.setUpExtentReport("US03-TC09", "Fatma Binnur Arslanhan");
-        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
+        //Siteye ulaşılmalı ve edit butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuB.click();
-        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
+        allpages.addressesPage().editButonB.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve edit butonu tıklandı");
     }
 
 
@@ -28,14 +28,17 @@ public class TestCase09 {
     @Test
     public void phoneFail() {
 
+        //Phone bilgisi girilebilmeli
         allpages.addressesPage().phoneB.sendKeys("aaaAA11");
         allpages.addressesPage().savebutonB.submit();
+        ExtentReportUtils.extentTestInfo("Phone bilgisi harf olarak girildi");
 
         ReusableMethods.waitForSecond(2);
+        //"PHONE is not a valid phone number." yazısı görüntülenebilmeli
         WaitUtils.waitForVisibility(allpages.addressesPage().phoneFailB, 3);
         JSUtils.JSblockDsiplay(allpages.addressesPage().phoneFailB);
-
         Assert.assertTrue(allpages.addressesPage().phoneFailB.isDisplayed());
+        ExtentReportUtils.extentTestInfo("PHONE is not a valid phone number. yazısı görüntülendi");
 
 
 
@@ -46,6 +49,7 @@ public class TestCase09 {
         //Sayfa kapanmalı
         Driver.closeDriver();
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 

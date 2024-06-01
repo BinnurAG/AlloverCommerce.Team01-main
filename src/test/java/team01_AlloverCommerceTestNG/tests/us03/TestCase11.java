@@ -18,10 +18,10 @@ public class TestCase11 {
     @BeforeTest
     public void beforeMethod(){
         ExtentReportUtils.setUpExtentReport("US03-TC11", "Fatma Binnur Arslanhan");
-        //Siteye ulaşılmalı ve ADD butonu tıklanabilmeli
+        //Siteye ulaşılmalı ve edit butonu tıklanabilmeli
         ReusableMethods.signInUS0304();
-        allpages.addressesPage().addButonuB.click();
-        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve ADD butonu tıklandı");
+        allpages.addressesPage().editButonB.click();
+        ExtentReportUtils.extentTestInfo("Siteye ulaşıldı ve edit butonu tıklandı");
     }
 
 
@@ -32,17 +32,21 @@ public class TestCase11 {
 
 
 
-        //String companyName = allpages.addressesPage().companyB.getAttribute("value");
+        //Company name bilgisi silinebilmeli
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("arguments[0].value='';", allpages.addressesPage().companyB);
+        ExtentReportUtils.extentTestInfo("Company name bilgisi silindi");
 
-
+        //Save Adress butonu tıklanabilir olmalı
         allpages.addressesPage().savebutonB.submit();
+        ExtentReportUtils.extentTestInfo("Save Adress butonu tıklandı");
 
+        //Address changed successfully. yazısı görünmeli
         WaitUtils.waitForVisibility(allpages.addressesPage().addressChanged, 3);
         JSUtils.JSblockDsiplay(allpages.addressesPage().addressChanged);
 
         Assert.assertTrue(allpages.addressesPage().addressChanged.isDisplayed());
+        ExtentReportUtils.extentTestInfo("Address changed successfully. yazısı göründü");
 
 
     }
@@ -52,6 +56,7 @@ public class TestCase11 {
         //Sayfa kapanmalı
         Driver.closeDriver();
         ExtentReportUtils.extentTestInfo("Sayfa kapandı");
+        ExtentReportUtils.flush();
     }
 
 
